@@ -39,12 +39,13 @@ public class CompanyController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value="")
 	public ModelAndView listOfTeams() {
-		ModelAndView modelAndView = new ModelAndView("list-of-teams");
+		ModelAndView modelAndView = new ModelAndView("company");
 		
 		List<Company> companyList = companyService.getAll();
-		modelAndView.addObject("companies", companyList);
+
+		modelAndView.addObject("companyList", companyList);
 		
 		return modelAndView;
 	}
