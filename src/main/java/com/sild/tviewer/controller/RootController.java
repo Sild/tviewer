@@ -7,10 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RootController {
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView showIndex() {
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView showIndex() {
         return new ModelAndView("root");
-	}
-	
+    }
+
 }

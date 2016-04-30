@@ -3,24 +3,24 @@ package com.sild.tviewer.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Tenders")
+@Table(name = "Tenders")
 public class Tender {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     @OneToOne
-    @JoinColumn(name="company_id")
-	private Company owner;
+    @JoinColumn(name = "company_id")
+    private Company owner;
 
     @OneToOne
-    @JoinColumn(name="platform_id")
-	private Platform platform;
+    @JoinColumn(name = "platform_id")
+    private Platform platform;
 
-	private Double sum;
+    private Double sum;
 
-//    @Enumerated(EnumType.STRING)
+    //    @Enumerated(EnumType.STRING)
     private String state;
 
     private String direction;
@@ -29,17 +29,16 @@ public class Tender {
 
     private String comment;
 
-    @Column(name="trade_form")
+    @Column(name = "trade_form")
     private String tradeForm;
 
-    @Column(name="start_timestamp")
+    @Column(name = "start_timestamp")
     private Long startTimestamp;
 
-    @Column(name="end_timestamp")
+    @Column(name = "end_timestamp")
     private Long endTimestamp;
 
-	private Boolean liked;
-
+    private Boolean liked;
 
 
 }

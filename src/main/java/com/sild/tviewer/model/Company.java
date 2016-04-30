@@ -1,25 +1,27 @@
 package com.sild.tviewer.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Companies")
+@Table(name = "Companies")
 public class Company {
-	
-	@Id
-	@GeneratedValue
-	private Integer id;
-	
-	private String name;
-	
-	private String comment;
 
-    @OneToOne
-    @JoinColumn(name="color_id")
-	private Color color;
 
-	private Boolean deleted;
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    private String name;
+
+    private String comment;
+
+    private String color;
+
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -45,11 +47,11 @@ public class Company {
         this.comment = comment;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
