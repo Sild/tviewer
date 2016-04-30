@@ -12,6 +12,5 @@
 <a href="${pageContext.request.contextPath}/company">Companies</a><br/>
 <a href="${pageContext.request.contextPath}/tender">Tenders</a><br/>
 <a href="${pageContext.request.contextPath}/platform">Platforms</a><br/>
-<a href="${pageContext.request.contextPath}/color">Colors</a><br/>
 </body>
 </html>

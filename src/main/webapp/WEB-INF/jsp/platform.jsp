@@ -10,30 +10,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
-    <title>company</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/platform.css">
+    <title>platform</title>
 </head>
 
 <body>
-<h1>Existing Companies</h1>
-<button id="show_add_company_div">add new</button>
+<h1>Existing Platforms</h1>
+<button id="show_add_platform_div">add new</button>
 
-<div style="display: none" id="add_company_div">
-    <form:form method="POST" modelAttribute="company" action="${pageContext.request.contextPath}/company/add">
+<div style="display: none" id="add_platform_div">
+    <form:form method="POST" modelAttribute="platform" action="${pageContext.request.contextPath}/platform/add">
         <table class="table table-sm">
             <thead class="thead-inverse">
             <tr>
                 <th>Name</th>
                 <th>Comment</th>
-                <th>Color</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td><form:input path="name"/></td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="color"/>
+                <td><form:input path="site"/></td>
                 </td>
                 <td><input type="submit" value="Add"/></td>
             </tr>
@@ -42,26 +40,23 @@
     </form:form>
 </div>
 
-<div style="display: none" id="edit_company_div">
-    <form:form method="POST" modelAttribute="company" action="${pageContext.request.contextPath}/company/edit">
+<div style="display: none" id="edit_platform_div">
+    <form:form method="POST" modelAttribute="platform" action="${pageContext.request.contextPath}/platform/edit">
         <table class="table table-sm">
             <thead class="thead-inverse">
             <tr>
                 <th>Name</th>
                 <th>Comment</th>
-                <th>Color</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td><form:input path="name"/></td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="color"/>
-                </td>
+                <td><form:input path="site"/></td>
                 <td>
                     <input type="submit" value="Save"/>
-                    <input type="button" value="Cancel" id="cancel_edit_company_div"/>
+                    <input type="button" value="Cancel" id="cancel_edit_platform_div"/>
                 </td>
             </tr>
             </tbody>
@@ -75,23 +70,19 @@
     <tr>
         <th>id</th>
         <th>name</th>
-        <th>comment</th>
-        <th>color</th>
+        <th>site</th>
         <th>actions</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="company" items="${companyList}">
+    <c:forEach var="platform" items="${platformList}">
         <tr>
-            <td class="company_id">${company.id}</td>
-            <td class="company_name">${company.name}</td>
-            <td class="company_comment">${company.comment}</td>
+            <td class="platform_id">${platform.id}</td>
+            <td class="platform_name">${platform.name}</td>
+            <td class="platform_site">${platform.site}</td>
             <td>
-                <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>
-            </td>
-            <td>
-                <button class="edit_company_btn">Edit</button>
-                <a href="${pageContext.request.contextPath}/company/delete/${company.id}">Delete</a><br/>
+                <button class="edit_platform_btn">Edit</button>
+                <a href="${pageContext.request.contextPath}/platform/delete/${platform.id}">Delete</a><br/>
             </td>
         </tr>
     </c:forEach>
@@ -101,6 +92,6 @@
 <h2><a href="${pageContext.request.contextPath}/">Home</a></h2>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/platform.js"></script>
 </body>
 </html>

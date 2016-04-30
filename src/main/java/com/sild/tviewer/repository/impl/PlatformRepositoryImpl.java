@@ -1,7 +1,7 @@
 package com.sild.tviewer.repository.impl;
 
-import com.sild.tviewer.model.Company;
-import com.sild.tviewer.repository.CompanyCRUDRepository;
+import com.sild.tviewer.model.Platform;
+import com.sild.tviewer.repository.PlatformCRUDRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class CompanyRepositoryImpl implements CompanyCRUDRepository {
+public class PlatformRepositoryImpl implements PlatformCRUDRepository {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -21,30 +21,29 @@ public class CompanyRepositoryImpl implements CompanyCRUDRepository {
         return sessionFactory.getCurrentSession();
     }
 
-    public void add(Company entity) {
+    public void add(Platform entity) {
         getCurrentSession().save(entity);
     }
 
-    public void update(Company entity) {
+    public void update(Platform entity) {
         getCurrentSession().update(entity);
 
     }
 
-    public Company get(int id) {
-        Company company = (Company) getCurrentSession().get(Company.class, id);
-        return company;
+    public Platform get(int id) {
+        return (Platform) getCurrentSession().get(Platform.class, id);
     }
 
     public void delete(int id) {
-        Company company = get(id);
-        if (company != null) {
-            getCurrentSession().delete(company);
+        Platform entity = get(id);
+        if (entity != null) {
+            getCurrentSession().delete(entity);
         }
     }
 
     @SuppressWarnings("unchecked")
-    public List<Company> getAll() {
-        return getCurrentSession().createQuery("from " + Company.class.getName()).list();
+    public List<Platform> getAll() {
+        return getCurrentSession().createQuery("from " + Platform.class.getName()).list();
     }
 
 }
