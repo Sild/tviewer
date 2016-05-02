@@ -1,10 +1,15 @@
 package com.sild.tviewer.init;
 
+import com.sild.tviewer.converter.CompanyConverter;
+import com.sild.tviewer.converter.PlatformConverter;
+import com.sild.tviewer.model.Company;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -40,9 +45,20 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     @Resource
     private Environment env;
 
+    @Autowired
+    CompanyConverter companyConverter;
+    @Autowired
+    PlatformConverter platformConverter;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(companyConverter);
+        registry.addConverter(platformConverter);
     }
 
     @Bean

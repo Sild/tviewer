@@ -1,7 +1,7 @@
 package com.sild.tviewer.repository.impl;
 
-import com.sild.tviewer.model.Platform;
-import com.sild.tviewer.repository.PlatformCRUDRepository;
+import com.sild.tviewer.model.Tender;
+import com.sild.tviewer.repository.TenderCRUDRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class TenderRepositoryImpl implements PlatformCRUDRepository {
+public class TenderRepositoryImpl implements TenderCRUDRepository {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -21,29 +21,28 @@ public class TenderRepositoryImpl implements PlatformCRUDRepository {
         return sessionFactory.getCurrentSession();
     }
 
-    public void add(Platform entity) {
+    public void add(Tender entity) {
         getCurrentSession().save(entity);
     }
 
-    public void update(Platform entity) {
+    public void update(Tender entity) {
         getCurrentSession().update(entity);
-
     }
 
-    public Platform get(int id) {
-        return (Platform) getCurrentSession().get(Platform.class, id);
+    public Tender get(int id) {
+        return (Tender) getCurrentSession().get(Tender.class, id);
     }
 
     public void delete(int id) {
-        Platform entity = get(id);
+        Tender entity = get(id);
         if (entity != null) {
             getCurrentSession().delete(entity);
         }
     }
 
     @SuppressWarnings("unchecked")
-    public List<Platform> getAll() {
-        return getCurrentSession().createQuery("from " + Platform.class.getName()).list();
+    public List<Tender> getAll() {
+        return getCurrentSession().createQuery("from " + Tender.class.getName()).list();
     }
 
 }

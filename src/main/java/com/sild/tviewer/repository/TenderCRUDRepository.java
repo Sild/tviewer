@@ -4,7 +4,7 @@ import com.sild.tviewer.model.Tender;
 
 import java.util.List;
 
-public interface TenderRepository {
+public interface TenderCRUDRepository {
 
     public void add(Tender element);
 

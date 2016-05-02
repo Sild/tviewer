@@ -1,13 +1,15 @@
 package com.sild.tviewer.service;
 
+import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Platform;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Dmitry Korchagin.
  */
-public interface PlatformCRUDService {
+public interface PlatformService {
     public void add(Platform element);
 
     public void update(Platform element);
@@ -17,4 +19,5 @@ public interface PlatformCRUDService {
     public void delete(int id);
 
     public List<Platform> getAll();
+
 }

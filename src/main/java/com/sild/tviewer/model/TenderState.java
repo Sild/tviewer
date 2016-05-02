@@ -7,7 +7,7 @@ public enum TenderState {
     OPEN("open"),
     CANCEL("cancel"),
     CLOSE("close");
-    private final String value;
+    private String value;
 
     private TenderState(String value) {
         this.value = value;
