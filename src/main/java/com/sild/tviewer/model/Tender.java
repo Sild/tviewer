@@ -12,18 +12,18 @@ public class Tender {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "company_id")
     private Company owner;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "platform_id")
     private Platform platform;
 
     private Double sum;
 
-    //    @Enumerated(EnumType.STRING)
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private TenderState state;
 
     private String direction;
 
@@ -77,11 +77,11 @@ public class Tender {
         this.sum = sum;
     }
 
-    public String getState() {
+    public TenderState getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(TenderState state) {
         this.state = state;
     }
 

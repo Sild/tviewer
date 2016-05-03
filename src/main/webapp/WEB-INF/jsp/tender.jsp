@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<h1>Existing Platforms</h1>
+<h1>Existing Tenders</h1>
 <button id="show_add_tender_div">add new</button>
 
 <div style="display: none" id="add_tender_div">
@@ -49,7 +49,7 @@
                 </td>
                 <td><form:input path="sum"/></td>
                 <td>
-                    <form:select path="state" items="${tenderStates}"/>
+                    <form:select path="state" items="${TenderState}"/>
                 </td>
                 <td><form:input path="direction"/></td>
                 <td><form:input path="nomenclature"/></td>
@@ -57,7 +57,7 @@
                 <td><form:input path="tradeForm"/></td>
                 <td><form:input path="startTimestamp"/></td>
                 <td><form:input path="endTimestamp"/></td>
-                <td><form:input path="liked"/></td>
+                <td><form:checkbox path="liked"/></td>
                 <td><input type="submit" value="Add"/></td>
             </tr>
             </tbody>
@@ -147,41 +147,48 @@
             <td class="tender_trade_form">${tender.tradeForm}</td>
             <td class="tender_start_timestamp">${tender.startTimestamp}</td>
             <td class="tender_end_timestamp">${tender.endTimestamp}</td>
-            <td class="tender_liked">${tender.liked}</td>
+            <td class="tender_liked">
+                <input type="checkbox" disabled
+                        <c:if test="${tender.liked}">
+                            checked
+                        </c:if>
+                        />
+            </td>
             <td>
                 <button class="edit_platform_btn">Edit</button>
-                <a href="${pageContext.request.contextPath}/platform/delete/${platform.id}">Delete</a><br/>
+                    <a href="${pageContext.request.contextPath}/tender/${tender.id}/detail">Detail</a><br/>
+                <a href="${pageContext.request.contextPath}/tender/delete/${tender.id}">Delete</a><br/>
             </td>
         </tr>
-        <tr>
-            <table class="table table-striped table-bordered table-sm">
-                <thead class="thead-inverse">
-                <tr>
-                    <th>id</th>
-                    <th>company</th>
-                    <th>offer</th>
-                    <th>winner</th>
-                    <th>comment</th>
-                    <th>submit_time</th>
-                    <th>widthdrow_time</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="member" items="${tender.memberList}">
-
-                    <tr class="member-info">
-                        <td class="member_id">${member.id}</td>
-                        <td class="member_company">${member.company.name}</td>
-                        <td class="member_offer">${member.offer}</td>
-                        <td class="member_winner">${member.winner}</td>
-                        <td class="member_comment">${member.comment}</td>
-                        <td class="member_submit_timestamp">${member.submit_timestamp}</td>
-                        <td class="member_widthdrow_timestamp">${member.widthdrow_timestamp}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </tr>
+        <%--<tr>--%>
+                <%--<table class="table table-striped table-bordered table-sm">--%>
+                    <%--<thead class="thead-inverse">--%>
+                    <%--<tr>--%>
+                        <%--<th>id</th>--%>
+                        <%--<th>company</th>--%>
+                        <%--<th>offer</th>--%>
+                        <%--<th>winner</th>--%>
+                        <%--<th>comment</th>--%>
+                        <%--<th>submit_time</th>--%>
+                        <%--<th>widthdrow_time</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<c:forEach var="member" items="${tender.memberList}">--%>
+<%----%>
+                        <%--<tr class="member-info">--%>
+                            <%--<td class="member_id">${member.id}</td>--%>
+                            <%--<td class="member_company">${member.company.name}</td>--%>
+                            <%--<td class="member_offer">${member.offer}</td>--%>
+                            <%--<td class="member_winner">${member.winner}</td>--%>
+                            <%--<td class="member_comment">${member.comment}</td>--%>
+                            <%--<td class="member_submit_timestamp">${member.submit_timestamp}</td>--%>
+                            <%--<td class="member_widthdrow_timestamp">${member.widthdrow_timestamp}</td>--%>
+                        <%--</tr>--%>
+                    <%--</c:forEach>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+        <%--</tr>--%>
 
     </c:forEach>
     </tbody>

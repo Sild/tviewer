@@ -1,8 +1,6 @@
 package com.sild.tviewer.controller;
 
-import com.sild.tviewer.model.Company;
-import com.sild.tviewer.model.Platform;
-import com.sild.tviewer.model.Tender;
+import com.sild.tviewer.model.*;
 import com.sild.tviewer.service.CompanyService;
 import com.sild.tviewer.service.PlatformService;
 import com.sild.tviewer.service.TenderService;
@@ -47,16 +45,13 @@ public class TenderController {
         model.addAttribute("tender", new Tender());
         ModelAndView modelAndView = new ModelAndView("tender");
         List<Tender> tenderList = tenderService.getAll();
-
         List<Company> companyList = companyService.getAll();
         List<Platform> platformList = platformService.getAll();
-        String[] tenderStates = {"open", "canceled", "closed"};
-
 
         modelAndView.addObject("tenderList", tenderList);
         modelAndView.addObject("companyList", companyList);
         modelAndView.addObject("platformList", platformList);
-        modelAndView.addObject("tenderStates", tenderStates);
+        modelAndView.addObject("TenderState", TenderState.values());
         return modelAndView;
     }
 
@@ -76,5 +71,18 @@ public class TenderController {
         tenderService.delete(id);
         return "redirect:/tender";
     }
+
+    @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
+    public ModelAndView tenderDetail(Model model, @PathVariable Integer id) {
+        model.addAttribute("member", new Member());
+        ModelAndView modelAndView = new ModelAndView("tender_detail");
+        Tender tender = tenderService.get(id);
+        List<Company> companyList = companyService.getAll();
+
+        modelAndView.addObject("tender", tender);
+        modelAndView.addObject("companyList", companyList);
+        return modelAndView;
+    }
+
 
 }
