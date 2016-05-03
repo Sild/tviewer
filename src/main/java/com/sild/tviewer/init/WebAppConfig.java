@@ -1,7 +1,9 @@
 package com.sild.tviewer.init;
 
+import com.sild.tviewer.controller.TenderController;
 import com.sild.tviewer.converter.CompanyConverter;
 import com.sild.tviewer.converter.PlatformConverter;
+import com.sild.tviewer.converter.TenderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -48,6 +50,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     CompanyConverter companyConverter;
     @Autowired
     PlatformConverter platformConverter;
+    @Autowired
+    TenderConverter tenderConverter;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -58,6 +62,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(companyConverter);
         registry.addConverter(platformConverter);
+        registry.addConverter(tenderConverter);
     }
 
     @Bean

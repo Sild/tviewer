@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,6 +35,18 @@ public class PlatformController {
         modelAndView.addObject("platformList", entityList);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/{id}")
+    public ModelAndView single(Model model, @PathVariable Integer id) {
+        model.addAttribute("platform", new Platform());
+        ModelAndView modelAndView = new ModelAndView("platform");
+        List<Platform> entityList = new ArrayList<>();
+        entityList.add(platformService.get(id));
+        modelAndView.addObject("platformList", entityList);
+        return modelAndView;
+    }
+
+
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)

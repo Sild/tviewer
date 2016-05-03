@@ -1,5 +1,8 @@
 package com.sild.tviewer.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Platforms")
+@SQLDelete(sql="UPDATE Platform SET deleted = '1' WHERE id = ?")
+@Where(clause="deleted <> '1'")
 public class Platform {
 
     @Id
@@ -16,6 +21,16 @@ public class Platform {
     private String name;
 
     private String site;
+
+    private char deleted;
+
+    public char getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(char deleted) {
+        this.deleted = deleted;
+    }
 
     public Integer getId() {
         return id;

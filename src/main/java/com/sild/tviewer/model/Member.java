@@ -1,20 +1,25 @@
 package com.sild.tviewer.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Members")
+@SQLDelete(sql="UPDATE Member SET deleted = '1' WHERE id = ?")
+@Where(clause="deleted <> '1'")
 public class Member {
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "company_id")
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "tender_id", nullable = false)
     private Tender tender;
 
@@ -22,7 +27,7 @@ public class Member {
 
     private Boolean winner;
 
-    private String Comment;
+    private String comment;
 
     @Column(name = "submit_timestamp")
     private Long submitTimestamp;
@@ -30,6 +35,7 @@ public class Member {
     @Column(name = "withdrow_timestamp")
     private Long withdrowTimestamp;
 
+    private boolean deleted;
 
     public Integer getId() {
         return id;
@@ -72,11 +78,11 @@ public class Member {
     }
 
     public String getComment() {
-        return Comment;
+        return comment;
     }
 
     public void setComment(String comment) {
-        Comment = comment;
+        this.comment = comment;
     }
 
     public Long getSubmitTimestamp() {
@@ -93,5 +99,13 @@ public class Member {
 
     public void setWithdrowTimestamp(Long withdrowTimestamp) {
         this.withdrowTimestamp = withdrowTimestamp;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

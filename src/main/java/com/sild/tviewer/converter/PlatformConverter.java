@@ -17,6 +17,5 @@ public class PlatformConverter implements Converter<String, Platform> {
 
     public Platform convert(String id) {
         return platformService.get(Integer.parseInt(id));
-//        return platformService.get(Integer.parseInt((String)id));
     }
 }

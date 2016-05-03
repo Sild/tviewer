@@ -1,11 +1,16 @@
 package com.sild.tviewer.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Tenders")
+@SQLDelete(sql="UPDATE Tender SET deleted = '1' WHERE id = ?")
+@Where(clause="deleted <> '1'")
 public class Tender {
 
     @Id
@@ -40,9 +45,11 @@ public class Tender {
     @Column(name = "end_timestamp")
     private Long endTimestamp;
 
-    private Boolean liked;
+    private boolean liked;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender")
+    private boolean deleted;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
     private List<Member> memberList = new ArrayList<>();
 
     public Integer getId() {
@@ -109,25 +116,6 @@ public class Tender {
         this.comment = comment;
     }
 
-    @Override
-    public String toString() {
-        return "Tender{" +
-                "id=" + id +
-                ", owner=" + owner +
-                ", platform=" + platform +
-                ", sum=" + sum +
-                ", state='" + state + '\'' +
-                ", direction='" + direction + '\'' +
-                ", nomenclature='" + nomenclature + '\'' +
-                ", comment='" + comment + '\'' +
-                ", tradeForm='" + tradeForm + '\'' +
-                ", startTimestamp=" + startTimestamp +
-                ", endTimestamp=" + endTimestamp +
-                ", liked=" + liked +
-                ", memberList=" + memberList +
-                '}';
-    }
-
     public String getTradeForm() {
         return tradeForm;
     }
@@ -152,12 +140,20 @@ public class Tender {
         this.endTimestamp = endTimestamp;
     }
 
-    public Boolean getLiked() {
+    public boolean isLiked() {
         return liked;
     }
 
-    public void setLiked(Boolean liked) {
+    public void setLiked(boolean liked) {
         this.liked = liked;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public List<Member> getMemberList() {

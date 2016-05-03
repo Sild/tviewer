@@ -19,7 +19,7 @@ public class MemberController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute Member entity) {
         memberService.add(entity);
-        return "redirect:/tender";
+        return "redirect:/tender/" + entity.getTender().getId() + "/detail";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)

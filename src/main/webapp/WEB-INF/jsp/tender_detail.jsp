@@ -16,8 +16,7 @@
 </head>
 
 <body>
-<h1>Tender id = ${tender.id}</h1>
-<button id="show_add_member_div">add member</button>
+<h2>Tender</h2>
 
 <div style="display: none" id="add_member_div">
     <form:form method="POST" modelAttribute="member"
@@ -55,7 +54,7 @@
             </tr>
             </tbody>
         </table>
-        <form:hidden path="tender" />
+        <input type="hidden" id="tender" name="tender" value="${tender.id}"/>
     </form:form>
 </div>
 
@@ -113,7 +112,6 @@
         <th>start time</th>
         <th>end time</th>
         <th>liked</th>
-        <th>actions</th>
     </tr>
     </thead>
     <tbody>
@@ -136,9 +134,6 @@
                     </c:if>
                     />
         </td>
-        <td>
-            <a href="${pageContext.request.contextPath}/platform/delete/${platform.id}">Delete</a><br/>
-        </td>
     </tr>
     <tr>
 
@@ -146,6 +141,9 @@
 
     </tbody>
 </table>
+<h2>Members</h2>
+<button id="show_add_member_div">add member</button>
+
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
@@ -172,15 +170,15 @@
                         />
             </td>
             <td class="member_comment">${member.comment}</td>
-            <td class="member_submit_timestamp">${member.submit_timestamp}</td>
-            <td class="member_widthdrow_timestamp">${member.widthdrow_timestamp}</td>
+            <td class="member_submit_timestamp">${member.submitTimestamp}</td>
+            <td class="member_widthdrow_timestamp">${member.withdrowTimestamp}</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-<h2><a href="${pageContext.request.contextPath}/">Home</a></h2>
-
+<p><a href="${pageContext.request.contextPath}/tender">Tenders</a></p>
+<p><a href="${pageContext.request.contextPath}/">Home</a></p>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
 </body>
