@@ -24,7 +24,7 @@
             <thead class="thead-inverse">
             <tr>
                 <th>Name</th>
-                <th>Comment</th>
+                <th>Site</th>
                 <th></th>
             </tr>
             </thead>
@@ -46,7 +46,7 @@
             <thead class="thead-inverse">
             <tr>
                 <th>Name</th>
-                <th>Comment</th>
+                <th>Site3</th>
                 <th></th>
             </tr>
             </thead>

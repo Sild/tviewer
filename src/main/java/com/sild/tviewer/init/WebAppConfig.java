@@ -2,7 +2,6 @@ package com.sild.tviewer.init;
 
 import com.sild.tviewer.converter.CompanyConverter;
 import com.sild.tviewer.converter.PlatformConverter;
-import com.sild.tviewer.model.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -1,19 +1,17 @@
 package com.sild.tviewer.service.impl;
 
 import com.sild.tviewer.model.Company;
-import com.sild.tviewer.repository.CompanyCRUDRepository;
+import com.sild.tviewer.repository.CRUDRepository;
 import com.sild.tviewer.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
-    private CompanyCRUDRepository repository;
+    private CRUDRepository<Company> repository;
 
     public void add(Company element) {
         repository.add(element);
@@ -24,22 +22,14 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     public Company get(int id) {
-        return repository.get(id);
+        return repository.get(Company.class, id);
     }
 
     public void delete(int id) {
-        repository.delete(id);
+        repository.delete(Company.class, id);
     }
 
     public List<Company> getAll() {
-        return repository.getAll();
-    }
-
-    public Map<Integer, String> toMap(List<Company> companyList) {
-        Map<Integer, String> companyMap = new LinkedHashMap<>();
-        for(Company company: companyList) {
-            companyMap.put(company.getId(), company.getName());
-        }
-        return companyMap;
+        return repository.getAll(Company.class);
     }
 }

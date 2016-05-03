@@ -1,10 +1,8 @@
 package com.sild.tviewer.service;
 
-import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Platform;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Dmitry Korchagin.

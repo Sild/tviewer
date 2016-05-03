@@ -1,6 +1,5 @@
 package com.sild.tviewer.service;
 
-import com.sild.tviewer.model.Platform;
 import com.sild.tviewer.model.Tender;
 
 import java.util.List;

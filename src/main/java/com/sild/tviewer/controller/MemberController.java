@@ -1,20 +1,13 @@
 package com.sild.tviewer.controller;
 
-import com.sild.tviewer.model.*;
-import com.sild.tviewer.service.CompanyService;
+import com.sild.tviewer.model.Member;
 import com.sild.tviewer.service.MemberService;
-import com.sild.tviewer.service.PlatformService;
-import com.sild.tviewer.service.TenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/member")

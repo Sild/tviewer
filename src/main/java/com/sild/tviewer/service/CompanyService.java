@@ -3,7 +3,6 @@ package com.sild.tviewer.service;
 import com.sild.tviewer.model.Company;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Dmitry Korchagin.
@@ -19,5 +18,4 @@ public interface CompanyService {
 
     public List<Company> getAll();
 
-    public Map<Integer, String> toMap(List<Company> companyList);
 }

@@ -20,11 +20,7 @@ public class CompanyController {
     @Autowired
     private CompanyServiceImpl companyService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Company company) {
-        companyService.add(company);
-        return "redirect:/company";
-    }
+
 
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
@@ -33,6 +29,12 @@ public class CompanyController {
         List<Company> companyList = companyService.getAll();
         modelAndView.addObject("companyList", companyList);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(@ModelAttribute Company company) {
+        companyService.add(company);
+        return "redirect:/company";
     }
 
 

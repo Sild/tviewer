@@ -10,12 +10,13 @@ import org.springframework.stereotype.Component;
  * @author Dmitry Korchagin.
  */
 @Component
-public class CompanyConverter implements Converter<Object, Company> {
+public class CompanyConverter implements Converter<String, Company> {
 
     @Autowired
     private CompanyServiceImpl companyService;
 
-    public Company convert(Object id) {
-        return companyService.get(Integer.parseInt((String)id));
+    public Company convert(String id) {
+        return companyService.get(Integer.parseInt(id));
+//        return companyService.get(Integer.parseInt((String)id));
     }
 }

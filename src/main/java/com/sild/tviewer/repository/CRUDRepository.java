@@ -1,7 +1,5 @@
 package com.sild.tviewer.repository;
 
-import com.sild.tviewer.model.Company;
-
 import java.util.List;
 
 public interface CRUDRepository<T> {
