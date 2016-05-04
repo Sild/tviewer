@@ -9,8 +9,8 @@
 </head>
 <body>
 <h1>Tender Viewer</h1>
-<a href="${pageContext.request.contextPath}/company">Companies</a><br/>
 <a href="${pageContext.request.contextPath}/tender">Tenders</a><br/>
+<a href="${pageContext.request.contextPath}/company">Companies</a><br/>
 <a href="${pageContext.request.contextPath}/platform">Platforms</a><br/>
 </body>
 </html>

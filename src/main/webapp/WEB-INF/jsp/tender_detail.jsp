@@ -11,6 +11,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender_detail.css">
     <title>Tender Detail</title>
 </head>
@@ -18,84 +20,6 @@
 <body>
 <h2>Tender</h2>
 
-<div style="display: none" id="add_member_div">
-    <form:form method="POST" modelAttribute="member"
-               action="${pageContext.request.contextPath}/member/add">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>company</th>
-                <th>offer</th>
-                <th>winner</th>
-                <th>comment</th>
-                <th>submit</th>
-                <th>withdrow</th>
-                <th>actions</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <form:select path="company">
-                        <c:forEach items="${companyList}" var="company">
-                            <form:option value="${company.id}" label="${company.name}"/>
-                        </c:forEach>
-                    </form:select>
-                </td>
-                <td><form:input path="offer"/></td>
-                <td>
-                    <form:checkbox path="winner"/>
-                </td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="submitTimestamp"/></td>
-                <td><form:input path="withdrowTimestamp"/></td>
-                <td><input type="submit" value="Add"/></td>
-            </tr>
-            </tbody>
-        </table>
-        <input type="hidden" id="tender" name="tender" value="${tender.id}"/>
-    </form:form>
-</div>
-
-<div style="display: none" id="edit_member_div">
-    <form:form method="POST" modelAttribute="member" action="${pageContext.request.contextPath}/member/edit">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>company</th>
-                <th>offer</th>
-                <th>winner</th>
-                <th>comment</th>
-                <th>submit</th>
-                <th>withdrow</th>
-                <th>actions</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <form:select path="company">
-                        <c:forEach items="${companyList}" var="company">
-                            <form:option value="${company.id}" label="${company.name}"/>
-                        </c:forEach>
-                    </form:select>
-                </td>
-                <td><form:input path="offer"/></td>
-                <td>
-                    <form:checkbox path="winner"/>
-                </td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="submitTimestamp"/></td>
-                <td><form:input path="withdrowTimestamp"/></td>
-                <td><input type="submit" value="Add"/></td>
-            </tr>
-            </tbody>
-        </table>
-        <form:hidden path="id"/>
-    </form:form>
-</div>
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
@@ -118,7 +42,7 @@
     <tr class="tender-info">
         <td class="tender_id">${tender.id}</td>
         <td class="tender_owner">${tender.owner.name}</td>
-        <td class="tender_platform">${tender.platform.name}: ${tender.platform.site}</td>
+        <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}" target="_blank">${tender.platform.name}</a></td>
         <td class="tender_sum">${tender.sum}</td>
         <td class="tender_state">${tender.state}</td>
         <td class="tender_direction">${tender.direction}</td>
@@ -142,24 +66,101 @@
     </tbody>
 </table>
 <h2>Members</h2>
-<button id="show_add_member_div">add member</button>
+<button id="show_add_entity_form">add member</button>
+<form:form method="POST" class="add_entity_form" modelAttribute="member"
+           action="${pageContext.request.contextPath}/member/add">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>company</th>
+            <th>offer</th>
+            <th>winner</th>
+            <th>comment</th>
+            <th>submit</th>
+            <th>withdrow</th>
+            <th>actions</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <form:select path="company">
+                    <form:option value="Select..." />
+                    <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
+                </form:select>
+            </td>
+            <td><form:input path="offer"/></td>
+            <td>
+                <form:checkbox path="winner"/>
+            </td>
+            <td><form:input path="comment"/></td>
+            <td><form:input path="submitTimestamp"/></td>
+            <td><form:input path="withdrowTimestamp"/></td>
+            <td><input type="submit" value="Add"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <form:hidden path="tender" value="${tender.id}"/>
+</form:form>
+
+<form:form method="POST" class="edit_entity_form" modelAttribute="member"
+           action="${pageContext.request.contextPath}/member/edit">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>company</th>
+            <th>offer</th>
+            <th>winner</th>
+            <th>comment</th>
+            <th>submit</th>
+            <th>withdrow</th>
+            <th>actions</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <form:select path="company" items="${companyList}" itemLabel="name" itemValue="id"/>
+            </td>
+            <td><form:input path="offer"/></td>
+            <td>
+                <form:checkbox path="winner"/>
+            </td>
+            <td><form:input path="comment"/></td>
+            <td><form:input path="submitTimestamp"/></td>
+            <td><form:input path="withdrowTimestamp"/></td>
+            <td>
+                <input type="submit" value="Save"/>
+                <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form:hidden path="id"/>
+    <form:hidden path="tender" value="${tender.id}"/>
+</form:form>
 
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
     <tr>
+        <th>id</th>
         <th>company</th>
         <th>offer</th>
         <th>winner</th>
         <th>comment</th>
         <th>submit_time</th>
-        <th>widthdrow_time</th>
+        <th>withdrow_time</th>
+        <th>actions</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="member" items="${tender.memberList}">
 
-        <tr class="member-info">
+        <tr class="member-info" style="background-color: ${member.company.color}">
+            <td class="member_id">${member.id}</td>
             <td class="member_company">${member.company.name}</td>
             <td class="member_offer">${member.offer}</td>
             <td class="member_winner">
@@ -172,12 +173,18 @@
             <td class="member_comment">${member.comment}</td>
             <td class="member_submit_timestamp">${member.submitTimestamp}</td>
             <td class="member_widthdrow_timestamp">${member.withdrowTimestamp}</td>
+            <td>
+                <button class="edit_entity_btn">Edit</button>
+                <a href="${pageContext.request.contextPath}/member/delete/${member.id}">Delete</a><br/>
+            </td>
         </tr>
+
     </c:forEach>
     </tbody>
 </table>
 
 <p><a href="${pageContext.request.contextPath}/tender">Tenders</a></p>
+
 <p><a href="${pageContext.request.contextPath}/">Home</a></p>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>

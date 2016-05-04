@@ -36,7 +36,7 @@ public class PlatformController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/{id}")
+    @RequestMapping(value = "/filters/id/{id}")
     public ModelAndView single(Model model, @PathVariable Integer id) {
         model.addAttribute("platform", new Platform());
         ModelAndView modelAndView = new ModelAndView("platform");

@@ -3,7 +3,7 @@ $(function () {
 
     function setUpHandlers() {
         $('#show_add_tender_div').click(function () {
-            $('#add_tender_div').toggle();
+            $('form.add_entity_form').toggle();
         });
 
         $('.edit_tender_btn').click(function () {
@@ -21,7 +21,7 @@ $(function () {
             var end_timestamp = row.find('.tender_end_timestamp').text();
             var liked = row.find('.tender_liked>input[type="checkbox"]').prop('checked');
             console.log(liked);
-            var edit_div = $('#edit_tender_div');
+            var edit_div = $('form.edit_entity_form');
             edit_div.find('#id').val(id);
             edit_div.find('#owner').labselect(owner);
             edit_div.find('#platform').labselect(platform);
@@ -38,7 +38,7 @@ $(function () {
         });
 
         $('#cancel_edit_tender_div').click(function () {
-            var edit_div = $('#edit_tender_div');
+            var edit_div = $('form.edit_entity_form');
             edit_div.find('#id').val("");
             edit_div.find('#owner').val("");
             edit_div.find('#platform').val("");
@@ -63,8 +63,6 @@ $(function () {
 
         return this;
     };
-
-// Use it like this
 
 });
 

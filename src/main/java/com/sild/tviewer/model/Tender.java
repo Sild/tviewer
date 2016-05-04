@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Tenders")
-@SQLDelete(sql="UPDATE Tender SET deleted = '1' WHERE id = ?")
+@SQLDelete(sql="UPDATE Tenders SET deleted = '1' WHERE id = ?")
 @Where(clause="deleted <> '1'")
 public class Tender {
 
@@ -50,6 +50,7 @@ public class Tender {
     private boolean deleted;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
+    @Where(clause="deleted <> '1'")
     private List<Member> memberList = new ArrayList<>();
 
     public Integer getId() {

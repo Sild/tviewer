@@ -17,6 +17,5 @@ public class CompanyConverter implements Converter<String, Company> {
 
     public Company convert(String id) {
         return companyService.get(Integer.parseInt(id));
-//        return companyService.get(Integer.parseInt((String)id));
     }
 }

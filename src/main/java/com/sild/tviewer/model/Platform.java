@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Platforms")
-@SQLDelete(sql="UPDATE Platform SET deleted = '1' WHERE id = ?")
+@SQLDelete(sql="UPDATE Platforms SET deleted = '1' WHERE id = ?")
 @Where(clause="deleted <> '1'")
 public class Platform {
 
@@ -22,15 +22,8 @@ public class Platform {
 
     private String site;
 
-    private char deleted;
+    private boolean deleted;
 
-    public char getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(char deleted) {
-        this.deleted = deleted;
-    }
 
     public Integer getId() {
         return id;
@@ -54,5 +47,13 @@ public class Platform {
 
     public void setSite(String site) {
         this.site = site;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

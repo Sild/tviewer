@@ -10,65 +10,66 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
+
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
     <title>company</title>
 </head>
 
 <body>
 <h1>Existing Companies</h1>
-<button id="show_add_company_div">add new</button>
+<button id="show_add_entity_form">add new</button>
 
-<div style="display: none" id="add_company_div">
-    <form:form method="POST" modelAttribute="company" action="${pageContext.request.contextPath}/company/add">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>Name</th>
-                <th>Comment</th>
-                <th>Color</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><form:input path="name"/></td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="color"/>
-                </td>
-                <td><input type="submit" value="Add"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </form:form>
-</div>
+<form:form method="POST" class="add_entity_form" modelAttribute="company"
+           action="${pageContext.request.contextPath}/company/add">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Color</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><form:input path="name"/></td>
+            <td><form:input path="comment"/></td>
+            <td><form:input path="color"/>
+            </td>
+            <td><input type="submit" value="Add"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form:form>
 
-<div style="display: none" id="edit_company_div">
-    <form:form method="POST" modelAttribute="company" action="${pageContext.request.contextPath}/company/edit">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>Name</th>
-                <th>Comment</th>
-                <th>Color</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><form:input path="name"/></td>
-                <td><form:input path="comment"/></td>
-                <td><form:input path="color"/>
-                </td>
-                <td>
-                    <input type="submit" value="Save"/>
-                    <input type="button" value="Cancel" id="cancel_edit_company_div"/>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <form:hidden path="id"/>
-    </form:form>
-</div>
+<form:form method="POST" class="edit_entity_form" modelAttribute="company"
+           action="${pageContext.request.contextPath}/company/edit">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Color</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><form:input path="name"/></td>
+            <td><form:input path="comment"/></td>
+            <td><form:input path="color"/>
+            </td>
+            <td>
+                <input type="submit" value="Save"/>
+                <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form:hidden path="id"/>
+</form:form>
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
@@ -90,7 +91,7 @@
                 <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>
             </td>
             <td>
-                <button class="edit_company_btn">Edit</button>
+                <button class="edit_entity_btn">Edit</button>
                 <a href="${pageContext.request.contextPath}/company/delete/${company.id}">Delete</a><br/>
             </td>
         </tr>

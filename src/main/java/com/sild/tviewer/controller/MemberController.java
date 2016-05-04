@@ -23,7 +23,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute Member entity) throws IllegalArgumentException {
+    public String edit(@ModelAttribute Member entity) {
         Member oldEntity = memberService.get(entity.getId());
         if (null == oldEntity) {
             throw new IllegalArgumentException("Member with id = " + entity.getId() + " does not exist. Nothing to edit.");
@@ -33,8 +33,12 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteTeam(@PathVariable Integer id) {
-        Integer tenderId = memberService.get(id).getTender().getId();
+    public String delete(@PathVariable Integer id) {
+        Member memberToDelete = memberService.get(id);
+        if(null == memberToDelete) {
+            throw new IllegalArgumentException("Member with id = " + id + " does not exist. Nothing to delete.");
+        }
+        Integer tenderId = memberToDelete.getTender().getId();
         memberService.delete(id);
         return "redirect:/tender/" + tenderId + "/detail";
     }

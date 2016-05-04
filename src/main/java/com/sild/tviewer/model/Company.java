@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Companies")
-@SQLDelete(sql="UPDATE Company SET deleted = '1' WHERE id = ?")
+@SQLDelete(sql="UPDATE Companies SET deleted = '1' WHERE id = ?")
 @Where(clause="deleted <> '1'")
 public class Company {
 

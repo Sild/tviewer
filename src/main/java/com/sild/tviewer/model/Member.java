@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Members")
-@SQLDelete(sql="UPDATE Member SET deleted = '1' WHERE id = ?")
+@SQLDelete(sql="UPDATE Members SET deleted = '1' WHERE id = ?")
 @Where(clause="deleted <> '1'")
 public class Member {
 

@@ -10,60 +10,60 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
+
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/platform.css">
     <title>platform</title>
 </head>
 
 <body>
 <h1>Existing Platforms</h1>
-<button id="show_add_platform_div">add new</button>
+<button id="show_add_entity_form">add new</button>
 
-<div style="display: none" id="add_platform_div">
-    <form:form method="POST" modelAttribute="platform" action="${pageContext.request.contextPath}/platform/add">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>Name</th>
-                <th>Site</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><form:input path="name"/></td>
-                <td><form:input path="site"/></td>
-                </td>
-                <td><input type="submit" value="Add"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </form:form>
-</div>
+<form:form method="POST" class="add_entity_form" modelAttribute="platform"
+           action="${pageContext.request.contextPath}/platform/add">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Name</th>
+            <th>Site</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><form:input path="name"/></td>
+            <td><form:input path="site"/></td>
+            </td>
+            <td><input type="submit" value="Add"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form:form>
 
-<div style="display: none" id="edit_platform_div">
-    <form:form method="POST" modelAttribute="platform" action="${pageContext.request.contextPath}/platform/edit">
-        <table class="table table-sm">
-            <thead class="thead-inverse">
-            <tr>
-                <th>Name</th>
-                <th>Site3</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><form:input path="name"/></td>
-                <td><form:input path="site"/></td>
-                <td>
-                    <input type="submit" value="Save"/>
-                    <input type="button" value="Cancel" id="cancel_edit_platform_div"/>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <form:hidden path="id"/>
-    </form:form>
-</div>
+<form:form method="POST" class="edit_entity_form" modelAttribute="platform"
+           action="${pageContext.request.contextPath}/platform/edit">
+    <table class="table table-sm">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Name</th>
+            <th>Site</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><form:input path="name"/></td>
+            <td><form:input path="site"/></td>
+            <td>
+                <input type="submit" value="Save"/>
+                <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form:hidden path="id"/>
+</form:form>
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
@@ -79,7 +79,7 @@
         <tr>
             <td class="platform_id">${platform.id}</td>
             <td class="platform_name">${platform.name}</td>
-            <td class="platform_site">${platform.site}</td>
+            <td class="platform_site"><a href="${platform.site}" target="_blank">${platform.site}</a></td>
             <td>
                 <button class="edit_platform_btn">Edit</button>
                 <a href="${pageContext.request.contextPath}/platform/delete/${platform.id}">Delete</a><br/>
