@@ -5,14 +5,15 @@ import com.sild.tviewer.service.CompanyService;
 import com.sild.tviewer.service.PlatformService;
 import com.sild.tviewer.service.TenderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,11 +29,16 @@ public class TenderController {
     @Autowired
     private PlatformService platformService;
 
+    @InitBinder
+    public void DateBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute Tender entity) {
-
-//        Company company = companyService.get(owner);
-//        entity.setOwner(company);
         System.out.println(entity.toString());
         tenderService.add(entity);
         return "redirect:/tender";

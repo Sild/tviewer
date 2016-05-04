@@ -10,7 +10,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/platform.css">
     <title>platform</title>

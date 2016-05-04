@@ -38,10 +38,17 @@ $(function () {
             edit_div.hide();
         });
 
+        $(".datepicker").each(function () {
+            $(this).removeAttr("id");
+            $(this).datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        });
+
     }
 
-    $.fn.labselect = function(str) {
-        $('option', this).filter(function() {
+    $.fn.labselect = function (str) {
+        $('option', this).filter(function () {
             return $(this).text() == str;
         })[0].selected = true;
 

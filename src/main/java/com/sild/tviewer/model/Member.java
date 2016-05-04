@@ -4,11 +4,12 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Members")
-@SQLDelete(sql="UPDATE Members SET deleted = '1' WHERE id = ?")
-@Where(clause="deleted <> '1'")
+@SQLDelete(sql = "UPDATE Members SET deleted = '1' WHERE id = ?")
+@Where(clause = "deleted <> '1'")
 public class Member {
 
     @Id
@@ -29,11 +30,11 @@ public class Member {
 
     private String comment;
 
-    @Column(name = "submit_timestamp")
-    private Long submitTimestamp;
+    @Column(name = "submit_date")
+    private Date submitDate;
 
-    @Column(name = "withdrow_timestamp")
-    private Long withdrowTimestamp;
+    @Column(name = "withdrow_date")
+    private Date withdrowDate;
 
     private boolean deleted;
 
@@ -85,20 +86,20 @@ public class Member {
         this.comment = comment;
     }
 
-    public Long getSubmitTimestamp() {
-        return submitTimestamp;
+    public Date getSubmitDate() {
+        return submitDate;
     }
 
-    public void setSubmitTimestamp(Long submitTimestamp) {
-        this.submitTimestamp = submitTimestamp;
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
     }
 
-    public Long getWithdrowTimestamp() {
-        return withdrowTimestamp;
+    public Date getWithdrowDate() {
+        return withdrowDate;
     }
 
-    public void setWithdrowTimestamp(Long withdrowTimestamp) {
-        this.withdrowTimestamp = withdrowTimestamp;
+    public void setWithdrowDate(Date withdrowDate) {
+        this.withdrowDate = withdrowDate;
     }
 
     public boolean isDeleted() {

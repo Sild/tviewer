@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
@@ -15,7 +16,11 @@
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender.css">
-    <title>platform</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
+    <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
+    <title>tender</title>
 </head>
 
 <body>
@@ -46,26 +51,26 @@
         <tr>
             <td>
                 <form:select path="owner">
-                    <form:option value="Select..." />
-                    <form:options items="${companyList}"  itemValue="id" itemLabel="name" />
+                    <form:option value="Select..."/>
+                    <form:options items="${companyList}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </td>
             <td>
                 <form:select path="platform">
-                    <form:option value="Select..." />
-                    <form:options items="${platformList}"  itemValue="id" itemLabel="name" />
+                    <form:option value="Select..."/>
+                    <form:options items="${platformList}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </td>
-            <td><form:input  path="sum"/></td>
+            <td><form:input size="10" path="sum"/></td>
             <td>
                 <form:select path="state" items="${TenderState}"/>
             </td>
-            <td><form:input path="direction"/></td>
-            <td><form:input path="nomenclature"/></td>
-            <td><form:input path="comment"/></td>
-            <td><form:input path="tradeForm"/></td>
-            <td><form:input path="startTimestamp"/></td>
-            <td><form:input path="endTimestamp"/></td>
+            <td><form:input size="10" path="direction"/></td>
+            <td><form:input size="10" path="nomenclature"/></td>
+            <td><form:input size="10" path="comment"/></td>
+            <td><form:input size="10" path="tradeForm"/></td>
+            <td><form:input class="datepicker startDate" size="10" path="startDate"/></td>
+            <td><form:input class="datepicker endDate" size="10" path="endDate"/></td>
             <td><form:checkbox path="liked"/></td>
             <td><input type="submit" value="Add"/></td>
         </tr>
@@ -101,16 +106,16 @@
             <td>
                 <form:select path="platform" items="${platformList}" itemLabel="name" itemValue="id"/>
             </td>
-            <td><form:input path="sum"/></td>
+            <td><form:input size="10" path="sum"/></td>
             <td>
                 <form:select path="state" items="${TenderState}"/>
             </td>
-            <td><form:input path="direction"/></td>
-            <td><form:input path="nomenclature"/></td>
-            <td><form:input path="comment"/></td>
-            <td><form:input path="tradeForm"/></td>
-            <td><form:input path="startTimestamp"/></td>
-            <td><form:input path="endTimestamp"/></td>
+            <td><form:input size="10" path="direction"/></td>
+            <td><form:input size="10" path="nomenclature"/></td>
+            <td><form:input size="10" path="comment"/></td>
+            <td><form:input size="10" path="tradeForm"/></td>
+            <td><form:input size="10" class="datepicker startDate" path="startDate"/></td>
+            <td><form:input size="10" class="datepicker endDate" path="endDate"/></td>
             <td><form:checkbox path="liked"/></td>
             <td>
                 <input type="submit" value="Save"/>
@@ -154,8 +159,10 @@
             <td class="tender_nomenclature">${tender.nomenclature}</td>
             <td class="tender_comment">${tender.comment}</td>
             <td class="tender_trade_form">${tender.tradeForm}</td>
-            <td class="tender_start_timestamp">${tender.startTimestamp}</td>
-            <td class="tender_end_timestamp">${tender.endTimestamp}</td>
+            <td class="tender_start_timestamp"><fmt:formatDate value="${tender.startDate}" type="both"
+                                                               pattern="dd-MM-yyyy"/></td>
+            <td class="tender_end_timestamp"><fmt:formatDate value="${tender.endDate}" type="both"
+                                                             pattern="dd-MM-yyyy"/></td>
             <td class="tender_liked">
                 <input type="checkbox" disabled
                         <c:if test="${tender.liked}">
@@ -177,7 +184,6 @@
 
 <h2><a href="${pageContext.request.contextPath}/">Home</a></h2>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
+
 </body>
 </html>

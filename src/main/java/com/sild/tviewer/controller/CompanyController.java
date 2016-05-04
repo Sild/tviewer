@@ -21,7 +21,6 @@ public class CompanyController {
     private CompanyServiceImpl companyService;
 
 
-
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
         model.addAttribute("company", new Company());

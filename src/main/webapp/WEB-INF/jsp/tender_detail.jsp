@@ -1,6 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
@@ -14,7 +15,11 @@
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender_detail.css">
-    <title>Tender Detail</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
+    <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
+    <title>tender detail</title>
 </head>
 
 <body>
@@ -42,15 +47,18 @@
     <tr class="tender-info">
         <td class="tender_id">${tender.id}</td>
         <td class="tender_owner">${tender.owner.name}</td>
-        <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}" target="_blank">${tender.platform.name}</a></td>
+        <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
+                                       target="_blank">${tender.platform.name}</a></td>
         <td class="tender_sum">${tender.sum}</td>
         <td class="tender_state">${tender.state}</td>
         <td class="tender_direction">${tender.direction}</td>
         <td class="tender_nomenclature">${tender.nomenclature}</td>
         <td class="tender_comment">${tender.comment}</td>
         <td class="tender_trade_form">${tender.tradeForm}</td>
-        <td class="tender_start_timestamp">${tender.startTimestamp}</td>
-        <td class="tender_end_timestamp">${tender.endTimestamp}</td>
+        <td class="tender_start_timestamp"><fmt:formatDate value="${tender.startDate}" type="both"
+                                                           pattern="dd-MM-yyyy"/></td>
+        <td class="tender_end_timestamp"><fmt:formatDate value="${tender.endDate}" type="both"
+                                                         pattern="dd-MM-yyyy"/></td>
         <td class="tender_liked">
             <input type="checkbox" disabled
                     <c:if test="${tender.liked}">
@@ -86,17 +94,17 @@
         <tr>
             <td>
                 <form:select path="company">
-                    <form:option value="Select..." />
+                    <form:option value="Select..."/>
                     <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
                 </form:select>
             </td>
-            <td><form:input path="offer"/></td>
+            <td><form:input size="10" path="offer"/></td>
             <td>
                 <form:checkbox path="winner"/>
             </td>
-            <td><form:input path="comment"/></td>
-            <td><form:input path="submitTimestamp"/></td>
-            <td><form:input path="withdrowTimestamp"/></td>
+            <td><form:input size="10" path="comment"/></td>
+            <td><form:input size="10" class="datepicker submitDate" path="submitDate"/></td>
+            <td><form:input size="10" class="datepicker withdrowDate" path="withdrowDate"/></td>
             <td><input type="submit" value="Add"/></td>
         </tr>
         </tbody>
@@ -124,13 +132,13 @@
             <td>
                 <form:select path="company" items="${companyList}" itemLabel="name" itemValue="id"/>
             </td>
-            <td><form:input path="offer"/></td>
+            <td><form:input size="10" path="offer"/></td>
             <td>
                 <form:checkbox path="winner"/>
             </td>
-            <td><form:input path="comment"/></td>
-            <td><form:input path="submitTimestamp"/></td>
-            <td><form:input path="withdrowTimestamp"/></td>
+            <td><form:input size="10" path="comment"/></td>
+            <td><form:input size="10" class="datepicker submitDate" path="submitDate"/></td>
+            <td><form:input size="10" class="datepicker withdrowDate" path="withdrowDate"/></td>
             <td>
                 <input type="submit" value="Save"/>
                 <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
@@ -171,8 +179,10 @@
                         />
             </td>
             <td class="member_comment">${member.comment}</td>
-            <td class="member_submit_timestamp">${member.submitTimestamp}</td>
-            <td class="member_widthdrow_timestamp">${member.withdrowTimestamp}</td>
+            <td class="member_submit_timestamp"><fmt:formatDate value="${member.submitDate}" type="both"
+                                                                pattern="dd-MM-yyyy"/></td>
+            <td class="member_widthdrow_timestamp"><fmt:formatDate value="${member.withdrowDate}" type="both"
+                                                                   pattern="dd-MM-yyyy"/></td>
             <td>
                 <button class="edit_entity_btn">Edit</button>
                 <a href="${pageContext.request.contextPath}/member/delete/${member.id}">Delete</a><br/>
@@ -186,7 +196,6 @@
 <p><a href="${pageContext.request.contextPath}/tender">Tenders</a></p>
 
 <p><a href="${pageContext.request.contextPath}/">Home</a></p>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
+
 </body>
 </html>

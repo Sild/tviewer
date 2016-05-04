@@ -47,8 +47,6 @@ public class PlatformController {
     }
 
 
-
-
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute Platform entity) throws IllegalArgumentException {
         Platform oldEntity = platformService.get(entity.getId());

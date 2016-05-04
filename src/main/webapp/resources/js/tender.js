@@ -20,7 +20,6 @@ $(function () {
             var start_timestamp = row.find('.tender_start_timestamp').text();
             var end_timestamp = row.find('.tender_end_timestamp').text();
             var liked = row.find('.tender_liked>input[type="checkbox"]').prop('checked');
-            console.log(liked);
             var edit_div = $('form.edit_entity_form');
             edit_div.find('#id').val(id);
             edit_div.find('#owner').labselect(owner);
@@ -31,8 +30,8 @@ $(function () {
             edit_div.find('#nomenclature').val(nomenclature);
             edit_div.find('#comment').val(comment);
             edit_div.find('#tradeForm').val(trade_form);
-            edit_div.find('#startTimestamp').val(start_timestamp);
-            edit_div.find('#endTimestamp').val(end_timestamp);
+            edit_div.find('.startTimestamp').val(start_timestamp);
+            edit_div.find('.endTimestamp').val(end_timestamp);
             edit_div.find('[name=liked]').prop('checked', liked);
             edit_div.show();
         });
@@ -48,16 +47,23 @@ $(function () {
             edit_div.find('#nomenclature').val("");
             edit_div.find('#comment').val("");
             edit_div.find('#trade_form').val("");
-            edit_div.find('#start_timestamp').val("");
-            edit_div.find('#end_timestamp').val("");
+            edit_div.find('.startTimestamp').val("");
+            edit_div.find('.endTimestamp').val("");
             edit_div.find('#liked').attr('checked', false);
             edit_div.hide();
         });
 
     }
 
-    $.fn.labselect = function(str) {
-        $('option', this).filter(function() {
+    $(".datepicker").each(function () {
+        $(this).removeAttr("id");
+        $(this).datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+    });
+
+    $.fn.labselect = function (str) {
+        $('option', this).filter(function () {
             return $(this).text() == str;
         })[0].selected = true;
 

@@ -5,12 +5,13 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Tenders")
-@SQLDelete(sql="UPDATE Tenders SET deleted = '1' WHERE id = ?")
-@Where(clause="deleted <> '1'")
+@SQLDelete(sql = "UPDATE Tenders SET deleted = '1' WHERE id = ?")
+@Where(clause = "deleted <> '1'")
 public class Tender {
 
     @Id
@@ -39,18 +40,18 @@ public class Tender {
     @Column(name = "trade_form")
     private String tradeForm;
 
-    @Column(name = "start_timestamp")
-    private Long startTimestamp;
+    @Column(name = "start_date")
+    private Date startDate;
 
-    @Column(name = "end_timestamp")
-    private Long endTimestamp;
+    @Column(name = "end_date")
+    private Date endDate;
 
     private boolean liked;
 
     private boolean deleted;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
-    @Where(clause="deleted <> '1'")
+    @Where(clause = "deleted <> '1'")
     private List<Member> memberList = new ArrayList<>();
 
     public Integer getId() {
@@ -125,20 +126,20 @@ public class Tender {
         this.tradeForm = tradeForm;
     }
 
-    public Long getStartTimestamp() {
-        return startTimestamp;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartTimestamp(Long startTimestamp) {
-        this.startTimestamp = startTimestamp;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Long getEndTimestamp() {
-        return endTimestamp;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEndTimestamp(Long endTimestamp) {
-        this.endTimestamp = endTimestamp;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public boolean isLiked() {

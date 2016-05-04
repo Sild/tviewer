@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Platforms")
-@SQLDelete(sql="UPDATE Platforms SET deleted = '1' WHERE id = ?")
-@Where(clause="deleted <> '1'")
+@SQLDelete(sql = "UPDATE Platforms SET deleted = '1' WHERE id = ?")
+@Where(clause = "deleted <> '1'")
 public class Platform {
 
     @Id
