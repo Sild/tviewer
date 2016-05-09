@@ -19,10 +19,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
     <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
-    <title>tender detail</title>
+    <title>tender</title>
 </head>
 
 <body>
+<jsp:include page="menu.jsp"/>
+
 <h2>Tender</h2>
 
 
@@ -74,7 +76,8 @@
     </tbody>
 </table>
 <h2>Members</h2>
-<button id="show_add_entity_form">add member</button>
+<button id="show_add_entity_form" class="btn btn-success">add member</button>
+
 <form:form method="POST" class="add_entity_form" modelAttribute="member"
            action="${pageContext.request.contextPath}/member/add">
     <table class="table table-sm">
@@ -105,7 +108,7 @@
             <td><form:input size="10" path="comment"/></td>
             <td><form:input size="10" class="datepicker submitDate" path="submitDate"/></td>
             <td><form:input size="10" class="datepicker withdrowDate" path="withdrowDate"/></td>
-            <td><input type="submit" value="Add"/></td>
+            <td><input type="submit" class="btn btn-default" value="Add"/></td>
         </tr>
         </tbody>
     </table>
@@ -140,8 +143,8 @@
             <td><form:input size="10" class="datepicker submitDate" path="submitDate"/></td>
             <td><form:input size="10" class="datepicker withdrowDate" path="withdrowDate"/></td>
             <td>
-                <input type="submit" value="Save"/>
-                <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
+                <input type="submit" class="btn btn-default" value="Save"/>
+                <input type="button" class="btn btn-default" value="Cancel" id="cancel_edit_entity_form"/>
             </td>
         </tr>
         </tbody>
@@ -184,18 +187,18 @@
             <td class="member_widthdrow_timestamp"><fmt:formatDate value="${member.withdrowDate}" type="both"
                                                                    pattern="dd-MM-yyyy"/></td>
             <td>
-                <button class="edit_entity_btn">Edit</button>
-                <a href="${pageContext.request.contextPath}/member/delete/${member.id}">Delete</a><br/>
+
+                <button class="edit_entity_btn btn btn-warning">Edit</button>
+                <a href="${pageContext.request.contextPath}/member/${member.id}/delete"
+                   onclick="if(!confirm('Do you really want to delete member with id = ${member.id}?')) return false;">
+                    <button class="btn btn-danger">Delete</button>
+                </a>
             </td>
         </tr>
 
     </c:forEach>
     </tbody>
 </table>
-
-<p><a href="${pageContext.request.contextPath}/tender">Tenders</a></p>
-
-<p><a href="${pageContext.request.contextPath}/">Home</a></p>
 
 </body>
 </html>

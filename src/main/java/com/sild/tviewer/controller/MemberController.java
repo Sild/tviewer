@@ -41,7 +41,7 @@ public class MemberController {
         return "redirect:/tender/" + entity.getTender().getId() + "/detail";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable Integer id) {
         Member memberToDelete = memberService.get(id);
         if (null == memberToDelete) {

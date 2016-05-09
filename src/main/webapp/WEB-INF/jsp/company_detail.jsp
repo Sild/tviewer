@@ -20,14 +20,16 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
     <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
-    <title>company detail</title>
+    <title>company</title>
 </head>
 
 
 <body>
 
-<h1>Company</h1>
-<b>${company.name}</b>
+<jsp:include page="menu.jsp" />
+
+
+<h2>${company.name}</h2>
 <p>owner: ${fn:length(company.tenderSet)}</p>
 <p>win: ${winCount}</p>
 <p>loose: ${looseCount}</p>

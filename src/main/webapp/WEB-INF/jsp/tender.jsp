@@ -24,8 +24,9 @@
 </head>
 
 <body>
-<h1>Existing Tenders</h1>
-<button id="show_add_tender_div">add new</button>
+<jsp:include page="menu.jsp" />
+
+<button id="show_add_tender_div" class="btn btn-success">add new</button>
 
 <form:form method="POST" class="add_entity_form" modelAttribute="tender"
            action="${pageContext.request.contextPath}/tender/add">
@@ -43,7 +44,6 @@
             <th>start time</th>
             <th>end time</th>
             <th>liked</th>
-            <th>actions</th>
             <th></th>
         </tr>
         </thead>
@@ -72,7 +72,7 @@
             <td><form:input class="datepicker startDate" size="10" path="startDate"/></td>
             <td><form:input class="datepicker endDate" size="10" path="endDate"/></td>
             <td><form:checkbox path="liked"/></td>
-            <td><input type="submit" value="Add"/></td>
+            <td><input type="submit" class="btn btn-default" value="Add"/></td>
         </tr>
         </tbody>
     </table>
@@ -118,8 +118,8 @@
             <td><form:input size="10" class="datepicker endDate" path="endDate"/></td>
             <td><form:checkbox path="liked"/></td>
             <td>
-                <input type="submit" value="Save"/>
-                <input type="button" value="Cancel" id="cancel_edit_tender_div"/>
+                <input type="submit" class="btn btn-default" value="Save"/>
+                <input type="button" class="btn btn-default" value="Cancel" id="cancel_edit_tender_div"/>
             </td>
         </tr>
         </tbody>
@@ -142,7 +142,7 @@
         <th>start time</th>
         <th>end time</th>
         <th>liked</th>
-        <th>member count</th>
+        <th>members</th>
         <th>actions</th>
     </tr>
     </thead>
@@ -171,20 +171,17 @@
                         </c:if>
                         />
             </td>
-            <td class="tender_member_count">${fn:length(tender.memberSet)}</td>
+            <td class="tender_member_count"><a href="${pageContext.request.contextPath}/tender/${tender.id}/detail">${fn:length(tender.memberSet)}</a></td>
 
             <td>
-                <button class="edit_tender_btn">Edit</button>
-                <a href="${pageContext.request.contextPath}/tender/${tender.id}/detail">Detail</a><br/>
-                <a href="${pageContext.request.contextPath}/tender/delete/${tender.id}">Delete</a><br/>
+                <button  class="edit_tender_btn btn btn-warning">Edit</button>
+                <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"  onclick="if(!confirm('Do you really want to delete tender with id = ${tender.id}?')) return false;"><button  class="btn btn-danger">Delete</button></a>
+
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-
-<h2><a href="${pageContext.request.contextPath}/">Home</a></h2>
-
 
 </body>
 </html>

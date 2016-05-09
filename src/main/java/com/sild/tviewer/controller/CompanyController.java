@@ -56,7 +56,7 @@ public class CompanyController {
         return "redirect:/company";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String deleteTeam(@PathVariable Integer id) {
         companyService.delete(id);
         return "redirect:/company";

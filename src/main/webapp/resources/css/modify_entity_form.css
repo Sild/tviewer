@@ -1,12 +1,12 @@
 .add_entity_form {
-    background-color: #ADA6A6;
+    background-color: #5cb85c;
     border-radius: 10px;
     padding: 5px;
     display: none;
 }
 
 .edit_entity_form {
-    background-color: #696c1c;
+    background-color: #ec971f;
     border-radius: 10px;
     padding: 5px;
     display: none;

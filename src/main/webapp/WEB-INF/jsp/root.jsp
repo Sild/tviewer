@@ -5,12 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
+    <title>home</title>
 </head>
 <body>
-<h1>Tender Viewer</h1>
-<a href="${pageContext.request.contextPath}/tender">Tenders</a><br/>
-<a href="${pageContext.request.contextPath}/company">Companies</a><br/>
-<a href="${pageContext.request.contextPath}/platform">Platforms</a><br/>
+<jsp:include page="menu.jsp" />
+
 </body>
 </html>

@@ -12,14 +12,17 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
     <title>company</title>
 </head>
 
 <body>
-<h1>Existing Companies</h1>
-<button id="show_add_entity_form">add new</button>
+<jsp:include page="menu.jsp"/>
+
+<button id="show_add_entity_form" class="btn btn-success">add new</button>
 
 <form:form method="POST" class="add_entity_form" modelAttribute="company"
            action="${pageContext.request.contextPath}/company/add">
@@ -38,7 +41,7 @@
             <td><form:input path="comment"/></td>
             <td><form:input path="color"/>
             </td>
-            <td><input type="submit" value="Add"/></td>
+            <td><input type="submit" class="btn btn-default" value="Add"/></td>
         </tr>
         </tbody>
     </table>
@@ -62,8 +65,8 @@
             <td><form:input path="color"/>
             </td>
             <td>
-                <input type="submit" value="Save"/>
-                <input type="button" value="Cancel" id="cancel_edit_entity_form"/>
+                <input type="submit" class="btn btn-default" value="Save"/>
+                <input type="button" class="btn btn-default" value="Cancel" id="cancel_edit_entity_form"/>
             </td>
         </tr>
         </tbody>
@@ -84,25 +87,29 @@
     <tbody>
     <c:forEach var="company" items="${companyList}">
         <tr>
+
+
             <td class="company_id">${company.id}</td>
-            <td class="company_name">${company.name}</td>
+            <td class="company_name"><a
+                    href="${pageContext.request.contextPath}/company/${company.id}/detail">${company.name}</a>
+            </td>
             <td class="company_comment">${company.comment}</td>
             <td>
                 <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>
             </td>
             <td>
-                <button class="edit_entity_btn">Edit</button>
-                <a href="${pageContext.request.contextPath}/company/delete/${company.id}">Delete</a><br/>
-                <a href="${pageContext.request.contextPath}/company/${company.id}/detail">Detail</a><br/>
+                <button class="edit_entity_btn btn btn-warning">Edit</button>
+                <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
+                   onclick="if(!confirm('Do you really want to delete company with id = ${company.id}?')) return false;">
+                    <button class="btn btn-danger">Delete</button>
+                </a>
+
+
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-<h2><a href="${pageContext.request.contextPath}/">Home</a></h2>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@ public class PlatformController {
         return "redirect:/platform";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String deleteTeam(@PathVariable Integer id) {
         platformService.delete(id);
         return "redirect:/platform";

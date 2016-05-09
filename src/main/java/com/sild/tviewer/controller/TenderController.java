@@ -70,7 +70,7 @@ public class TenderController {
         return "redirect:/tender";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String deleteTeam(@PathVariable Integer id) {
         tenderService.delete(id);
         return "redirect:/tender";
