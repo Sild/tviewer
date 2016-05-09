@@ -26,6 +26,7 @@ public class MemberServiceImpl implements MemberService {
         return repository.get(Member.class, id);
     }
 
+
     public void delete(int id) {
         repository.delete(Member.class, id);
     }

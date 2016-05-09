@@ -1,5 +1,6 @@
 package com.sild.tviewer.service;
 
+import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Member;
 
 import java.util.List;

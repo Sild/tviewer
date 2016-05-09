@@ -3,10 +3,9 @@ package com.sild.tviewer.model;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Platforms")
@@ -24,6 +23,18 @@ public class Platform {
 
     private boolean deleted;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "platform", orphanRemoval = true)
+    @Where(clause = "deleted <> '1'")
+    private Set<Tender> tenderSet = new HashSet<>();
+
+
+    public Set<Tender> getTenderSet() {
+        return tenderSet;
+    }
+
+    public void setTenderSet(Set<Tender> tenderSet) {
+        this.tenderSet = tenderSet;
+    }
 
     public Integer getId() {
         return id;

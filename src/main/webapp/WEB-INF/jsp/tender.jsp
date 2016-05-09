@@ -150,7 +150,8 @@
     <c:forEach var="tender" items="${tenderList}">
         <tr class="tender-info">
             <td class="tender_id">${tender.id}</td>
-            <td class="tender_owner">${tender.owner.name}</td>
+            <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
+                                        target="_blank">${tender.owner.name}</a></td>
             <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                            target="_blank">${tender.platform.name}</a></td>
             <td class="tender_sum">${tender.sum}</td>
@@ -170,7 +171,7 @@
                         </c:if>
                         />
             </td>
-            <td class="tender_member_count">${fn:length(tender.memberList)}</td>
+            <td class="tender_member_count">${fn:length(tender.memberSet)}</td>
 
             <td>
                 <button class="edit_tender_btn">Edit</button>

@@ -4,9 +4,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Tenders")
@@ -19,7 +17,7 @@ public class Tender {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id", nullable = false)
     private Company owner;
 
     @ManyToOne(cascade = CascadeType.DETACH)
@@ -52,7 +50,8 @@ public class Tender {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
-    private List<Member> memberList = new ArrayList<>();
+    private Set<Member> memberSet = new HashSet<>();
+
 
     public Integer getId() {
         return id;
@@ -158,11 +157,14 @@ public class Tender {
         this.deleted = deleted;
     }
 
-    public List<Member> getMemberList() {
-        return memberList;
+    public Set<Member> getMemberSet() {
+        return memberSet;
     }
 
-    public void setMemberList(List<Member> memberList) {
-        this.memberList = memberList;
+    public void setMemberSet(Set<Member> memberSet) {
+        this.memberSet = memberSet;
     }
+
+
+
 }

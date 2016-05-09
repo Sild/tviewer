@@ -1,7 +1,10 @@
 package com.sild.tviewer.controller;
 
 import com.sild.tviewer.model.Company;
+import com.sild.tviewer.model.Member;
 import com.sild.tviewer.service.impl.CompanyServiceImpl;
+import com.sild.tviewer.service.impl.MemberServiceImpl;
+import com.sild.tviewer.service.impl.TenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,12 @@ public class CompanyController {
 
     @Autowired
     private CompanyServiceImpl companyService;
+
+    @Autowired
+    private TenderServiceImpl tenderService;
+
+    @Autowired
+    private MemberServiceImpl memberService;
 
 
     @RequestMapping(value = "")
@@ -51,6 +60,25 @@ public class CompanyController {
     public String deleteTeam(@PathVariable Integer id) {
         companyService.delete(id);
         return "redirect:/company";
+    }
+
+    @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("company_detail");
+        Company company = companyService.get(id);
+        int winCount = 0;
+        int looseCount = 0;
+        for(Member member: company.getMemberSet()) {
+            if(member.getWinner()) {
+                winCount++;
+            } else {
+                looseCount++;
+            }
+        }
+        modelAndView.addObject("company", company);
+        modelAndView.addObject("winCount", winCount);
+        modelAndView.addObject("looseCount", looseCount);
+        return modelAndView;
     }
 
 }

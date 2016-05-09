@@ -93,6 +93,7 @@
             <td>
                 <button class="edit_entity_btn">Edit</button>
                 <a href="${pageContext.request.contextPath}/company/delete/${company.id}">Delete</a><br/>
+                <a href="${pageContext.request.contextPath}/company/${company.id}/detail">Detail</a><br/>
             </td>
         </tr>
     </c:forEach>

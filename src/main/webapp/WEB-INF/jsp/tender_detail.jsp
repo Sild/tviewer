@@ -165,7 +165,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="member" items="${tender.memberList}">
+    <c:forEach var="member" items="${tender.memberSet}">
 
         <tr class="member-info" style="background-color: ${member.company.color}">
             <td class="member_id">${member.id}</td>
