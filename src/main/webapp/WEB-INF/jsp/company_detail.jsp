@@ -15,11 +15,10 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender_detail.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-    <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
+    <%@include file="/WEB-INF/html/lib_include/hightchart.html" %>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company_detail.js"></script>
     <title>company</title>
 </head>
 
@@ -30,12 +29,14 @@
 
 
 <h2>${company.name}</h2>
-<p>owner: ${fn:length(company.tenderSet)}</p>
-<p>win: ${winCount}</p>
-<p>loose: ${looseCount}</p>
+<input type="hidden" name="winCount" value="${winCount}"/>
+<input type="hidden" name="looseCount" value="${looseCount}"/>
+<input type="hidden" name="totalCount" value="${totalCount}"/>
+
+<div id="company_member_statistic_div" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 
-<h3>Tenders</h3>
+<h3>Tenders ( ${fn:length(company.tenderSet)} )</h3>
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
@@ -89,9 +90,7 @@
 
 
 
-
-
-<h3>Member</h3>
+<h3>Member ( ${winCount}/${totalCount}, rate ~= ${winRate}% )</h3>
 
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">

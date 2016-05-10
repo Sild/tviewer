@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menu.jsp"/>
 
 <button id="show_add_tender_div" class="btn btn-success">add new</button>
 
@@ -132,7 +132,7 @@
     <tr>
         <th>id</th>
         <th>owner</th>
-        <th>platform</th>
+        <th>members</th>
         <th>sum</th>
         <th>state</th>
         <th>direction</th>
@@ -141,8 +141,8 @@
         <th>trade form</th>
         <th>start time</th>
         <th>end time</th>
+        <th>platform</th>
         <th>liked</th>
-        <th>members</th>
         <th>actions</th>
     </tr>
     </thead>
@@ -152,8 +152,10 @@
             <td class="tender_id">${tender.id}</td>
             <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
                                         target="_blank">${tender.owner.name}</a></td>
-            <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
-                                           target="_blank">${tender.platform.name}</a></td>
+            <td class="tender_member_count"><a
+                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail">${fn:length(tender.memberSet)}</a>
+            </td>
+
             <td class="tender_sum">${tender.sum}</td>
             <td class="tender_state">${tender.state}</td>
             <td class="tender_direction">${tender.direction}</td>
@@ -164,6 +166,8 @@
                                                                pattern="dd-MM-yyyy"/></td>
             <td class="tender_end_timestamp"><fmt:formatDate value="${tender.endDate}" type="both"
                                                              pattern="dd-MM-yyyy"/></td>
+            <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
+                                           target="_blank">${tender.platform.name}</a></td>
             <td class="tender_liked">
                 <input type="checkbox" disabled
                         <c:if test="${tender.liked}">
@@ -171,11 +175,14 @@
                         </c:if>
                         />
             </td>
-            <td class="tender_member_count"><a href="${pageContext.request.contextPath}/tender/${tender.id}/detail">${fn:length(tender.memberSet)}</a></td>
+
 
             <td>
-                <button  class="edit_tender_btn btn btn-warning">Edit</button>
-                <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"  onclick="if(!confirm('Do you really want to delete tender with id = ${tender.id}?')) return false;"><button  class="btn btn-danger">Delete</button></a>
+                <button class="edit_tender_btn btn btn-warning">Edit</button>
+                <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
+                   onclick="if(!confirm('Do you really want to delete tender with id = ${tender.id}?')) return false;">
+                    <button class="btn btn-danger">Delete</button>
+                </a>
 
             </td>
         </tr>

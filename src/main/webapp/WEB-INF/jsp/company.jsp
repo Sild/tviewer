@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
@@ -79,6 +80,8 @@
     <tr>
         <th>id</th>
         <th>name</th>
+        <th>tenders</th>
+        <th>participations</th>
         <th>comment</th>
         <th>color</th>
         <th>actions</th>
@@ -90,9 +93,12 @@
 
 
             <td class="company_id">${company.id}</td>
+
             <td class="company_name"><a
                     href="${pageContext.request.contextPath}/company/${company.id}/detail">${company.name}</a>
             </td>
+            <td class="company_tenders">${fn:length(company.tenderSet)}</td>
+            <td class="company_participations">${fn:length(company.memberSet)}</td>
             <td class="company_comment">${company.comment}</td>
             <td>
                 <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>

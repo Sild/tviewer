@@ -67,17 +67,19 @@ public class CompanyController {
         ModelAndView modelAndView = new ModelAndView("company_detail");
         Company company = companyService.get(id);
         int winCount = 0;
-        int looseCount = 0;
-        for(Member member: company.getMemberSet()) {
-            if(member.getWinner()) {
+        for (Member member : company.getMemberSet()) {
+            if (member.getWinner()) {
                 winCount++;
-            } else {
-                looseCount++;
             }
         }
         modelAndView.addObject("company", company);
         modelAndView.addObject("winCount", winCount);
-        modelAndView.addObject("looseCount", looseCount);
+        modelAndView.addObject("looseCount", company.getMemberSet().size() - winCount);
+        modelAndView.addObject("totalCount", company.
+                getMemberSet().size());
+        if(company.getMemberSet().size() != 0) {
+            modelAndView.addObject("winRate", winCount/company.getMemberSet().size() *100);
+        }
         return modelAndView;
     }
 

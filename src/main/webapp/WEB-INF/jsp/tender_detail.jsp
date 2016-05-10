@@ -48,7 +48,7 @@
     <tbody>
     <tr class="tender-info">
         <td class="tender_id">${tender.id}</td>
-        <td class="tender_owner">${tender.owner.name}</td>
+        <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail">${tender.owner.name}</a></td>
         <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                        target="_blank">${tender.platform.name}</a></td>
         <td class="tender_sum">${tender.sum}</td>
@@ -172,7 +172,7 @@
 
         <tr class="member-info" style="background-color: ${member.company.color}">
             <td class="member_id">${member.id}</td>
-            <td class="member_company">${member.company.name}</td>
+            <td class="member_company"><a href="${pageContext.request.contextPath}/company/${member.company.id}/detail">${member.company.name}</a></td>
             <td class="member_offer">${member.offer}</td>
             <td class="member_winner">
                 <input type="checkbox" disabled
