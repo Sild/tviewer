@@ -8,10 +8,7 @@ import com.sild.tviewer.service.impl.TenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -39,22 +36,13 @@ public class CompanyController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Company company) {
-        companyService.add(company);
-        return "redirect:/company";
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String add(@RequestHeader(value = "referer", required = false) final String referer,
+                      @ModelAttribute Company company) {
+        companyService.createOrUpdate(company);
+        return "redirect:" + referer;
     }
 
-
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute Company company) throws IllegalArgumentException {
-        Company oldCompany = companyService.get(company.getId());
-        if (null == oldCompany) {
-            throw new IllegalArgumentException("Company with id = " + company.getId() + " does not exist. Nothing to edit.");
-        }
-        companyService.update(company);
-        return "redirect:/company";
-    }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String deleteTeam(@PathVariable Integer id) {

@@ -13,12 +13,12 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CRUDRepository<Company> repository;
 
-    public void add(Company element) {
-        repository.add(element);
-    }
-
-    public void update(Company element) {
-        repository.update(element);
+    public void createOrUpdate(Company company) {
+        if(null == company.getId() || company.getId().equals("") ) {
+            repository.add(company);
+        } else {
+            repository.update(company);
+        }
     }
 
     public Company get(int id) {
@@ -32,4 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> getAll() {
         return repository.getAll(Company.class);
     }
+
+
+
 }
