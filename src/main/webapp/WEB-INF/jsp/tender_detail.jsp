@@ -109,7 +109,7 @@
 </form:form>
 
 
-<table class="table table-striped table-bordered table-sm">
+<table class="table table-striped table-bordered table-sm tablesorter" >
     <thead class="thead-inverse">
     <tr>
         <th>id</th>

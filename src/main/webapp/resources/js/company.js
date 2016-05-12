@@ -6,6 +6,8 @@ $(function () {
 
     setUpHandlers();
 
+    $('table').tablesorter();
+
 
     function setUpDialog(stringSelector) {
         $(stringSelector).dialog({

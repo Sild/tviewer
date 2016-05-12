@@ -5,6 +5,8 @@ $(function () {
     setUpDialog($FORM);
     setUpDatepicker($(".datepicker"));
     setUpHandlers();
+    $('table').tablesorter();
+
 
 
     function setUpDialog($node) {

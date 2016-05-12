@@ -1,4 +1,6 @@
 $(function () {
+    $('table').tablesorter();
+
 //    console.log($('input[type="hidden"][name="winCount"]').val());
 //    console.log($('input[type="hidden"][name="looseCount"]').val());
     $('#company_member_statistic_div').highcharts({

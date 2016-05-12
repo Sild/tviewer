@@ -1,25 +1,18 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
+    <jsp:include page="common/head.jsp"/>
     <%@include file="/WEB-INF/html/lib_include/hightchart.html" %>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company_detail.js"></script>
     <title>company</title>
+</head>
+
+
 </head>
 
 
@@ -38,7 +31,7 @@
 
 <h3>Tenders ( ${fn:length(company.tenderSet)} )</h3>
 
-<table class="table table-striped table-bordered table-sm">
+<table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
         <th>id</th>
@@ -92,7 +85,7 @@
 
 <h3>Member ( ${winCount}/${totalCount}, rate ~= ${winRate}% )</h3>
 
-<table class="table table-striped table-bordered table-sm">
+<table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
         <th>id</th>

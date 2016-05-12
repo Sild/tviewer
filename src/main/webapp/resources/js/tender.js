@@ -6,6 +6,8 @@ $(function () {
     setUpDialog($FORM);
     setUpDatepicker($DATEPICKER_FIELDS);
     setUpHandlers();
+    $('table').tablesorter();
+
 
     function setUpDialog($node) {
         $node.dialog({
