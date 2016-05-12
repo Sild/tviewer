@@ -16,6 +16,8 @@ public class Tender {
     @GeneratedValue
     private Integer id;
 
+    private String number;
+
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "company_id", nullable = false)
     private Company owner;
@@ -50,8 +52,17 @@ public class Tender {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
+    @OrderBy("id ASC")
     private Set<Member> memberSet = new HashSet<>();
 
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public Integer getId() {
         return id;

@@ -25,31 +25,22 @@ public class MemberController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Member entity) {
-        memberService.add(entity);
-        return "redirect:/tender/" + entity.getTender().getId() + "/detail";
-    }
-
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute Member entity) {
-        Member oldEntity = memberService.get(entity.getId());
-        if (null == oldEntity) {
-            throw new IllegalArgumentException("Member with id = " + entity.getId() + " does not exist. Nothing to edit.");
-        }
-        memberService.update(entity);
-        return "redirect:/tender/" + entity.getTender().getId() + "/detail";
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String add(@RequestHeader(value = "referer", required = false) final String referer,
+                      @ModelAttribute Member member) {
+        memberService.createOrUpdate(member);
+        return "redirect:" + referer;
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    public String delete(@PathVariable Integer id) {
+    public String delete(@RequestHeader(value = "referrer", required = false) final String referrer,
+                         @PathVariable Integer id) {
         Member memberToDelete = memberService.get(id);
         if (null == memberToDelete) {
             throw new IllegalArgumentException("Member with id = " + id + " does not exist. Nothing to delete.");
         }
-        Integer tenderId = memberToDelete.getTender().getId();
         memberService.delete(id);
-        return "redirect:/tender/" + tenderId + "/detail";
+        return "redirect:" + referrer;
     }
 
 }

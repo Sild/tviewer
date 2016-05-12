@@ -1,29 +1,19 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"
-            integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
+<html>
+<head>
+    <jsp:include page="common/head.jsp"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
     <title>company</title>
 </head>
 
 <body>
-<jsp:include page="menu.jsp"/>
+<jsp:include page="common/menu.jsp"/>
 
-<button id="show_add_entity_form" class="btn btn-success">add new</button>
+<button id="show_add_entity_form" class="btn btn-success">Добавить компанию</button>
 
 <form:form method="POST" class="update_company_form" modelAttribute="company"
            action="${pageContext.request.contextPath}/company/update" cssStyle="display: none">
@@ -72,10 +62,10 @@
                 <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>
             </td>
             <td>
-                <button class="edit_entity_btn btn btn-warning">Edit</button>
+                <button class="edit_entity_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
                    onclick="if(!confirm('Do you really want to delete company with id = ${company.id}?')) return false;">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger">Удалить</button>
                 </a>
 
 

@@ -9,9 +9,7 @@ import java.util.List;
  * @author Dmitry Korchagin.
  */
 public interface MemberService {
-    public void add(Member element);
-
-    public void update(Member element);
+    public void createOrUpdate(Member member);
 
     public Member get(int id);
 

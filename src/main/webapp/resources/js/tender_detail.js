@@ -1,53 +1,82 @@
 $(function () {
+
+    var $FORM = $('form.update_member_form');
+
+    setUpDialog($FORM);
+    setUpDatepicker($(".datepicker"));
     setUpHandlers();
 
+
+    function setUpDialog($node) {
+        $node.dialog({
+            height: 420,
+            width: 420,
+            autoOpen: false,
+            close: function () {
+                fillForm($node);
+                $(this).dialog('close');
+            },
+            buttons: [{
+                    text: "Сохранить",
+                    click: function () {
+                        $node.submit();
+                    }
+                },{
+                    text: "Отмена",
+                    click: function () {
+                        fillForm($node);
+                        $(this).dialog('close');
+                    }
+                }
+            ]
+        });
+    }
+
+
+    function setUpDatepicker($nodes) {
+        $nodes.datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+    }
+
     function setUpHandlers() {
-        $('#show_add_entity_form').click(function () {
-            $('form.add_entity_form').toggle();
+        $('#show_update_member_form').click(function () {
+            $FORM.dialog('open');
         });
 
         $('.edit_entity_btn').click(function () {
             var row = $(this).closest("tr");
             var id = row.find('.member_id').text();
-            var company = row.find('.member_company').text();
-            var offer = row.find('.member_offer').text();
+            var company = $.trim(row.find('.member_company').text());
+            var offer = $.trim(row.find('.member_offer').text());
             var winner = row.find('.member_winner>input[type="checkbox"]').prop('checked');
-            var comment = row.find('.member_comment').text();
-            var submit_time = row.find('.member_submit_timestamp').text();
-            var withdrow_time = row.find('.withdrow').text();
-            var edit_div = $('form.edit_entity_form');
-            console.log(edit_div);
-            edit_div.find('#id').val(id);
-            edit_div.find('#company').labselect(company);
-            edit_div.find('#offer').val(offer);
-            edit_div.find('[name=winner]').prop('checked', winner);
-            edit_div.find('#comment').val(comment);
-            edit_div.find('#submitTimestamp').val(submit_time);
-            edit_div.find('#withdrowTimestamp').val(withdrow_time);
-            edit_div.show();
+            var comment = $.trim(row.find('.member_comment').text());
+            var submitDate = $.trim(row.find('.member_submitDate').text());
+            var withdrowDate = $.trim(row.find('.member_withdrowDate').text());
+            fillForm($FORM, id, company, offer, winner, comment, submitDate, withdrowDate);
+            $('#show_update_member_form').trigger('click');
         });
 
-        $('#cancel_edit_entity_form').click(function () {
-            var edit_div = $('form.edit_entity_form');
-            edit_div.find('#company').val("");
-            edit_div.find('#offer').val("");
-            edit_div.find('[name=winner]').prop('checked', false);
-            edit_div.find('#comment').val("");
-            edit_div.find('#submitTimestamp').val("");
-            edit_div.find('#withdrowTimestamp').val("");
-            edit_div.hide();
-        });
-
-        $(".datepicker").each(function () {
-            $(this).removeAttr("id");
-            $(this).datepicker({
-                dateFormat: "dd-mm-yy"
-            });
-        });
 
     }
 
+
+    var fillForm = function ($form, id, company, offer, winner, comment, submitDate, withdrowDate) {
+        $form.find('#id').val(id);
+        console.log(withdrowDate);
+        $form.find('#company').labselect(company);
+        $form.find('#offer').val(offer);
+        $form.find('[name=winner]').prop('checked', winner);
+        $form.find('#comment').val(comment);
+        $form.find('#submitDate').val(submitDate);
+        $form.find('#withdrowDate').val(withdrowDate);
+    };
+
+
     $.fn.labselect = function (str) {
+        if(str === undefined) {
+            return "";
+        }
         $('option', this).filter(function () {
             return $(this).text() == str;
         })[0].selected = true;

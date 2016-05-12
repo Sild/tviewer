@@ -8,9 +8,7 @@ import java.util.List;
  * @author Dmitry Korchagin.
  */
 public interface TenderService {
-    public void add(Tender element);
-
-    public void update(Tender element);
+    public void createOrUpdate(Tender element);
 
     public Tender get(int id);
 

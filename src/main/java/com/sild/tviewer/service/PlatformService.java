@@ -8,9 +8,8 @@ import java.util.List;
  * @author Dmitry Korchagin.
  */
 public interface PlatformService {
-    public void add(Platform element);
 
-    public void update(Platform element);
+    public void createOrUpdate(Platform element);
 
     public Platform get(int id);
 

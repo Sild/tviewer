@@ -2,6 +2,7 @@ package com.sild.tviewer.init;
 
 import com.sild.tviewer.converter.CompanyConverter;
 import com.sild.tviewer.converter.PlatformConverter;
+import com.sild.tviewer.converter.StringTrimConverter;
 import com.sild.tviewer.converter.TenderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -51,6 +52,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     PlatformConverter platformConverter;
     @Autowired
     TenderConverter tenderConverter;
+    @Autowired
+    StringTrimConverter stringTrimConverter;
     @Resource
     private Environment env;
 
@@ -71,6 +74,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(companyConverter);
         registry.addConverter(platformConverter);
         registry.addConverter(tenderConverter);
+        registry.addConverter(stringTrimConverter);
     }
 
     @Bean

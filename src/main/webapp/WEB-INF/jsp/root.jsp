@@ -11,7 +11,7 @@
     <title>home</title>
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="common/menu.jsp" />
 
 </body>
 </html>

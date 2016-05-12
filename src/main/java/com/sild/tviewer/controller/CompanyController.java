@@ -20,13 +20,6 @@ public class CompanyController {
     @Autowired
     private CompanyServiceImpl companyService;
 
-    @Autowired
-    private TenderServiceImpl tenderService;
-
-    @Autowired
-    private MemberServiceImpl memberService;
-
-
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
         model.addAttribute("company", new Company());

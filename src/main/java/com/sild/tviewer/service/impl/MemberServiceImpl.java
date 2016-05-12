@@ -14,13 +14,14 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private CRUDRepository<Member> repository;
 
-    public void add(Member element) {
-        repository.add(element);
+    public void createOrUpdate(Member member) {
+        if(null == member.getId() || member.getId().equals("") ) {
+            repository.add(member);
+        } else {
+            repository.update(member);
+        }
     }
 
-    public void update(Member element) {
-        repository.update(element);
-    }
 
     public Member get(int id) {
         return repository.get(Member.class, id);

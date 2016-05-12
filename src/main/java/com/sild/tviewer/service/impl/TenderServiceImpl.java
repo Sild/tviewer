@@ -14,12 +14,12 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private CRUDRepository<Tender> repository;
 
-    public void add(Tender element) {
-        repository.add(element);
-    }
-
-    public void update(Tender element) {
-        repository.update(element);
+    public void createOrUpdate(Tender element) {
+        if(null == element.getId() || element.getId().equals("")) {
+            repository.add(element);
+        } else {
+            repository.update(element);
+        }
     }
 
     public Tender get(int id) {

@@ -1,128 +1,80 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/css/modify_entity_form.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.js"></script>
-    <%@include file="/WEB-INF/html/lib_include/datepicker.html" %>
+    <jsp:include page="common/head.jsp"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
     <title>tender</title>
 </head>
 
 <body>
-<jsp:include page="menu.jsp"/>
+<jsp:include page="common/menu.jsp"/>
 
-<button id="show_add_tender_div" class="btn btn-success">add new</button>
+<button id="show_update_tender_form" class="btn btn-success">Добавить тендер</button>
 
-<form:form method="POST" class="add_entity_form" modelAttribute="tender"
-           action="${pageContext.request.contextPath}/tender/add">
+
+<form:form method="POST" class="update_tender_form" modelAttribute="tender"
+           action="${pageContext.request.contextPath}/tender/update" cssStyle="display: none">
     <table class="table table-sm">
-        <thead class="thead-inverse">
         <tr>
-            <th>owner</th>
-            <th>platform</th>
-            <th>sum</th>
-            <th>state</th>
-            <th>direction</th>
-            <th>nomenclature</th>
-            <th>comment</th>
-            <th>trade form</th>
-            <th>start time</th>
-            <th>end time</th>
-            <th>liked</th>
-            <th></th>
+            <td><form:label path="number">Номер</form:label></td>
+            <td><form:input path="number"/></td>
         </tr>
-        </thead>
-        <tbody>
         <tr>
-            <td>
-                <form:select path="owner">
-                    <form:option value="Select..."/>
-                    <form:options items="${companyList}" itemValue="id" itemLabel="name"/>
-                </form:select>
+            <td><form:label path="owner">Заказчик</form:label></td>
+            <td><form:select path="owner" items="${companyList}" itemLabel="name" itemValue="id"/>
             </td>
-            <td>
-                <form:select path="platform">
-                    <form:option value="Select..."/>
-                    <form:options items="${platformList}" itemValue="id" itemLabel="name"/>
-                </form:select>
-            </td>
-            <td><form:input size="10" path="sum"/></td>
-            <td>
-                <form:select path="state" items="${TenderState}"/>
-            </td>
-            <td><form:input size="10" path="direction"/></td>
-            <td><form:input size="10" path="nomenclature"/></td>
-            <td><form:input size="10" path="comment"/></td>
-            <td><form:input size="10" path="tradeForm"/></td>
-            <td><form:input class="datepicker startDate" size="10" path="startDate"/></td>
-            <td><form:input class="datepicker endDate" size="10" path="endDate"/></td>
-            <td><form:checkbox path="liked"/></td>
-            <td><input type="submit" class="btn btn-default" value="Add"/></td>
         </tr>
-        </tbody>
-    </table>
-</form:form>
 
-<form:form method="POST" class="edit_entity_form" modelAttribute="tender"
-           action="${pageContext.request.contextPath}/tender/edit">
-    <table class="table table-sm">
-        <thead class="thead-inverse">
         <tr>
-            <th>owner</th>
-            <th>platform</th>
-            <th>sum</th>
-            <th>state</th>
-            <th>direction</th>
-            <th>nomenclature</th>
-            <th>comment</th>
-            <th>trade form</th>
-            <th>start time</th>
-            <th>end time</th>
-            <th>liked</th>
-            <th>actions</th>
+            <td><form:label path="sum">Сумма</form:label></td>
+            <td><form:input path="sum"/></td>
         </tr>
-        </thead>
-        <tbody>
         <tr>
+            <td><form:label path="state">Состояние</form:label></td>
+            <td><form:select path="state" items="${TenderState}"/></td>
 
-            <td>
-                <form:select path="owner" items="${companyList}" itemLabel="name" itemValue="id"/>
-            </td>
-            <td>
-                <form:select path="platform" items="${platformList}" itemLabel="name" itemValue="id"/>
-            </td>
-            <td><form:input size="10" path="sum"/></td>
-            <td>
-                <form:select path="state" items="${TenderState}"/>
-            </td>
-            <td><form:input size="10" path="direction"/></td>
-            <td><form:input size="10" path="nomenclature"/></td>
-            <td><form:input size="10" path="comment"/></td>
-            <td><form:input size="10" path="tradeForm"/></td>
-            <td><form:input size="10" class="datepicker startDate" path="startDate"/></td>
-            <td><form:input size="10" class="datepicker endDate" path="endDate"/></td>
-            <td><form:checkbox path="liked"/></td>
-            <td>
-                <input type="submit" class="btn btn-default" value="Save"/>
-                <input type="button" class="btn btn-default" value="Cancel" id="cancel_edit_tender_div"/>
+        </tr>
+        <tr>
+            <td><form:label path="direction">Направление</form:label></td>
+            <td><form:input path="direction"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="nomenclature">Номенклатура</form:label></td>
+            <td><form:input path="nomenclature"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="comment">Комментарий</form:label></td>
+            <td><form:input path="comment"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="tradeForm">Формат</form:label></td>
+            <td><form:input path="tradeForm"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="startDate">Начало</form:label></td>
+            <td><form:input class="datepicker" path="startDate"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="endDate">Окончание</form:label></td>
+            <td><form:input class="datepicker" path="endDate"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="platform">Площадка</form:label></td>
+            <td><form:select path="platform" items="${platformList}" itemLabel="name" itemValue="id"/>
             </td>
         </tr>
-        </tbody>
+        <tr>
+            <td><form:label path="liked">Избранное</form:label></td>
+            <td><form:checkbox path="liked"/></td>
+        </tr>
     </table>
     <form:hidden path="id"/>
 </form:form>
@@ -131,29 +83,31 @@
     <thead class="thead-inverse">
     <tr>
         <th>id</th>
-        <th>owner</th>
-        <th>members</th>
-        <th>sum</th>
-        <th>state</th>
-        <th>direction</th>
-        <th>nomenclature</th>
-        <th>comment</th>
-        <th>trade form</th>
-        <th>start time</th>
-        <th>end time</th>
-        <th>platform</th>
-        <th>liked</th>
-        <th>actions</th>
+        <th>Номер</th>
+        <th>Заказчик</th>
+        <th>Участники</th>
+        <th>Сумма</th>
+        <th>Состояние</th>
+        <th>Направление</th>
+        <th>Номенклатура</th>
+        <th>Комментарии</th>
+        <th>Форма торгов</th>
+        <th>Начало</th>
+        <th>Окончание</th>
+        <th>Площадка</th>
+        <th>Избранное</th>
+        <th>Действия</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="tender" items="${tenderList}">
         <tr class="tender-info">
             <td class="tender_id">${tender.id}</td>
+            <td class="tender_number">${tender.number}</td>
             <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
                                         target="_blank">${tender.owner.name}</a></td>
             <td class="tender_member_count"><a
-                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail">${fn:length(tender.memberSet)}</a>
+                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail">посмотреть ${fn:length(tender.memberSet)}</a>
             </td>
 
             <td class="tender_sum">${tender.sum}</td>
@@ -162,10 +116,10 @@
             <td class="tender_nomenclature">${tender.nomenclature}</td>
             <td class="tender_comment">${tender.comment}</td>
             <td class="tender_trade_form">${tender.tradeForm}</td>
-            <td class="tender_start_timestamp"><fmt:formatDate value="${tender.startDate}" type="both"
-                                                               pattern="dd-MM-yyyy"/></td>
-            <td class="tender_end_timestamp"><fmt:formatDate value="${tender.endDate}" type="both"
-                                                             pattern="dd-MM-yyyy"/></td>
+            <td class="tender_start_date"><fmt:formatDate value="${tender.startDate}" type="both"
+                                                          pattern="dd-MM-yyyy"/></td>
+            <td class="tender_end_date"><fmt:formatDate value="${tender.endDate}" type="both"
+                                                        pattern="dd-MM-yyyy"/></td>
             <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                            target="_blank">${tender.platform.name}</a></td>
             <td class="tender_liked">
@@ -178,10 +132,10 @@
 
 
             <td>
-                <button class="edit_tender_btn btn btn-warning">Edit</button>
+                <button class="edit_tender_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
                    onclick="if(!confirm('Do you really want to delete tender with id = ${tender.id}?')) return false;">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger">Удалить</button>
                 </a>
 
             </td>

@@ -14,12 +14,13 @@ public class PlatformServiceImpl implements PlatformService {
     @Autowired
     private CRUDRepository<Platform> repository;
 
-    public void add(Platform element) {
-        repository.add(element);
-    }
 
-    public void update(Platform element) {
-        repository.update(element);
+    public void createOrUpdate(Platform element) {
+        if(null == element.getId() || element.getId().equals("") ) {
+            repository.add(element);
+        } else {
+            repository.update(element);
+        }
     }
 
     public Platform get(int id) {

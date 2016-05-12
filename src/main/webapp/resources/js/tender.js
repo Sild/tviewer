@@ -1,68 +1,94 @@
 $(function () {
+    var $FORM = $('form.update_tender_form');
+    var $DATEPICKER_FIELDS = $('.datepicker');
+
+
+    setUpDialog($FORM);
+    setUpDatepicker($DATEPICKER_FIELDS);
     setUpHandlers();
 
+    function setUpDialog($node) {
+        $node.dialog({
+            height: 650,
+            width: 420,
+            autoOpen: false,
+            close: function () {
+                fillForm($node);
+                $(this).dialog('close');
+            },
+            buttons: [
+                {
+                    text: "Сохранить",
+                    click: function () {
+                        $node.submit();
+                    }
+                },
+                {
+                    text: "Отмена",
+                    click: function () {
+                        fillForm($node);
+                        $(this).dialog('close');
+                    }
+                }
+
+            ]
+        });
+    }
+
+    function setUpDatepicker($fields) {
+        $fields.datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+    }
+
     function setUpHandlers() {
-        $('#show_add_tender_div').click(function () {
-            $('form.add_entity_form').toggle();
+        $('#show_update_tender_form').click(function () {
+            $FORM.dialog('open');
         });
 
         $('.edit_tender_btn').click(function () {
             var row = $(this).closest("tr");
-            var id = row.find('.tender_id').text();
-            var owner = row.find('.tender_owner').text();
-            var platform = row.find('.tender_platform').text();
-            var sum = row.find('.tender_sum').text();
-            var state = row.find('.tender_state').text();
-            var direction = row.find('.tender_direction').text();
-            var nomenclature = row.find('.tender_nomenclature').text();
-            var comment = row.find('.tender_comment').text();
-            var trade_form = row.find('.tender_trade_form').text();
-            var start_timestamp = row.find('.tender_start_timestamp').text();
-            var end_timestamp = row.find('.tender_end_timestamp').text();
+            var id = $.trim(row.find('.tender_id').text());
+            var number = $.trim(row.find('.tender_number').text());
+            var owner = $.trim(row.find('.tender_owner').text());
+            var platform = $.trim(row.find('.tender_platform').text());
+            var sum = $.trim(row.find('.tender_sum').text());
+            var state = $.trim(row.find('.tender_state').text());
+            var direction = $.trim(row.find('.tender_direction').text());
+            var nomenclature = $.trim(row.find('.tender_nomenclature').text());
+            var comment = $.trim(row.find('.tender_comment').text());
+            var tradeForm = $.trim(row.find('.tender_trade_form').text());
+            var startDate = $.trim(row.find('.tender_start_date').text());
+            var endDate = $.trim(row.find('.tender_end_date').text());
             var liked = row.find('.tender_liked>input[type="checkbox"]').prop('checked');
-            var edit_div = $('form.edit_entity_form');
-            edit_div.find('#id').val(id);
-            edit_div.find('#owner').labselect(owner);
-            edit_div.find('#platform').labselect(platform);
-            edit_div.find('#sum').val(sum);
-            edit_div.find('#state').labselect(state);
-            edit_div.find('#direction').val(direction);
-            edit_div.find('#nomenclature').val(nomenclature);
-            edit_div.find('#comment').val(comment);
-            edit_div.find('#tradeForm').val(trade_form);
-            edit_div.find('.startTimestamp').val(start_timestamp);
-            edit_div.find('.endTimestamp').val(end_timestamp);
-            edit_div.find('[name=liked]').prop('checked', liked);
-            edit_div.show();
-        });
-
-        $('#cancel_edit_tender_div').click(function () {
-            var edit_div = $('form.edit_entity_form');
-            edit_div.find('#id').val("");
-            edit_div.find('#owner').val("");
-            edit_div.find('#platform').val("");
-            edit_div.find('#sum').val("");
-            edit_div.find('#state').val("");
-            edit_div.find('#direction').val("");
-            edit_div.find('#nomenclature').val("");
-            edit_div.find('#comment').val("");
-            edit_div.find('#trade_form').val("");
-            edit_div.find('.startTimestamp').val("");
-            edit_div.find('.endTimestamp').val("");
-            edit_div.find('#liked').attr('checked', false);
-            edit_div.hide();
+            console.log(liked);
+            fillForm($FORM, id, number, owner, platform, sum, state, direction, nomenclature, comment, tradeForm, startDate, endDate, liked);
+            $('#show_update_tender_form').trigger('click');
         });
 
     }
 
-    $(".datepicker").each(function () {
-        $(this).removeAttr("id");
-        $(this).datepicker({
-            dateFormat: "dd-mm-yy"
-        });
-    });
+
+    var fillForm = function ($form, id, number, owner, platform, sum, state, direction, nomenclature, comment, tradeForm, startDate, endDate, liked) {
+        $form.find('#id').val(id);
+        $form.find('#number').val(number);
+        $form.find('#owner').labselect(owner);
+        $form.find('#platform').labselect(platform);
+        $form.find('#sum').val(sum);
+        $form.find('#state').labselect(state);
+        $form.find('#direction').val(direction);
+        $form.find('#nomenclature').val(nomenclature);
+        $form.find('#comment').val(comment);
+        $form.find('#tradeForm').val(tradeForm);
+        $form.find('#startDate').val(startDate);
+        $form.find('#endDate').val(endDate);
+        $form.find('[name="liked"]').attr('checked', liked);
+    };
 
     $.fn.labselect = function (str) {
+        if(str === undefined) {
+            return "";
+        }
         $('option', this).filter(function () {
             return $(this).text() == str;
         })[0].selected = true;

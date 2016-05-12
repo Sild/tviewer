@@ -29,10 +29,12 @@ public class Company {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "company", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
+    @OrderBy("id ASC")
     private Set<Member> memberSet = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
+    @OrderBy("id ASC")
     private Set<Tender> tenderSet = new HashSet<>();
 
 

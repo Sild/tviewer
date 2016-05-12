@@ -37,11 +37,11 @@ public class TenderController {
     }
 
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Tender entity) {
-        System.out.println(entity.toString());
-        tenderService.add(entity);
-        return "redirect:/tender";
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String add(@RequestHeader(value = "referer", required = false) final String referer,
+                      @ModelAttribute Tender tender) {
+        tenderService.createOrUpdate(tender);
+        return "redirect:" + referer;
     }
 
     @RequestMapping(value = "")
@@ -59,16 +59,6 @@ public class TenderController {
         return modelAndView;
     }
 
-
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute Tender entity) throws IllegalArgumentException {
-        Tender oldEntity = tenderService.get(entity.getId());
-        if (null == oldEntity) {
-            throw new IllegalArgumentException("Platform with id = " + entity.getId() + " does not exist. Nothing to edit.");
-        }
-        tenderService.update(entity);
-        return "redirect:/tender";
-    }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String deleteTeam(@PathVariable Integer id) {
