@@ -16,7 +16,7 @@ public class CRUDRepositoryImpl<T> implements CRUDRepository<T> {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private Session getCurrentSession() {
+    protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 

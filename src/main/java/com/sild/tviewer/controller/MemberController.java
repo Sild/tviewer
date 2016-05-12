@@ -33,14 +33,14 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    public String delete(@RequestHeader(value = "referrer", required = false) final String referrer,
+    public String delete(@RequestHeader(value = "referer", required = false) final String referer,
                          @PathVariable Integer id) {
         Member memberToDelete = memberService.get(id);
         if (null == memberToDelete) {
             throw new IllegalArgumentException("Member with id = " + id + " does not exist. Nothing to delete.");
         }
         memberService.delete(id);
-        return "redirect:" + referrer;
+        return "redirect:" + referer;
     }
 
 }

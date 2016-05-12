@@ -79,10 +79,9 @@
     <form:hidden path="id"/>
 </form:form>
 
-<table class="table table-striped table-bordered table-sm tablesorter" >
+<table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>Номер</th>
         <th>Заказчик</th>
         <th>Участники</th>
@@ -101,8 +100,7 @@
     </thead>
     <tbody>
     <c:forEach var="tender" items="${tenderList}">
-        <tr class="tender-info">
-            <td class="tender_id">${tender.id}</td>
+        <tr class="tender-info" data-id="${tender.id}">
             <td class="tender_number">${tender.number}</td>
             <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
                                         target="_blank">${tender.owner.name}</a></td>
@@ -134,7 +132,7 @@
             <td>
                 <button class="edit_tender_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
-                   onclick="if(!confirm('Do you really want to delete tender with id = ${tender.id}?')) return false;">
+                   onclick="if(!confirm('Вы действительно хотите удалить тендер ${tender.number}?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
 

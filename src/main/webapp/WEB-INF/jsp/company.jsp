@@ -38,7 +38,6 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>Название</th>
         <th>Поданные тендеры</th>
         <th>Участвовали в</th>
@@ -49,9 +48,7 @@
     </thead>
     <tbody>
     <c:forEach var="company" items="${companyList}">
-        <tr>
-            <td class="company_id">${company.id}</td>
-
+        <tr data-id="${company.id}">
             <td class="company_name"><a
                     href="${pageContext.request.contextPath}/company/${company.id}/detail">${company.name}</a>
             </td>
@@ -64,7 +61,7 @@
             <td>
                 <button class="edit_entity_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
-                   onclick="if(!confirm('Do you really want to delete company with id = ${company.id}?')) return false;">
+                   onclick="if(!confirm('Вы действительно ходите удалить компанию <c:out value="${company.name}" />?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
 

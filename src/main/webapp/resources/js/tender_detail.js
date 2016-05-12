@@ -48,7 +48,7 @@ $(function () {
 
         $('.edit_entity_btn').click(function () {
             var row = $(this).closest("tr");
-            var id = row.find('.member_id').text();
+            var id = row.data('id');
             var company = $.trim(row.find('.member_company').text());
             var offer = $.trim(row.find('.member_offer').text());
             var winner = row.find('.member_winner>input[type="checkbox"]').prop('checked');

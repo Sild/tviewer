@@ -52,7 +52,7 @@ public class Tender {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
-    @OrderBy("id ASC")
+    @OrderBy("offer ASC")
     private Set<Member> memberSet = new HashSet<>();
 
 

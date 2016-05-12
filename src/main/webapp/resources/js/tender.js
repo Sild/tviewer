@@ -50,7 +50,7 @@ $(function () {
 
         $('.edit_tender_btn').click(function () {
             var row = $(this).closest("tr");
-            var id = $.trim(row.find('.tender_id').text());
+            var id = $.trim(row.data('id'));
             var number = $.trim(row.find('.tender_number').text());
             var owner = $.trim(row.find('.tender_owner').text());
             var platform = $.trim(row.find('.tender_platform').text());

@@ -52,7 +52,7 @@ $(function () {
 
         $('.edit_platform_btn').click(function () {
             var row = $(this).closest("tr");
-            var id = row.find('.platform_id').text();
+            var id = row.data('id');
             var name = row.find('.platform_name').text();
             var comment = row.find('.platform_site').text();
             var edit_div = $('form.update_platform_form');

@@ -53,7 +53,7 @@ $(function () {
 
         $('.edit_entity_btn').click(function () {
             var row = $(this).closest("tr");
-            var id = row.find('.company_id').text();
+            var id = row.data('id');
             var name = row.find('.company_name').text();
             var comment = row.find('.company_comment').text();
             var color = row.find('.company_color').css('background-color');

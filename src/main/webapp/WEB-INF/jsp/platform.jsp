@@ -33,7 +33,6 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>name</th>
         <th>site</th>
         <th>tenders</th>
@@ -42,15 +41,14 @@
     </thead>
     <tbody>
     <c:forEach var="platform" items="${platformList}">
-        <tr>
-            <td class="platform_id">${platform.id}</td>
+        <tr data-id="${platform.id}">
             <td class="platform_name">${platform.name}</td>
             <td class="platform_site"><a href="${platform.site}" target="_blank">${platform.site}</a></td>
             <td class="platform_tenders">${fn:length(platform.tenderSet)}</td>
             <td>
                 <button class="edit_platform_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/platform/${platform.id}/delete"
-                   onclick="if(!confirm('Do you really want to delete platform with id = ${platform.id}?')) return false;">
+                   onclick="if(!confirm('Вы действительно хотите удалить платформу <c:out value="${platform.name}" />?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
             </td>

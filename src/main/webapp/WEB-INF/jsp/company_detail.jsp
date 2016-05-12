@@ -29,23 +29,23 @@
 <div id="company_member_statistic_div" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 
-<h3>Tenders ( ${fn:length(company.tenderSet)} )</h3>
+<h3>Заказывали: ${fn:length(company.tenderSet)}</h3>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
         <th>id</th>
-        <th>platform</th>
-        <th>sum</th>
-        <th>state</th>
-        <th>direction</th>
-        <th>nomenclature</th>
-        <th>comment</th>
-        <th>trade form</th>
-        <th>start time</th>
-        <th>end time</th>
-        <th>liked</th>
-        <th>member count</th>
+        <th>площадка</th>
+        <th>сумма</th>
+        <th>состояние</th>
+        <th>направление</th>
+        <th>нуменклатура</th>
+        <th>комментариц</th>
+        <th>форма торогов</th>
+        <th>подан</th>
+        <th>завершен</th>
+        <th>избранное</th>
+        <th>участников</th>
     </tr>
     </thead>
     <tbody>
@@ -53,7 +53,7 @@
         <tr class="tender-info">
             <td class="tender_id">
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/detail"
-                   target="_blank">${tender.id}</a>
+                   target="_blank">${tender.number}</a>
 
             <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                            target="_blank">${tender.platform.name}</a></td>
@@ -83,18 +83,18 @@
 
 
 
-<h3>Member ( ${winCount}/${totalCount}, rate ~= ${winRate}% )</h3>
+<h3>Участвовали: побед = ${winCount}, проигрышей = ${totalCount}. Выигрышей в %: ${winRate}</h3>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
         <th>id</th>
-        <th>Tender</th>
-        <th>offer</th>
-        <th>winner</th>
-        <th>comment</th>
-        <th>submit_time</th>
-        <th>withdrow_time</th>
+        <th>тендер</th>
+        <th>предложение</th>
+        <th>победитель</th>
+        <th>комментарий</th>
+        <th>подал</th>
+        <th>отозвал</th>
     </tr>
     </thead>
     <tbody>
@@ -102,7 +102,7 @@
 
         <tr class="member-info" style="background-color: ${member.company.color}">
             <td class="member_id">${member.id}</td>
-            <td class="member_tender"><a href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.id}</a></td>
+            <td class="member_tender"><a href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.number}</a></td>
             <td class="member_offer">${member.offer}</td>
             <td class="member_winner">
                 <input type="checkbox" disabled

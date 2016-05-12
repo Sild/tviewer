@@ -21,7 +21,6 @@
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>Номер</th>
         <th>Заказчик</th>
         <th>Площадка</th>
@@ -38,7 +37,6 @@
     </thead>
     <tbody>
     <tr class="tender-info">
-        <td class="tender_id">${tender.id}</td>
         <td class="tender_number">${tender.number}</td>
         <td class="tender_owner"><a
                 href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail">${tender.owner.name}</a>
@@ -109,10 +107,9 @@
 </form:form>
 
 
-<table class="table table-striped table-bordered table-sm tablesorter" >
+<table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>Название</th>
         <th>Предложение</th>
         <th>Победитель</th>
@@ -125,8 +122,7 @@
     <tbody>
     <c:forEach var="member" items="${tender.memberSet}">
 
-        <tr class="member-info"> <!--style="background-color: ${member.company.color}"-->
-            <td class="member_id">${member.id}</td>
+        <tr class="member-info" data-id="${member.id}"> <!--style="background-color: ${member.company.color}"-->
             <td class="member_company"><a
                     href="${pageContext.request.contextPath}/company/${member.company.id}/detail">${member.company.name}</a>
             </td>
@@ -140,14 +136,14 @@
             </td>
             <td class="member_comment">${member.comment}</td>
             <td class="member_submitDate"><fmt:formatDate value="${member.submitDate}" type="both"
-                                                                pattern="dd-MM-yyyy"/></td>
+                                                          pattern="dd-MM-yyyy"/></td>
             <td class="member_withdrowDate"><fmt:formatDate value="${member.withdrowDate}" type="both"
-                                                                   pattern="dd-MM-yyyy"/></td>
+                                                            pattern="dd-MM-yyyy"/></td>
             <td>
 
                 <button class="edit_entity_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/member/${member.id}/delete"
-                   onclick="if(!confirm('Do you really want to delete member with id = ${member.id}?')) return false;">
+                   onclick="if(!confirm('Вы действительно хотите удалить участника <c:out value="${member.company.name}" />?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
             </td>
