@@ -1,8 +1,6 @@
 package com.sild.tviewer.repository.impl;
 
-import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Tender;
-import com.sild.tviewer.repository.CompanyRepository;
 import com.sild.tviewer.repository.TenderRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

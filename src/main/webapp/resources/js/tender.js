@@ -2,17 +2,22 @@ $(function () {
     var $FORM = $('form.update_tender_form');
     var $DATEPICKER_FIELDS = $('.datepicker');
 
-
+    setUpSelectAutocomplete();
     setUpDialog($FORM);
     setUpDatepicker($DATEPICKER_FIELDS);
     setUpHandlers();
     $('table').tablesorter();
 
 
+    function setUpSelectAutocomplete() {
+        $( "#owner" ).combobox();
+    }
+
     function setUpDialog($node) {
         $node.dialog({
+            title: "Добавление Тендера",
             height: 650,
-            width: 420,
+            width: 450,
             autoOpen: false,
             close: function () {
                 fillForm($node);
@@ -33,7 +38,12 @@ $(function () {
                     }
                 }
 
-            ]
+            ],
+            position: {
+                my: "center",
+                at: "top",
+                of: window
+            }
         });
     }
 

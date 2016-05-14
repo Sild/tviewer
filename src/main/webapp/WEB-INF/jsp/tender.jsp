@@ -10,6 +10,7 @@
 
 <head>
     <jsp:include page="common/head.jsp"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
     <title>tender</title>
 </head>

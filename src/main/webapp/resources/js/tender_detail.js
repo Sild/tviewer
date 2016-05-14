@@ -2,15 +2,20 @@ $(function () {
 
     var $FORM = $('form.update_member_form');
 
+    setUpSelectAutocomplete();
     setUpDialog($FORM);
     setUpDatepicker($(".datepicker"));
     setUpHandlers();
     $('table').tablesorter();
 
 
+    function setUpSelectAutocomplete() {
+        $( "#company" ).combobox();
+    }
 
     function setUpDialog($node) {
         $node.dialog({
+            title: "Добавление Участника",
             height: 420,
             width: 420,
             autoOpen: false,
@@ -30,7 +35,12 @@ $(function () {
                         $(this).dialog('close');
                     }
                 }
-            ]
+            ],
+            position: {
+                my: "center",
+                at: "top",
+                of: window
+            }
         });
     }
 

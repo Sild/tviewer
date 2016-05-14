@@ -1,0 +1,11 @@
+.ui-autocomplete {
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index:200 !important;
+}
+
+.ui-dialog {
+    z-index:100 !important;
+}

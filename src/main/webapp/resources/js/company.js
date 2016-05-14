@@ -11,6 +11,7 @@ $(function () {
 
     function setUpDialog(stringSelector) {
         $(stringSelector).dialog({
+            title: "Добавление Компании",
             height: 250,
             width: 400,
             autoOpen: false,
@@ -41,7 +42,12 @@ $(function () {
                     }
                 }
 
-            ]
+            ],
+            position: {
+                my: "center",
+                at: "top",
+                of: window
+            }
         });
 
     }
