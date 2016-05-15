@@ -17,4 +17,6 @@ public interface TenderRepository {
 
     public List<Tender> getAll();
 
+    public List<Tender> getByNumber(String number);
+
 }

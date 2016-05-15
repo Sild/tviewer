@@ -22,11 +22,18 @@ public class CompanyController {
 
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
+        return filterList(model, "");
+    }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
+    public ModelAndView filterList(Model model, @RequestParam(value = "name") String nameFilter) {
         model.addAttribute("company", new Company());
         ModelAndView modelAndView = new ModelAndView("company");
-        List<Company> companyList = companyService.getAll();
+        List<Company> companyList = companyService.getByName(nameFilter);
         modelAndView.addObject("companyList", companyList);
+        modelAndView.addObject("nameFilter", nameFilter);
         return modelAndView;
+
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

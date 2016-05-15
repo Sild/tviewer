@@ -46,9 +46,15 @@ public class TenderController {
 
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
+
+        return filterList(model, "");
+    }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
+    public ModelAndView filterList(Model model, @RequestParam(value = "number") String numberFilter) {
         model.addAttribute("tender", new Tender());
         ModelAndView modelAndView = new ModelAndView("tender");
-        List<Tender> tenderList = tenderService.getAll();
+        List<Tender> tenderList = tenderService.getByNumber(numberFilter);
         List<Company> companyList = companyService.getAll();
         List<Platform> platformList = platformService.getAll();
 
@@ -56,7 +62,9 @@ public class TenderController {
         modelAndView.addObject("companyList", companyList);
         modelAndView.addObject("platformList", platformList);
         modelAndView.addObject("TenderState", TenderState.values());
+        modelAndView.addObject("numberFilter", numberFilter);
         return modelAndView;
+
     }
 
 

@@ -47,4 +47,9 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         return getCurrentSession().createQuery(hql).list();
     }
 
+    public List<Company> getByName(String name) {
+        String hql = "FROM " + Company.class.getName() + " c WHERE c.name like '%" + name + "%' ORDER BY c.name";
+        return getCurrentSession().createQuery(hql).list();
+    }
+
 }

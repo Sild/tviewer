@@ -16,4 +16,6 @@ public interface CompanyRepository {
 
     public List<Company> getAll();
 
+    public List<Company> getByName(String name);
+
 }

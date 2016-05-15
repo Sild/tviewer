@@ -34,4 +34,11 @@ public class TenderServiceImpl implements TenderService {
     public List<Tender> getAll() {
         return repository.getAll();
     }
+
+    public List<Tender> getByNumber(String number) {
+        if(null == number) {
+            return repository.getAll();
+        }
+        return repository.getByNumber(number);
+    }
 }

@@ -15,4 +15,6 @@ public interface TenderService {
     public void delete(int id);
 
     public List<Tender> getAll();
+
+    public List<Tender> getByNumber(String number);
 }

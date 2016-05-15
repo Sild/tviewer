@@ -17,5 +17,7 @@ public interface CompanyService {
 
     public List<Company> getAll();
 
+    public List<Company> getByName(String name);
+
 
 }

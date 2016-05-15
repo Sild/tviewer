@@ -35,6 +35,10 @@ public class CompanyServiceImpl implements CompanyService {
         return repository.getAll();
     }
 
+    public List<Company> getByName(String name) {
+        return repository.getByName(name);
+    }
+
 
 
 }

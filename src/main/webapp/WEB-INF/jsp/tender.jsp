@@ -10,6 +10,7 @@
 
 <head>
     <jsp:include page="common/head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
     <title>tender</title>
@@ -18,8 +19,21 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 
-<button id="show_update_tender_form" class="btn btn-success">Добавить тендер</button>
+<div class="control-panel">
+    <input type="button" id="show_update_tender_form" class="btn btn-success" value="Добавить тендер"/>
 
+
+    <form method="GET" action="${pageContext.request.contextPath}/tender/filter">
+
+        <div class="input-group">
+            <input type="text" class="form-control" name="number" placeholder="Номер" value="${numberFilter}">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary glyphicon glyphicon-search" type="submit"></button>
+        </span>
+        </div>
+    </form>
+
+</div>
 
 <form:form method="POST" class="update_tender_form" modelAttribute="tender"
            action="${pageContext.request.contextPath}/tender/update" cssStyle="display: none">

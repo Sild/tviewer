@@ -46,4 +46,9 @@ public class TenderRepositoryImpl implements TenderRepository {
         return getCurrentSession().createQuery(hql).list();
     }
 
+    @SuppressWarnings("unchecked")
+    public List<Tender> getByNumber(String number) {
+        String hql = "FROM " + Tender.class.getName() + " t WHERE t.number like '" + number + "%' ORDER BY t.number";
+        return getCurrentSession().createQuery(hql).list();
+    }
 }

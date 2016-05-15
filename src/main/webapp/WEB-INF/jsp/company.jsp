@@ -6,6 +6,7 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
     <title>company</title>
 </head>
@@ -13,7 +14,21 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 
-<button id="show_add_entity_form" class="btn btn-success">Добавить компанию</button>
+<div class="control-panel">
+    <input type="button" id="show_add_entity_form" class="btn btn-success" value="Добавить компанию"/>
+
+
+    <form method="GET" action="${pageContext.request.contextPath}/company/filter">
+
+        <div class="input-group">
+            <input type="text" class="form-control" name="name" placeholder="Название" value="${nameFilter}">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary glyphicon glyphicon-search" type="submit"></button>
+        </span>
+        </div>
+    </form>
+
+</div>
 
 <form:form method="POST" class="update_company_form" modelAttribute="company"
            action="${pageContext.request.contextPath}/company/update" cssStyle="display: none">
@@ -61,7 +76,8 @@
             <td>
                 <button class="edit_entity_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
-                   onclick="if(!confirm('Вы действительно ходите удалить компанию <c:out value="${company.name}" />?')) return false;">
+                   onclick="if(!confirm('Вы действительно ходите удалить компанию <c:out
+                           value="${company.name}"/>?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
 
