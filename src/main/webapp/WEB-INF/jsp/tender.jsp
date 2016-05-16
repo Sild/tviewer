@@ -98,7 +98,7 @@
     <thead class="thead-inverse">
     <tr>
         <th>Номер</th>
-        <th>Заказчик</th>
+        <th>Площадка</th>
         <th>Участники</th>
         <th>Сумма</th>
         <th>Состояние</th>
@@ -108,17 +108,19 @@
         <th>Форма торгов</th>
         <th>Начало</th>
         <th>Окончание</th>
-        <th>Площадка</th>
+        <th>Заказчик</th>
         <th>Избранное</th>
         <th>Действия</th>
+
     </tr>
     </thead>
     <tbody>
     <c:forEach var="tender" items="${tenderList}">
         <tr class="tender-info" data-id="${tender.id}">
             <td class="tender_number">${tender.number}</td>
-            <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
-                                        target="_blank">${tender.owner.name}</a></td>
+            <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
+                                           target="_blank">${tender.platform.name}</a></td>
+
             <td class="tender_member_count"><a
                     href="${pageContext.request.contextPath}/tender/${tender.id}/detail">посмотреть ${fn:length(tender.memberSet)}</a>
             </td>
@@ -133,8 +135,8 @@
                                                           pattern="dd-MM-yyyy"/></td>
             <td class="tender_end_date"><fmt:formatDate value="${tender.endDate}" type="both"
                                                         pattern="dd-MM-yyyy"/></td>
-            <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
-                                           target="_blank">${tender.platform.name}</a></td>
+            <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
+                                        target="_blank">${tender.owner.name}</a></td>
             <td class="tender_liked">
                 <input type="checkbox" disabled
                         <c:if test="${tender.liked}">

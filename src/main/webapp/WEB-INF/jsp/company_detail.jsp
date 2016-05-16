@@ -20,7 +20,6 @@
 
 <jsp:include page="common/menu.jsp" />
 
-
 <h2>${company.name}</h2>
 <input type="hidden" name="winCount" value="${winCount}"/>
 <input type="hidden" name="looseCount" value="${looseCount}"/>
@@ -34,7 +33,7 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
+        <th>номер</th>
         <th>площадка</th>
         <th>сумма</th>
         <th>состояние</th>
@@ -88,8 +87,9 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>id</th>
         <th>тендер</th>
+        <th>сумма тендера</th>
+        <th>сумма победителя</th>
         <th>предложение</th>
         <th>победитель</th>
         <th>комментарий</th>
@@ -101,8 +101,15 @@
     <c:forEach var="member" items="${company.memberSet}">
 
         <tr class="member-info" style="background-color: ${member.company.color}">
-            <td class="member_id">${member.id}</td>
             <td class="member_tender"><a href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.number}</a></td>
+            <td class="member_tender_sum">${member.tender.sum}</td>
+            <td class="member_tender_winner_offer">
+                <c:forEach var="tenderMember" items="${member.tender.memberSet}">
+                    <c:if test="${tenderMember.winner}">
+                        ${tenderMember.offer}
+                    </c:if>
+                </c:forEach>
+            </td>
             <td class="member_offer">${member.offer}</td>
             <td class="member_winner">
                 <input type="checkbox" disabled
