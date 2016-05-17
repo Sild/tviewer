@@ -16,7 +16,7 @@
 <button id="show_update_platform_form" class="btn btn-success">Добавить площадку</button>
 
 <form:form method="POST" class="update_platform_form" modelAttribute="platform"
-           action="${pageContext.request.contextPath}/platform/update"  cssStyle="display: none">
+           action="${pageContext.request.contextPath}/platform/update" cssStyle="display: none">
     <table class="table table-sm">
         <tr>
             <td>Название</td>
@@ -33,10 +33,10 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>name</th>
-        <th>site</th>
-        <th>tenders</th>
-        <th>actions</th>
+        <th>Название</th>
+        <th>Сайт</th>
+        <th>Размещено Тендеров</th>
+        <th>Действия</th>
     </tr>
     </thead>
     <tbody>
@@ -48,7 +48,8 @@
             <td>
                 <button class="edit_platform_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/platform/${platform.id}/delete"
-                   onclick="if(!confirm('Вы действительно хотите удалить платформу <c:out value="${platform.name}" />?')) return false;">
+                   onclick="if(!confirm('Вы действительно хотите удалить платформу <c:out
+                           value="${platform.name}"/>?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
             </td>

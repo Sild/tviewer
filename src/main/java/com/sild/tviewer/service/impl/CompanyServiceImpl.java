@@ -1,7 +1,6 @@
 package com.sild.tviewer.service.impl;
 
 import com.sild.tviewer.model.Company;
-import com.sild.tviewer.repository.CRUDRepository;
 import com.sild.tviewer.repository.CompanyRepository;
 import com.sild.tviewer.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository repository;
 
     public void createOrUpdate(Company company) {
-        if(null == company.getId() || company.getId().equals("") ) {
+        if (null == company.getId() || company.getId().equals("")) {
             repository.add(company);
         } else {
             repository.update(company);
@@ -31,14 +30,21 @@ public class CompanyServiceImpl implements CompanyService {
         repository.delete(id);
     }
 
-    public List<Company> getAll() {
-        return repository.getAll();
-    }
-
     public List<Company> getByName(String name) {
         return repository.getByName(name);
     }
 
+    public List<Company> getAll() {
+        return repository.getAll();
+    }
+
+    public List<Company> getProvidersByName(String name) {
+        return repository.getProvidersByName(name);
+    }
+
+    public List<Company> getCustomersByName(String name) {
+        return repository.getCustomersByName(name);
+    }
 
 
 }

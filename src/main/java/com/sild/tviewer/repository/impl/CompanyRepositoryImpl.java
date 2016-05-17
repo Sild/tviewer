@@ -1,7 +1,6 @@
 package com.sild.tviewer.repository.impl;
 
 import com.sild.tviewer.model.Company;
-import com.sild.tviewer.repository.CRUDRepository;
 import com.sild.tviewer.repository.CompanyRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,6 +48,18 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     public List<Company> getByName(String name) {
         String hql = "FROM " + Company.class.getName() + " c WHERE c.name like '%" + name + "%' ORDER BY c.name";
+        return getCurrentSession().createQuery(hql).list();
+    }
+
+    public List<Company> getProvidersByName(String name) {
+        String hql = "FROM " + Company.class.getName() +
+                " c WHERE c.name like '%" + name + "%' AND  size(c.memberSet) > 0";
+        return getCurrentSession().createQuery(hql).list();
+    }
+
+    public List<Company> getCustomersByName(String name) {
+        String hql = "FROM " + Company.class.getName() +
+                " c WHERE c.name like '%" + name + "%' AND  size(c.tenderSet) > 0";
         return getCurrentSession().createQuery(hql).list();
     }
 

@@ -8,7 +8,7 @@
     <jsp:include page="common/head.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
-    <title>company</title>
+    <title>${module}</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <input type="button" id="show_add_entity_form" class="btn btn-success" value="Добавить компанию"/>
 
 
-    <form method="GET" action="${pageContext.request.contextPath}/company/filter">
+    <form method="GET" action="${pageContext.request.contextPath}/${module}/filter">
 
         <div class="input-group">
             <input type="text" class="form-control" name="name" placeholder="Название" value="${nameFilter}">

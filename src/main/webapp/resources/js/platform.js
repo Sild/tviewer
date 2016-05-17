@@ -1,13 +1,11 @@
 $(function () {
 
 
-
     setUpDialog('form.update_platform_form');
 
     setUpHandlers();
 
     $('table').tablesorter();
-
 
 
     function setUpDialog(stringSelector) {
@@ -16,7 +14,7 @@ $(function () {
             height: 250,
             width: 400,
             autoOpen: false,
-            close: function() {
+            close: function () {
                 var edit_div = $(stringSelector);
                 edit_div.find('#id').val("");
                 edit_div.find('#name').val("");
@@ -32,7 +30,7 @@ $(function () {
                 },
                 {
                     text: "Отмена",
-                    click: function() {
+                    click: function () {
                         var edit_div = $(stringSelector);
                         edit_div.find('#id').val("");
                         edit_div.find('#name').val("");

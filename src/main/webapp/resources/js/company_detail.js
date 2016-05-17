@@ -31,13 +31,15 @@ $(function () {
                 }
             }
         },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [
-                ['win', parseInt($('input[type="hidden"][name="winCount"]').val())],
-                ['loose', parseInt($('input[type="hidden"][name="looseCount"]').val())]
-            ]
-        }]
+        series: [
+            {
+                name: 'Brands',
+                colorByPoint: true,
+                data: [
+                    ['win', parseInt($('input[type="hidden"][name="winCount"]').val())],
+                    ['loose', parseInt($('input[type="hidden"][name="looseCount"]').val())]
+                ]
+            }
+        ]
     });
 });

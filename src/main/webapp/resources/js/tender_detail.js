@@ -10,7 +10,7 @@ $(function () {
 
 
     function setUpSelectAutocomplete() {
-        $( "#company" ).combobox();
+        $("#company").combobox();
     }
 
     function setUpDialog($node) {
@@ -23,12 +23,14 @@ $(function () {
                 fillForm($node);
                 $(this).dialog('close');
             },
-            buttons: [{
+            buttons: [
+                {
                     text: "Сохранить",
                     click: function () {
                         $node.submit();
                     }
-                },{
+                },
+                {
                     text: "Отмена",
                     click: function () {
                         fillForm($node);
@@ -86,7 +88,7 @@ $(function () {
 
 
     $.fn.labselect = function (str) {
-        if(str === undefined) {
+        if (str === undefined) {
             return "";
         }
         $('option', this).filter(function () {

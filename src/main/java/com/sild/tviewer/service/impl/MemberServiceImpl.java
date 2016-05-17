@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
     private CRUDRepository<Member> repository;
 
     public void createOrUpdate(Member member) {
-        if(null == member.getId() || member.getId().equals("") ) {
+        if (null == member.getId() || member.getId().equals("")) {
             repository.add(member);
         } else {
             repository.update(member);

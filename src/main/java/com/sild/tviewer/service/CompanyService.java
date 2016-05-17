@@ -19,5 +19,9 @@ public interface CompanyService {
 
     public List<Company> getByName(String name);
 
+    public List<Company> getProvidersByName(String name);
+
+    public List<Company> getCustomersByName(String name);
+
 
 }

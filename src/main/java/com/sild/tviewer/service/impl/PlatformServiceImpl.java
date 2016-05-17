@@ -16,7 +16,7 @@ public class PlatformServiceImpl implements PlatformService {
 
 
     public void createOrUpdate(Platform element) {
-        if(null == element.getId() || element.getId().equals("") ) {
+        if (null == element.getId() || element.getId().equals("")) {
             repository.add(element);
         } else {
             repository.update(element);

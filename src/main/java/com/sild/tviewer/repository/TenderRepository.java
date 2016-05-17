@@ -1,6 +1,5 @@
 package com.sild.tviewer.repository;
 
-import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Tender;
 
 import java.util.List;

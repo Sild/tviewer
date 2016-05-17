@@ -10,7 +10,7 @@ $(function () {
 
 
     function setUpSelectAutocomplete() {
-        $( "#owner" ).combobox();
+        $("#owner").combobox();
     }
 
     function setUpDialog($node) {
@@ -98,7 +98,7 @@ $(function () {
     };
 
     $.fn.labselect = function (str) {
-        if(str === undefined) {
+        if (str === undefined) {
             return "";
         }
         $('option', this).filter(function () {

@@ -18,7 +18,7 @@
 
 <body>
 
-<jsp:include page="common/menu.jsp" />
+<jsp:include page="common/menu.jsp"/>
 
 <h2>${company.name}</h2>
 <input type="hidden" name="winCount" value="${winCount}"/>
@@ -81,7 +81,6 @@
 </table>
 
 
-
 <h3>Участвовали: побед = ${winCount}, проигрышей = ${totalCount}. Выигрышей в %: ${winRate}</h3>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
@@ -101,22 +100,37 @@
     <c:forEach var="member" items="${company.memberSet}">
 
         <tr class="member-info" style="background-color: ${member.company.color}">
-            <td class="member_tender"><a href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.number}</a></td>
-            <td class="member_tender_sum">${member.tender.sum}</td>
+            <td class="member_tender"><a
+                    href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.number}</a>
+            </td>
+            <td class="member_tender_sum"><fmt:formatNumber
+                    value="${member.tender.sum}"
+                    /></td>
             <td class="member_tender_winner_offer">
                 <c:forEach var="tenderMember" items="${member.tender.memberSet}">
                     <c:if test="${tenderMember.winner}">
-                        ${tenderMember.offer}
+                        <fmt:formatNumber
+                                value="${tenderMember.offer}"
+                                />
+
+                        (<fmt:formatNumber
+                            value="${tenderMember.offer - member.tender.sum}"
+                            />)
                     </c:if>
                 </c:forEach>
+
             </td>
-            <td class="member_offer">${member.offer}</td>
+            <td class="member_offer"><fmt:formatNumber
+                    value="${member.offer}"
+                    /> (<fmt:formatNumber
+                    value="${member.offer - member.tender.sum}"
+                    />)</td>
             <td class="member_winner">
                 <input type="checkbox" disabled
-                <c:if test="${member.winner}">
-                    checked
-                </c:if>
-                />
+                        <c:if test="${member.winner}">
+                            checked
+                        </c:if>
+                        />
             </td>
             <td class="member_comment">${member.comment}</td>
             <td class="member_submit_timestamp"><fmt:formatDate value="${member.submitDate}" type="both"

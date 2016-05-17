@@ -3,8 +3,6 @@ package com.sild.tviewer.controller;
 import com.sild.tviewer.model.Company;
 import com.sild.tviewer.model.Member;
 import com.sild.tviewer.service.impl.CompanyServiceImpl;
-import com.sild.tviewer.service.impl.MemberServiceImpl;
-import com.sild.tviewer.service.impl.TenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +29,7 @@ public class CompanyController {
         ModelAndView modelAndView = new ModelAndView("company");
         List<Company> companyList = companyService.getByName(nameFilter);
         modelAndView.addObject("companyList", companyList);
+        modelAndView.addObject("module", "company");
         modelAndView.addObject("nameFilter", nameFilter);
         return modelAndView;
 
@@ -65,8 +64,8 @@ public class CompanyController {
         modelAndView.addObject("looseCount", company.getMemberSet().size() - winCount);
         modelAndView.addObject("totalCount", company.
                 getMemberSet().size());
-        if(company.getMemberSet().size() != 0) {
-            modelAndView.addObject("winRate", winCount/company.getMemberSet().size() *100);
+        if (company.getMemberSet().size() != 0) {
+            modelAndView.addObject("winRate", winCount / company.getMemberSet().size() * 100);
         }
         return modelAndView;
     }

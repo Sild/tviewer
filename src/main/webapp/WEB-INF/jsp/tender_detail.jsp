@@ -10,7 +10,8 @@
 
 <head>
     <jsp:include page="common/head.jsp"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
     <title>tender</title>
 </head>
@@ -144,7 +145,8 @@
 
                 <button class="edit_entity_btn btn btn-warning">Редактировать</button>
                 <a href="${pageContext.request.contextPath}/member/${member.id}/delete"
-                   onclick="if(!confirm('Вы действительно хотите удалить участника <c:out value="${member.company.name}" />?')) return false;">
+                   onclick="if(!confirm('Вы действительно хотите удалить участника <c:out
+                           value="${member.company.name}"/>?')) return false;">
                     <button class="btn btn-danger">Удалить</button>
                 </a>
             </td>

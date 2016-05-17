@@ -14,8 +14,10 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="home"><a href="${pageContext.request.contextPath}/">Профиль</a></li>
+            <li class="customer"><a href="${pageContext.request.contextPath}/customer">Заказчики</a></li>
+            <li class="provider"><a href="${pageContext.request.contextPath}/provider">Поставщики</a></li>
+            <li class="company"><a href="${pageContext.request.contextPath}/company">Все компании</a></li>
             <li class="tender"><a href="${pageContext.request.contextPath}/tender">Тендеры</a></li>
-            <li class="company"><a href="${pageContext.request.contextPath}/company">Компании</a></li>
             <li class="platform"><a href="${pageContext.request.contextPath}/platform">Платформы</a></li>
         </ul>
     </div>
