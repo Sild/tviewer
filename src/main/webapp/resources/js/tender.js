@@ -74,7 +74,6 @@ $(function () {
             var startDate = $.trim(row.find('.tender_start_date').text());
             var endDate = $.trim(row.find('.tender_end_date').text());
             var liked = row.find('.tender_liked>input[type="checkbox"]').prop('checked');
-            console.log(currency);
             fillForm($FORM, id, number, owner, platform, sum, currency, state, direction, nomenclature, comment, tradeForm, startDate, endDate, liked);
             $('#show_update_tender_form').trigger('click');
         });

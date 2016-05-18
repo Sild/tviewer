@@ -27,6 +27,7 @@
         <th>Заказчик</th>
         <th>Площадка</th>
         <th>Сумма</th>
+        <th>Валюта</th>
         <th>Состояние</th>
         <th>Направление</th>
         <th>Нуменклатура</th>
@@ -48,6 +49,7 @@
         <td class="tender_sum"><fmt:formatNumber
                 value="${tender.sum}"
                 /></td>
+        <td class="tender_currency">${tender.currency}</td>
         <td class="tender_state">${tender.state}</td>
         <td class="tender_direction">${tender.direction}</td>
         <td class="tender_nomenclature">${tender.nomenclature}</td>
@@ -130,7 +132,9 @@
             <td class="member_company"><a
                     href="${pageContext.request.contextPath}/company/${member.company.id}/detail">${member.company.name}</a>
             </td>
-            <td class="member_offer">${member.offer}</td>
+            <td class="member_offer"><fmt:formatNumber
+                    value="${member.offer}"
+                    /></td>
             <td class="member_winner">
                 <input type="checkbox" disabled
                         <c:if test="${member.winner}">

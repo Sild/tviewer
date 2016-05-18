@@ -62,7 +62,7 @@ $(function () {
             var row = $(this).closest("tr");
             var id = row.data('id');
             var company = $.trim(row.find('.member_company').text());
-            var offer = $.trim(row.find('.member_offer').text());
+            var offer = $.trim(row.find('.member_offer').text()).replace(/,/g, '');
             var winner = row.find('.member_winner>input[type="checkbox"]').prop('checked');
             var comment = $.trim(row.find('.member_comment').text());
             var submitDate = $.trim(row.find('.member_submitDate').text());
@@ -77,8 +77,7 @@ $(function () {
 
     var fillForm = function ($form, id, company, offer, winner, comment, submitDate, withdrowDate) {
         $form.find('#id').val(id);
-        console.log(withdrowDate);
-        $form.find('#company').labselect(company);
+        $form.find('#company').labselect(company); //TODO not always work correctly. Check&fix
         $form.find('#offer').val(offer);
         $form.find('[name=winner]').prop('checked', winner);
         $form.find('#comment').val(comment);
