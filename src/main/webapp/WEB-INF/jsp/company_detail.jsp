@@ -39,7 +39,7 @@
         <th>состояние</th>
         <th>направление</th>
         <th>нуменклатура</th>
-        <th>комментариц</th>
+        <th>комментарий</th>
         <th>форма торогов</th>
         <th>подан</th>
         <th>завершен</th>
@@ -56,7 +56,9 @@
 
             <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                            target="_blank">${tender.platform.name}</a></td>
-            <td class="tender_sum">${tender.sum}</td>
+            <td class="tender_sum"><fmt:formatNumber
+                    value="${tender.sum}"
+                    /></td>
             <td class="tender_state">${tender.state}</td>
             <td class="tender_direction">${tender.direction}</td>
             <td class="tender_nomenclature">${tender.nomenclature}</td>

@@ -40,6 +40,7 @@ public class TenderController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String add(@RequestHeader(value = "referer", required = false) final String referer,
                       @ModelAttribute Tender tender) {
+        System.out.println(tender);
         tenderService.createOrUpdate(tender);
         return "redirect:" + referer;
     }
@@ -62,6 +63,7 @@ public class TenderController {
         modelAndView.addObject("companyList", companyList);
         modelAndView.addObject("platformList", platformList);
         modelAndView.addObject("TenderState", TenderState.values());
+        modelAndView.addObject("CurrencyType", CurrencyType.values());
         modelAndView.addObject("numberFilter", numberFilter);
         return modelAndView;
 

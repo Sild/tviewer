@@ -54,6 +54,10 @@
             <td><form:input path="sum"/></td>
         </tr>
         <tr>
+            <td><form:label path="currency">Валюта</form:label></td>
+            <td><form:select path="currency" items="${CurrencyType}"/></td>
+        </tr>
+        <tr>
             <td><form:label path="state">Состояние</form:label></td>
             <td><form:select path="state" items="${TenderState}"/></td>
 
@@ -102,6 +106,7 @@
         <th>Площадка</th>
         <th>Участники</th>
         <th>Сумма</th>
+        <th>Валюта</th>
         <th>Состояние</th>
         <th>Направление</th>
         <th>Номенклатура</th>
@@ -126,7 +131,10 @@
                     href="${pageContext.request.contextPath}/tender/${tender.id}/detail">посмотреть ${fn:length(tender.memberSet)}</a>
             </td>
 
-            <td class="tender_sum">${tender.sum}</td>
+            <td class="tender_sum"><fmt:formatNumber
+                    value="${tender.sum}"
+                    /></td>
+            <td class="tender_currency">${tender.currency}</td>
             <td class="tender_state">${tender.state}</td>
             <td class="tender_direction">${tender.direction}</td>
             <td class="tender_nomenclature">${tender.nomenclature}</td>

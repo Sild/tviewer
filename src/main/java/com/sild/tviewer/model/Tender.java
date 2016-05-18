@@ -31,6 +31,9 @@ public class Tender {
     private Double sum;
 
     @Enumerated(EnumType.STRING)
+    private CurrencyType currency;
+
+    @Enumerated(EnumType.STRING)
     private TenderState state;
 
     private String direction;
@@ -57,6 +60,13 @@ public class Tender {
     @OrderBy("offer ASC")
     private Set<Member> memberSet = new HashSet<>();
 
+    public CurrencyType getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(CurrencyType currency) {
+        this.currency = currency;
+    }
 
     public String getNumber() {
         return number;
