@@ -1,6 +1,8 @@
 package com.sild.tviewer.model;
 
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -27,14 +29,16 @@ public class Company {
 
     private boolean deleted;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
     @OrderBy("id ASC")
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Member> memberSet = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
     @OrderBy("id ASC")
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Tender> tenderSet = new HashSet<>();
 
 

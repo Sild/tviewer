@@ -4,9 +4,9 @@ package com.sild.tviewer.model;
  * @author Dmitry Korchagin.
  */
 public enum TenderState {
-    OPEN("open"),
-    CANCEL("cancel"),
-    CLOSE("close");
+    OPEN("открыт"),
+    CANCEL("отменен"),
+    CLOSE("закрыт");
     private String value;
 
     private TenderState(String value) {

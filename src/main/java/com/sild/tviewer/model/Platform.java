@@ -1,5 +1,7 @@
 package com.sild.tviewer.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -23,8 +25,9 @@ public class Platform {
 
     private boolean deleted;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "platform", orphanRemoval = true)
+    @OneToMany(mappedBy = "platform", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Tender> tenderSet = new HashSet<>();
 
 

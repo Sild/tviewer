@@ -1,9 +1,13 @@
 package com.sild.tviewer.model;
 
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -55,9 +59,10 @@ public class Tender {
 
     private boolean deleted;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tender", orphanRemoval = true)
+    @OneToMany(mappedBy = "tender", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
     @OrderBy("offer ASC")
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Member> memberSet = new HashSet<>();
 
     public CurrencyType getCurrency() {

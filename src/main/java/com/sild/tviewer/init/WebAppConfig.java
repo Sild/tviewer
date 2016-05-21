@@ -1,9 +1,6 @@
 package com.sild.tviewer.init;
 
-import com.sild.tviewer.converter.CompanyConverter;
-import com.sild.tviewer.converter.PlatformConverter;
-import com.sild.tviewer.converter.StringTrimConverter;
-import com.sild.tviewer.converter.TenderConverter;
+import com.sild.tviewer.converter.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
@@ -46,6 +43,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+    private static final String PROPERTY_NAME_HIBERNATE_ENABLE_LAZY_LOAD = "hibernate.enable_lazy_load_no_trans";
     @Autowired
     CompanyConverter companyConverter;
     @Autowired
@@ -103,6 +101,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
         properties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));
+        properties.put(PROPERTY_NAME_HIBERNATE_ENABLE_LAZY_LOAD, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_ENABLE_LAZY_LOAD));
         return properties;
     }
 

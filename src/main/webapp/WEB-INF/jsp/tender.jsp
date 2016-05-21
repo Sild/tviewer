@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td><form:label path="state">Состояние</form:label></td>
-            <td><form:select path="state" items="${TenderState}"/></td>
+            <td><form:select path="state" items="${TenderState}" itemLabel="value"/></td>
 
         </tr>
         <tr>
@@ -135,7 +135,7 @@
                     value="${tender.sum}"
                     /></td>
             <td class="tender_currency">${tender.currency}</td>
-            <td class="tender_state">${tender.state}</td>
+            <td class="tender_state">${tender.state.getValue()}</td>
             <td class="tender_direction">${tender.direction}</td>
             <td class="tender_nomenclature">${tender.nomenclature}</td>
             <td class="tender_comment">${tender.comment}</td>
