@@ -49,14 +49,17 @@ public class TenderController {
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
 
-        return filterList(model, "");
+        return filterList(model, "", "", "");
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public ModelAndView filterList(Model model, @RequestParam(value = "number") String numberFilter) {
+    public ModelAndView filterList(Model model,
+                                   @RequestParam(value = "fnumber") String numberFilter,
+                                   @RequestParam(value = "fmember") String memberFilter,
+                                   @RequestParam(value = "fstate") String stateFilter) {
         model.addAttribute("tender", new Tender());
         ModelAndView modelAndView = new ModelAndView("tender");
-        List<Tender> tenderList = tenderService.getByNumber(numberFilter);
+        List<Tender> tenderList = tenderService.getByFilters(numberFilter, stateFilter, memberFilter);
         List<Company> companyList = companyService.getAll();
         List<Platform> platformList = platformService.getAll();
 
@@ -66,6 +69,8 @@ public class TenderController {
         modelAndView.addObject("TenderState", TenderState.values());
         modelAndView.addObject("CurrencyType", CurrencyType.values());
         modelAndView.addObject("numberFilter", numberFilter);
+        modelAndView.addObject("memberFilter", memberFilter);
+        modelAndView.addObject("stateFilter", stateFilter);
         return modelAndView;
 
     }

@@ -24,14 +24,28 @@
     <input type="button" id="show_update_tender_form" class="btn btn-success" value="Добавить тендер"/>
 
 
-    <form method="GET" action="${pageContext.request.contextPath}/tender/filter">
+    <form id="filter-form" method="GET" action="${pageContext.request.contextPath}/tender/filter">
 
         <div class="input-group">
-            <input type="text" class="form-control" name="number" placeholder="Номер" value="${numberFilter}">
+            <input type="text" class="form-control" name="fnumber" placeholder="Номер" value="${numberFilter}">
+            <input type="text" class="form-control" name="fmember" placeholder="Участник" value="${memberFilter}">
+            <select name="fstate" class="form-control">
+                <option value="">Статус</option>
+                <c:forEach var="state" items="${TenderState}">
+                    <option
+                            <c:if test="${state == stateFilter}">
+                                selected
+                            </c:if>
+                            value="${state}">
+                            ${state.value}
+                    </option>
+                </c:forEach>
+            </select>
         <span class="input-group-btn">
-          <button class="btn btn-secondary glyphicon glyphicon-search" type="submit"></button>
+          <button class="btn btn-secondary search-btn glyphicon glyphicon-search" type="submit"></button>
         </span>
         </div>
+
     </form>
 
 </div>

@@ -1,6 +1,8 @@
 package com.sild.tviewer.repository.impl;
 
+import com.sild.tviewer.model.Member;
 import com.sild.tviewer.model.Tender;
+import com.sild.tviewer.model.TenderState;
 import com.sild.tviewer.repository.TenderRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,8 +49,32 @@ public class TenderRepositoryImpl implements TenderRepository {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Tender> getByNumber(String number) {
-        String hql = "FROM " + Tender.class.getName() + " t WHERE t.number like '" + number + "%' ORDER BY t.number";
-        return getCurrentSession().createQuery(hql).list();
+    public List<Tender> getByFilters(String number, TenderState tenderState, String memberName) {
+        String hql;
+        if(tenderState == null) {
+            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() +" m WHERE " +
+                    "m.company.name like :name  " +
+                    "AND m.tender.number like :number " +
+                    "ORDER BY m.tender.number";
+            return getCurrentSession().createQuery(hql)
+                    .setString("name", "%" + memberName + "%")
+                    .setString("number", "%" + number + "%")
+                    .list()
+                    ;
+        } else {
+            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() +" m WHERE " +
+                    "m.company.name like :name  " +
+                    "AND m.tender.state = :state " +
+                    "AND m.tender.number like :number " +
+                    "ORDER BY m.tender.number";
+            return getCurrentSession().createQuery(hql)
+                    .setString("name", "%" + memberName + "%")
+                    .setString("number", "%" + number + "%")
+                    .setParameter("state", tenderState)
+                    .list()
+                    ;
+        }
+
+
     }
 }

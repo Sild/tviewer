@@ -7,6 +7,23 @@
     width: 20%
 }
 
+.input-group {
+    width: 70%;
+}
+
+.input-group .form-control {
+    width: 33%;
+}
+
+.search-btn {
+    right: 5px;
+    top: 0px;
+}
+
 .control-panel {
     margin-bottom: 10px;
+}
+
+.form-control {
+    float:left;
 }

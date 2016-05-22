@@ -23,5 +23,4 @@ public interface CompanyService {
 
     public List<Company> getCustomersByName(String name);
 
-
 }

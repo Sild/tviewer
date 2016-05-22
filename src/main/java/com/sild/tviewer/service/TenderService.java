@@ -16,5 +16,6 @@ public interface TenderService {
 
     public List<Tender> getAll();
 
-    public List<Tender> getByNumber(String number);
+    public List<Tender> getByFilters(String number, String state, String memberName);
+
 }

@@ -53,14 +53,14 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     public List<Company> getProvidersByName(String name) {
         String hql = "FROM " + Company.class.getName() +
-                " c WHERE c.name like '%" + name + "%' AND  size(c.memberSet) > 0";
-        return getCurrentSession().createQuery(hql).list();
+                " c WHERE c.name like :name AND  size(c.memberSet) > 0";
+        return getCurrentSession().createQuery(hql).setString("name", "%" + name + "%").list();
     }
 
     public List<Company> getCustomersByName(String name) {
         String hql = "FROM " + Company.class.getName() +
-                " c WHERE c.name like '%" + name + "%' AND  size(c.tenderSet) > 0";
-        return getCurrentSession().createQuery(hql).list();
+                " c WHERE c.name like :name AND  size(c.tenderSet) > 0";
+        return getCurrentSession().createQuery(hql).setString("name", "%" + name + "%").list();
     }
 
 }

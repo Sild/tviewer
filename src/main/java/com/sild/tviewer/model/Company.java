@@ -1,12 +1,13 @@
 package com.sild.tviewer.model;
 
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import jdk.nashorn.internal.objects.annotations.Function;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,17 +31,16 @@ public class Company {
     private boolean deleted;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", orphanRemoval = true)
-    @Where(clause = "deleted <> '1'")
     @OrderBy("id ASC")
     @LazyCollection(LazyCollectionOption.EXTRA)
+    @Where(clause = "deleted <> '1'")
     private Set<Member> memberSet = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", orphanRemoval = true)
-    @Where(clause = "deleted <> '1'")
     @OrderBy("id ASC")
+    @Where(clause = "deleted <> '1'")
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Tender> tenderSet = new HashSet<>();
-
 
     public Set<Tender> getTenderSet() {
         return tenderSet;
