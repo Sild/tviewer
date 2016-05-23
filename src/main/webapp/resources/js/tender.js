@@ -1,9 +1,11 @@
 $(function () {
     var $FORM = $('form.update_tender_form');
+    var $COMPANY_FORM = $('form.update_company_form');
     var $DATEPICKER_FIELDS = $('.datepicker');
 
     setUpSelectAutocomplete();
-    setUpDialog($FORM);
+    setUpDialog($FORM, "Добавление Тендера");
+    setUpDialog($COMPANY_FORM, "Добавление Компании");
     setUpDatepicker($DATEPICKER_FIELDS);
     setUpHandlers();
     $('table').tablesorter();
@@ -11,13 +13,14 @@ $(function () {
 
     function setUpSelectAutocomplete() {
         $("#owner").combobox();
+        $("#platform").combobox();
     }
 
-    function setUpDialog($node) {
+    function setUpDialog($node, title) {
         $node.dialog({
-            title: "Добавление Тендера",
-            height: 650,
-            width: 450,
+            title: title,
+            height: 750,
+            width: 520,
             autoOpen: false,
             close: function () {
                 fillForm($node);
@@ -27,7 +30,10 @@ $(function () {
                 {
                     text: "Сохранить",
                     click: function () {
-                        $node.submit();
+                        console.log($node.attr('action') + "/ajax");
+                        $node.ajaxSubmit({url: $node.attr('action') + "/ajax", type: 'post'}, function(response) {
+                            console.log(response);//TODO handle response
+                        });
                     }
                 },
                 {
@@ -54,6 +60,10 @@ $(function () {
     }
 
     function setUpHandlers() {
+        $('.add_company_fast').click(function() {
+            $COMPANY_FORM.dialog('open');
+        });
+
         $('#show_update_tender_form').click(function () {
             $FORM.dialog('open');
         });

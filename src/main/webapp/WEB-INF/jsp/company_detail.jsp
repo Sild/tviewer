@@ -25,7 +25,7 @@
 <input type="hidden" name="looseCount" value="${looseCount}"/>
 <input type="hidden" name="totalCount" value="${totalCount}"/>
 
-<div id="company_member_statistic_div" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<%--<div id="company_member_statistic_div" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>--%>
 
 
 <h3>Заказывали: ${fn:length(company.tenderSet)}</h3>

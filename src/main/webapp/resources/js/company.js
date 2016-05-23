@@ -11,7 +11,7 @@ $(function () {
     function setUpDialog(stringSelector) {
         $(stringSelector).dialog({
             title: "Добавление Компании",
-            height: 250,
+            height: 750,
             width: 400,
             autoOpen: false,
             close: function () {

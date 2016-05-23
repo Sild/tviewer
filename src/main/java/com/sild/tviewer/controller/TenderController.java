@@ -58,6 +58,7 @@ public class TenderController {
                                    @RequestParam(value = "fmember") String memberFilter,
                                    @RequestParam(value = "fstate") String stateFilter) {
         model.addAttribute("tender", new Tender());
+        model.addAttribute("company", new Company());
         ModelAndView modelAndView = new ModelAndView("tender");
         List<Tender> tenderList = tenderService.getByFilters(numberFilter, stateFilter, memberFilter);
         List<Company> companyList = companyService.getAll();

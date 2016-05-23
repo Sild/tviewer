@@ -16,7 +16,7 @@ $(function () {
     function setUpDialog($node) {
         $node.dialog({
             title: "Добавление Участника",
-            height: 420,
+            height: 750,
             width: 420,
             autoOpen: false,
             close: function () {

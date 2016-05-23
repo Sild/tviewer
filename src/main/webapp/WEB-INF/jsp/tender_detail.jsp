@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
-
 <html>
 
 <head>
@@ -82,10 +81,12 @@
     <table class="table table-sm">
         <tr>
             <td>Компания</td>
-            <td><form:select path="company">
-                <form:option value="" label="Select ..."/>
-                <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
-            </form:select></td>
+            <td>
+                <form:select path="company">
+                    <form:option value="" label="Select ..."/>
+                    <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
+                </form:select>
+            </td>
         </tr>
         <tr>
             <td>Предложение</td>

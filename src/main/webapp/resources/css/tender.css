@@ -27,3 +27,7 @@
 .form-control {
     float:left;
 }
+
+.add_company_fast {
+    cursor: pointer;
+}

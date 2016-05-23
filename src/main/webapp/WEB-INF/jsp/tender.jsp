@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender.css">
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender.js"></script>
     <title>tender</title>
 </head>
@@ -58,8 +59,12 @@
             <td><form:input path="number"/></td>
         </tr>
         <tr>
-            <td><form:label path="owner">Заказчик</form:label></td>
-            <td><form:select path="owner" items="${companyList}" itemLabel="name" itemValue="id"/>
+            <td><form:label path="owner">Заказчик</form:label></br><a class="add_company_fast" herf="#">добавить</a></td>
+            <td>
+                <form:select path="owner">
+                    <form:option value="" label="Select ..."/>
+                    <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
+                </form:select>
             </td>
         </tr>
 
@@ -181,6 +186,6 @@
     </c:forEach>
     </tbody>
 </table>
-
+<jsp:include page="form/company.jsp"/>
 </body>
 </html>

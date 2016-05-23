@@ -1,6 +1,7 @@
 package com.sild.tviewer.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jdk.nashorn.internal.objects.annotations.Function;
 import org.hibernate.annotations.*;
 
@@ -15,6 +16,7 @@ import java.util.Set;
 @Table(name = "Companies")
 @SQLDelete(sql = "UPDATE Companies SET deleted = '1' WHERE id = ?")
 @Where(clause = "deleted <> '1'")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Company {
 
 
