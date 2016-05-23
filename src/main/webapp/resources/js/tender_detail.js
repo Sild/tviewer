@@ -1,9 +1,11 @@
 $(function () {
 
     var $FORM = $('form.update_member_form');
+    var $COMPANY_FORM = $('form.update_company_form')
 
     setUpSelectAutocomplete();
-    setUpDialog($FORM);
+    setUpDialog($FORM, "Добавление Участника");
+    setUpDialog($COMPANY_FORM, "Добавление Компании");
     setUpDatepicker($(".datepicker"));
     setUpHandlers();
     $('table').tablesorter();
@@ -13,11 +15,11 @@ $(function () {
         $("#company").combobox();
     }
 
-    function setUpDialog($node) {
+    function setUpDialog($node, title) {
         $node.dialog({
-            title: "Добавление Участника",
-            height: 750,
-            width: 420,
+            title: title,
+            height: 450,
+            width: 520,
             autoOpen: false,
             close: function () {
                 fillForm($node);
@@ -27,7 +29,23 @@ $(function () {
                 {
                     text: "Сохранить",
                     click: function () {
-                        $node.submit();
+                        if(title == "Добавление Участника") {
+                            $node.submit();
+                        } else {
+                            var $popup = $(this);
+                            jQuery.ajax({
+                                url: $node.attr('action') + "/ajax",
+                                method: 'POST',
+                                data: $node.serialize()
+                            }).done(function (response) {
+                                $('#company').prepend("<option value=" + response.id + ">" + response.name + "</<option>");
+                                $("#company").combobox();
+                                fillForm($node);
+                                $popup.dialog('close');
+                            }).fail(function () {
+                                alert("Fail to add company. Try from company form.");
+                            });
+                        }
                     }
                 },
                 {
@@ -40,7 +58,7 @@ $(function () {
             ],
             position: {
                 my: "center",
-                at: "top",
+                at: "center",
                 of: window
             }
         });
@@ -54,6 +72,9 @@ $(function () {
     }
 
     function setUpHandlers() {
+        $('.add_company_fast').click(function () {
+            $COMPANY_FORM.dialog('open');
+        });
         $('#show_update_member_form').click(function () {
             $FORM.dialog('open');
         });

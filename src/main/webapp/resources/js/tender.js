@@ -30,10 +30,25 @@ $(function () {
                 {
                     text: "Сохранить",
                     click: function () {
-                        console.log($node.attr('action') + "/ajax");
-                        $node.ajaxSubmit({url: $node.attr('action') + "/ajax", type: 'post'}, function (response) {
-                            console.log(response);//TODO handle response
-                        });
+                        if(title == "Добавление Тендера") {
+                            $node.submit();
+                        } else {
+                            var $popup = $(this);
+                            jQuery.ajax({
+                                url: $node.attr('action') + "/ajax",
+                                method: 'POST',
+                                data: $node.serialize()
+                            }).done(function (response) {
+                                $('#owner').prepend("<option value=" + response.id + ">" + response.name + "</<option>");
+                                $("#owner").combobox();
+                                fillForm($node);
+                                $popup.dialog('close');
+                            }).fail(function () {
+                                alert("Fail to add company. Try from company form.");
+                            });
+                        }
+
+
                     }
                 },
                 {

@@ -40,7 +40,6 @@ public class TenderController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String add(@RequestHeader(value = "referer", required = false) final String referer,
                       @ModelAttribute Tender tender) {
-        System.out.println(tender);
         tenderService.createOrUpdate(tender);
         return "redirect:" + referer;
     }
@@ -85,6 +84,7 @@ public class TenderController {
     @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
     public ModelAndView tenderDetail(Model model, @PathVariable Integer id) {
         model.addAttribute("member", new Member());
+        model.addAttribute("company", new Company());
         ModelAndView modelAndView = new ModelAndView("tender_detail");
         Tender tender = tenderService.get(id);
         List<Company> companyList = companyService.getAll();

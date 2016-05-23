@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/company")
@@ -39,18 +39,15 @@ public class CompanyController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestHeader(value = "referer", required = false) final String referer,
-                         @ModelAttribute Company company) {
+                      @ModelAttribute Company company) {
         companyService.createOrUpdate(company);
         return "redirect:" + referer;
     }
 
     @RequestMapping(value = "/update/ajax", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    List<Pair<Integer, String>> updateAjax(@ModelAttribute Company company) {
+    public @ResponseBody Company updateAjax(@ModelAttribute Company company) {
         companyService.createOrUpdate(company);
-        List<Pair<Integer, String>> response = companyService.getAll().stream().map(cmp -> new Pair(cmp.getId(), cmp.getName())).collect(Collectors.toList());
-        return response;
+        return company;
     }
 
 

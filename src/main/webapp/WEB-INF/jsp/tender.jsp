@@ -26,7 +26,6 @@
 
 
     <form id="filter-form" method="GET" action="${pageContext.request.contextPath}/tender/filter">
-
         <div class="input-group">
             <input type="text" class="form-control" name="fnumber" placeholder="Номер" value="${numberFilter}">
             <input type="text" class="form-control" name="fmember" placeholder="Участник" value="${memberFilter}">

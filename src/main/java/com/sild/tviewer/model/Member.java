@@ -18,12 +18,10 @@ public class Member {
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "company_id", nullable = false)
-    @Column(nullable = false)
     private Company company;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "tender_id", nullable = false)
-    @Column(nullable = false)
     private Tender tender;
 
     private Double offer;

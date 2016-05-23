@@ -25,7 +25,6 @@ public class Tender {
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "company_id", nullable = false)
-    @Column(nullable = false)
     private Company owner;
 
     @ManyToOne(cascade = CascadeType.DETACH)
