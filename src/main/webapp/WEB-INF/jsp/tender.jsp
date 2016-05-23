@@ -59,7 +59,7 @@
             <td><form:input path="number"/></td>
         </tr>
         <tr>
-            <td><form:label path="owner">Заказчик</form:label></br><a class="add_company_fast" herf="#">добавить</a></td>
+            <td><form:label path="owner">Заказчик</form:label> <a class="add_company_fast" herf="#">добавить</a></td>
             <td>
                 <form:select path="owner">
                     <form:option value="" label="Select ..."/>

@@ -1,6 +1,9 @@
 package com.sild.tviewer.init;
 
-import com.sild.tviewer.converter.*;
+import com.sild.tviewer.converter.CompanyConverter;
+import com.sild.tviewer.converter.PlatformConverter;
+import com.sild.tviewer.converter.StringTrimConverter;
+import com.sild.tviewer.converter.TenderConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +13,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;

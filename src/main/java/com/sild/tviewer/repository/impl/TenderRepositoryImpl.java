@@ -51,8 +51,8 @@ public class TenderRepositoryImpl implements TenderRepository {
     @SuppressWarnings("unchecked")
     public List<Tender> getByFilters(String number, TenderState tenderState, String memberName) {
         String hql;
-        if(tenderState == null) {
-            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() +" m WHERE " +
+        if (tenderState == null) {
+            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() + " m WHERE " +
                     "m.company.name like :name  " +
                     "AND m.tender.number like :number " +
                     "ORDER BY m.tender.number";
@@ -62,7 +62,7 @@ public class TenderRepositoryImpl implements TenderRepository {
                     .list()
                     ;
         } else {
-            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() +" m WHERE " +
+            hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() + " m WHERE " +
                     "m.company.name like :name  " +
                     "AND m.tender.state = :state " +
                     "AND m.tender.number like :number " +

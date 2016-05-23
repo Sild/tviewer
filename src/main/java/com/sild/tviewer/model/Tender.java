@@ -1,13 +1,11 @@
 package com.sild.tviewer.model;
 
-import org.hibernate.annotations.*;
-import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,10 +20,12 @@ public class Tender {
     @GeneratedValue
     private Integer id;
 
+    @Column(nullable = false)
     private String number;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "company_id", nullable = false)
+    @Column(nullable = false)
     private Company owner;
 
     @ManyToOne(cascade = CascadeType.DETACH)

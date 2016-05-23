@@ -31,7 +31,7 @@ $(function () {
                     text: "Сохранить",
                     click: function () {
                         console.log($node.attr('action') + "/ajax");
-                        $node.ajaxSubmit({url: $node.attr('action') + "/ajax", type: 'post'}, function(response) {
+                        $node.ajaxSubmit({url: $node.attr('action') + "/ajax", type: 'post'}, function (response) {
                             console.log(response);//TODO handle response
                         });
                     }
@@ -60,7 +60,7 @@ $(function () {
     }
 
     function setUpHandlers() {
-        $('.add_company_fast').click(function() {
+        $('.add_company_fast').click(function () {
             $COMPANY_FORM.dialog('open');
         });
 
@@ -115,7 +115,7 @@ $(function () {
         var $selected = $('option', this).filter(function () {
             return $(this).text() == str;
         })[0];
-        if($selected === undefined) {
+        if ($selected === undefined) {
             return;
         }
         $selected.selected = true;

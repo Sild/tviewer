@@ -37,7 +37,7 @@ public class TenderServiceImpl implements TenderService {
 
     public List<Tender> getByFilters(String number, String state, String memberName) {
         TenderState tenderState;
-        if(state.equals("")) {
+        if (state.equals("")) {
             tenderState = null;
         } else {
             tenderState = TenderState.valueOf(state);

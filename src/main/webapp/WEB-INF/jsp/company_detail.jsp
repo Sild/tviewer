@@ -126,7 +126,8 @@
                     value="${member.offer}"
                     /> (<fmt:formatNumber
                     value="${member.offer - member.tender.sum}"
-                    />)</td>
+                    />)
+            </td>
             <td class="member_winner">
                 <input type="checkbox" disabled
                         <c:if test="${member.winner}">

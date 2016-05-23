@@ -1,14 +1,12 @@
 package com.sild.tviewer.model;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import jdk.nashorn.internal.objects.annotations.Function;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +14,6 @@ import java.util.Set;
 @Table(name = "Companies")
 @SQLDelete(sql = "UPDATE Companies SET deleted = '1' WHERE id = ?")
 @Where(clause = "deleted <> '1'")
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Company {
 
 
@@ -24,6 +21,7 @@ public class Company {
     @GeneratedValue
     private Integer id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     private String comment;
