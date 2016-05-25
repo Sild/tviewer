@@ -1,15 +1,12 @@
 package com.sild.tviewer.model;
 
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "Members")
-@SQLDelete(sql = "UPDATE Members SET deleted = '1' WHERE id = ?")
-@Where(clause = "deleted <> '1'")
+//@SQLDelete(sql = "UPDATE Members SET deleted = '1' WHERE id = ?")
+//@Where(clause = "deleted <> '1'")
 public class Member {
 
     @Id
@@ -36,7 +33,7 @@ public class Member {
     @Column(name = "withdrow_date")
     private Date withdrowDate;
 
-    private boolean deleted;
+//    private boolean deleted;
 
     public Integer getId() {
         return id;
@@ -102,11 +99,11 @@ public class Member {
         this.withdrowDate = withdrowDate;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
+//    public boolean isDeleted() {
+//        return deleted;
+//    }
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+//    public void setDeleted(boolean deleted) {
+//        this.deleted = deleted;
+//    }
 }

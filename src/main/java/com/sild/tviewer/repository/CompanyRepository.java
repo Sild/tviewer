@@ -22,4 +22,5 @@ public interface CompanyRepository {
 
     public List<Company> getCustomersByName(String name);
 
+
 }

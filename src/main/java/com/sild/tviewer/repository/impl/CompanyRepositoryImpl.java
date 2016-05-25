@@ -1,6 +1,8 @@
 package com.sild.tviewer.repository.impl;
 
 import com.sild.tviewer.model.Company;
+import com.sild.tviewer.model.Member;
+import com.sild.tviewer.model.Tender;
 import com.sild.tviewer.repository.CompanyRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,5 +64,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
                 " c WHERE c.name like :name AND  size(c.tenderSet) > 0";
         return getCurrentSession().createQuery(hql).setString("name", "%" + name + "%").list();
     }
+
 
 }

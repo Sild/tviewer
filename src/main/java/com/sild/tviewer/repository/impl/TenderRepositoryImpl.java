@@ -54,7 +54,7 @@ public class TenderRepositoryImpl implements TenderRepository {
         if (tenderState == null) {
             hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() + " m WHERE " +
                     "m.company.name like :name  " +
-                    "AND m.tender.number like :number " +
+                    "AND m.tender.number like :number AND ( m.tender.deleted <> 1)" +
                     "ORDER BY m.tender.number";
             return getCurrentSession().createQuery(hql)
                     .setString("name", "%" + memberName + "%")
@@ -65,7 +65,7 @@ public class TenderRepositoryImpl implements TenderRepository {
             hql = "SELECT DISTINCT m.tender FROM " + Member.class.getName() + " m WHERE " +
                     "m.company.name like :name  " +
                     "AND m.tender.state = :state " +
-                    "AND m.tender.number like :number " +
+                    "AND m.tender.number like :number  AND (m.tender.deleted <> 1)" +
                     "ORDER BY m.tender.number";
             return getCurrentSession().createQuery(hql)
                     .setString("name", "%" + memberName + "%")
