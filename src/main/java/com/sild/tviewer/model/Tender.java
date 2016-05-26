@@ -56,10 +56,8 @@ public class Tender {
 
     private boolean liked;
 
-    @Where(clause = "deleted <> '1")
     private boolean deleted;
 
-    //    @Where(clause = "deleted <> '1'")
     @OneToMany(mappedBy = "tender", orphanRemoval = true)
     @OrderBy("offer ASC")
     @LazyCollection(LazyCollectionOption.EXTRA)

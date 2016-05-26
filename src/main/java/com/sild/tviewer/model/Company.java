@@ -32,8 +32,7 @@ public class Company {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", orphanRemoval = true)
     @OrderBy("id ASC")
-    @LazyCollection(LazyCollectionOption.TRUE)
-    @Where(clause = "deleted <> '1'")
+    @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Member> memberSet = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", orphanRemoval = true)
