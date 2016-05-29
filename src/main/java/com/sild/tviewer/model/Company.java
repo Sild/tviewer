@@ -17,6 +17,8 @@ import java.util.Set;
 public class Company {
 
 
+
+
     @Id
     @GeneratedValue
     private Integer id;
