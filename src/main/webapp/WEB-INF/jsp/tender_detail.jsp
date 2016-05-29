@@ -80,7 +80,7 @@
            action="${pageContext.request.contextPath}/member/update" cssStyle="display: none">
     <table class="table table-sm">
         <tr>
-            <td>Компания <a class="add_company_fast" style="cursor: pointer" herf="#">добавить</a></td>
+            <td>Компания <a class="add_company_fast" style="cursor: pointer;color: #337ab7;" herf="#">добавить</a></td>
             <td>
                 <form:select path="company">
                     <form:option value="" label="Select ..."/>

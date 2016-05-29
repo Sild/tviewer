@@ -23,6 +23,8 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+
+
     @InitBinder
     public void DateBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");

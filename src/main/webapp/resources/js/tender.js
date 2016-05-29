@@ -110,6 +110,7 @@ $(function () {
         $form.find('#id').val(id);
         $form.find('#number').val(number);
         $form.find('#owner').labselect(owner);
+        $form.find('.ui-autocomplete-input').focus().val(owner);
         $form.find('#platform').labselect(platform);
         $form.find('#sum').val(sum);
         $form.find('#currency').labselect(currency);

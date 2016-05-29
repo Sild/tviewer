@@ -98,7 +98,8 @@ $(function () {
 
     var fillForm = function ($form, id, company, offer, winner, comment, submitDate, withdrowDate) {
         $form.find('#id').val(id);
-        $form.find('#company').labselect(company); //TODO not always work correctly. Check&fix
+        $form.find('#company').labselect(company);
+        $form.find('.ui-autocomplete-input').focus().val(company);
         $form.find('#offer').val(offer);
         $form.find('[name=winner]').prop('checked', winner);
         $form.find('#comment').val(comment);
