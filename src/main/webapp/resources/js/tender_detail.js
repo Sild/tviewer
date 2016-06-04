@@ -9,6 +9,7 @@ $(function () {
     setUpDatepicker($(".datepicker"));
     setUpHandlers();
     $('table').tablesorter();
+    $('#offer-order').trigger('click');
 
 
     function setUpSelectAutocomplete() {
@@ -83,12 +84,13 @@ $(function () {
             var row = $(this).closest("tr");
             var id = row.data('id');
             var company = $.trim(row.find('.member_company').text());
+            var allowed = row.find('.member_allowed>input[type="checkbox"]').prop('checked');
             var offer = $.trim(row.find('.member_offer').text()).replace(/,/g, '');
             var winner = row.find('.member_winner>input[type="checkbox"]').prop('checked');
             var comment = $.trim(row.find('.member_comment').text());
             var submitDate = $.trim(row.find('.member_submitDate').text());
             var withdrowDate = $.trim(row.find('.member_withdrowDate').text());
-            fillForm($FORM, id, company, offer, winner, comment, submitDate, withdrowDate);
+            fillForm($FORM, id, company, allowed, offer, winner, comment, submitDate, withdrowDate);
             $('#show_update_member_form').trigger('click');
         });
 
@@ -96,9 +98,10 @@ $(function () {
     }
 
 
-    var fillForm = function ($form, id, company, offer, winner, comment, submitDate, withdrowDate) {
+    var fillForm = function ($form, id, company, allowed, offer, winner, comment, submitDate, withdrowDate) {
         $form.find('#id').val(id);
         $form.find('#company').labselect(company);
+        $form.find('[name=allowed]').prop('checked', allowed);
         $form.find('.ui-autocomplete-input').focus().val(company);
         $form.find('#offer').val(offer);
         $form.find('[name=winner]').prop('checked', winner);

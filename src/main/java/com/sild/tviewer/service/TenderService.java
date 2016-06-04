@@ -1,8 +1,10 @@
 package com.sild.tviewer.service;
 
 import com.sild.tviewer.model.Tender;
+import com.sild.tviewer.model.filter.TenderFilter;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Dmitry Korchagin.
@@ -12,10 +14,10 @@ public interface TenderService {
 
     public Tender get(int id);
 
+    public List<Tender> get(TenderFilter filter);
+
     public void delete(int id);
 
     public List<Tender> getAll();
-
-    public List<Tender> getByFilters(String number, String state, String memberName);
 
 }

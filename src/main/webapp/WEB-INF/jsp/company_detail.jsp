@@ -88,14 +88,15 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
-        <th>тендер</th>
-        <th>сумма тендера</th>
-        <th>сумма победителя</th>
-        <th>предложение</th>
-        <th>победитель</th>
-        <th>комментарий</th>
-        <th>подал</th>
-        <th>отозвал</th>
+        <th>Тендер</th>
+        <th>Заказчик</th>
+        <th>Сумма Тендера</th>
+        <th>Сумма Победителя</th>
+        <th>Предложение</th>
+        <th>Победитель</th>
+        <th>Комментарий</th>
+        <th>Подал</th>
+        <th>Отозвал</th>
     </tr>
     </thead>
     <tbody>
@@ -104,6 +105,9 @@
         <tr class="member-info" style="background-color: ${member.company.color}">
             <td class="member_tender"><a
                     href="${pageContext.request.contextPath}/tender/${member.tender.id}/detail">${member.tender.number}</a>
+            </td>
+            <td class="member_tender_owner"><a
+                    href="${pageContext.request.contextPath}/company/${member.tender.owner.id}/detail">${member.tender.owner.name}</a>
             </td>
             <td class="member_tender_sum"><fmt:formatNumber
                     value="${member.tender.sum}"
@@ -115,18 +119,18 @@
                                 value="${tenderMember.offer}"
                                 />
 
-                        (<fmt:formatNumber
-                            value="${tenderMember.offer - member.tender.sum}"
-                            />)
+                        (<fmt:formatNumber pattern="##.##"
+                            value="${tenderMember.offer / member.tender.sum * 100}"
+                            />%)
                     </c:if>
                 </c:forEach>
 
             </td>
             <td class="member_offer"><fmt:formatNumber
                     value="${member.offer}"
-                    /> (<fmt:formatNumber
-                    value="${member.offer - member.tender.sum}"
-                    />)
+                    /> (<fmt:formatNumber  pattern="##.##"
+                    value="${member.offer / member.tender.sum * 100}"
+                    />%)
             </td>
             <td class="member_winner">
                 <input type="checkbox" disabled

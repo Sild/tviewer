@@ -15,20 +15,7 @@
 
 <button id="show_update_platform_form" class="btn btn-success">Добавить площадку</button>
 
-<form:form method="POST" class="update_platform_form" modelAttribute="platform"
-           action="${pageContext.request.contextPath}/platform/update" cssStyle="display: none">
-    <table class="table table-sm">
-        <tr>
-            <td>Название</td>
-            <td><form:input path="name"/></td>
-        </tr>
-        <tr>
-            <td>Сайт</td>
-            <td><form:input path="site"/></td>
-        </tr>
-    </table>
-    <form:hidden path="id"/>
-</form:form>
+<jsp:include page="form/platform.jsp"/>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">

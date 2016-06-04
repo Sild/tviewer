@@ -7,9 +7,9 @@
     width: 20%
 }
 
-.input-group {
-    width: 70%;
-}
+/*.input-group {*/
+    /*width: 87%;*/
+/*}*/
 
 .input-group .form-control {
     width: 33%;
@@ -28,7 +28,15 @@
     float: left;
 }
 
+#tender_filter_form .input-group .form-control {
+    width: 20%;
+}
+
 .add_company_fast {
     cursor: pointer;
     color: #337ab7;
+}
+
+#filter-form > .input-group {
+    display: inline-flex;
 }

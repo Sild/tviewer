@@ -25,97 +25,13 @@
     <input type="button" id="show_update_tender_form" class="btn btn-success" value="Добавить тендер"/>
 
 
-    <form id="filter-form" method="GET" action="${pageContext.request.contextPath}/tender/filter">
-        <div class="input-group">
-            <input type="text" class="form-control" name="fnumber" placeholder="Номер" value="${numberFilter}">
-            <input type="text" class="form-control" name="fmember" placeholder="Участник" value="${memberFilter}">
-            <select name="fstate" class="form-control">
-                <option value="">Статус</option>
-                <c:forEach var="state" items="${TenderState}">
-                    <option
-                            <c:if test="${state == stateFilter}">
-                                selected
-                            </c:if>
-                            value="${state}">
-                            ${state.value}
-                    </option>
-                </c:forEach>
-            </select>
-        <span class="input-group-btn">
-          <button class="btn btn-secondary search-btn glyphicon glyphicon-search" type="submit"></button>
-        </span>
-        </div>
+    <jsp:include page="form/tender_filter.jsp"/>
 
-    </form>
 
 </div>
 
-<form:form method="POST" class="update_tender_form" modelAttribute="tender"
-           action="${pageContext.request.contextPath}/tender/update" cssStyle="display: none">
-    <table class="table table-sm">
-        <tr>
-            <td><form:label path="number">Номер</form:label></td>
-            <td><form:input path="number"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="owner">Заказчик</form:label> <a class="add_company_fast" herf="#">добавить</a></td>
-            <td>
-                <form:select path="owner">
-                    <form:option value="" label="Select ..."/>
-                    <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
-                </form:select>
-            </td>
-        </tr>
+<jsp:include page="form/tender.jsp"/>
 
-        <tr>
-            <td><form:label path="sum">Сумма</form:label></td>
-            <td><form:input path="sum"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="currency">Валюта</form:label></td>
-            <td><form:select path="currency" items="${CurrencyType}"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="state">Состояние</form:label></td>
-            <td><form:select path="state" items="${TenderState}" itemLabel="value"/></td>
-
-        </tr>
-        <tr>
-            <td><form:label path="direction">Направление</form:label></td>
-            <td><form:input path="direction"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="nomenclature">Номенклатура</form:label></td>
-            <td><form:input path="nomenclature"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="comment">Комментарий</form:label></td>
-            <td><form:input path="comment"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="tradeForm">Формат</form:label></td>
-            <td><form:input path="tradeForm"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="startDate">Начало</form:label></td>
-            <td><form:input class="datepicker" path="startDate"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="endDate">Окончание</form:label></td>
-            <td><form:input class="datepicker" path="endDate"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="platform">Площадка</form:label></td>
-            <td><form:select path="platform" items="${platformList}" itemLabel="name" itemValue="id"/>
-            </td>
-        </tr>
-        <tr>
-            <td><form:label path="liked">Избранное</form:label></td>
-            <td><form:checkbox path="liked"/></td>
-        </tr>
-    </table>
-    <form:hidden path="id"/>
-</form:form>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
@@ -146,7 +62,7 @@
                                            target="_blank">${tender.platform.name}</a></td>
 
             <td class="tender_member_count"><a
-                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail">посмотреть ${fn:length(tender.memberSet)}</a>
+                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail" target="_blank">посмотреть ${fn:length(tender.memberSet)}</a>
             </td>
 
             <td class="tender_sum"><fmt:formatNumber

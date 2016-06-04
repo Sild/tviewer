@@ -60,6 +60,7 @@ public class CompanyController {
         return "redirect:/company";
     }
 
+    //TODO add owner name, filter by owner name
     @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("company_detail");

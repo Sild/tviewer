@@ -2,6 +2,7 @@ package com.sild.tviewer.service.impl;
 
 import com.sild.tviewer.model.Tender;
 import com.sild.tviewer.model.TenderState;
+import com.sild.tviewer.model.filter.TenderFilter;
 import com.sild.tviewer.repository.TenderRepository;
 import com.sild.tviewer.service.TenderService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TenderServiceImpl implements TenderService {
@@ -35,6 +37,10 @@ public class TenderServiceImpl implements TenderService {
         return repository.get(id);
     }
 
+    public List<Tender> get(TenderFilter filter) {
+        return repository.get(filter);
+    }
+
     public void delete(int id) {
         repository.delete(id);
     }
@@ -43,14 +49,4 @@ public class TenderServiceImpl implements TenderService {
         return repository.getAll();
     }
 
-    public List<Tender> getByFilters(String number, String state, String memberName) {
-        TenderState tenderState;
-        if (state.equals("")) {
-            tenderState = null;
-        } else {
-            tenderState = TenderState.valueOf(state);
-        }
-
-        return repository.getByFilters(number, tenderState, memberName);
-    }
 }

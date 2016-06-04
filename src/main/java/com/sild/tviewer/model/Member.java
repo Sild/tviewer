@@ -1,5 +1,7 @@
 package com.sild.tviewer.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,7 +10,6 @@ import java.util.Date;
 //@SQLDelete(sql = "UPDATE Members SET deleted = '1' WHERE id = ?")
 //@Where(clause = "deleted <> '1'")
 public class Member {
-
     @Id
     @GeneratedValue
     private Integer id;
@@ -20,6 +21,8 @@ public class Member {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "tender_id", nullable = false)
     private Tender tender;
+
+    private Boolean allowed = true;
 
     private Double offer;
 
@@ -34,6 +37,15 @@ public class Member {
     private Date withdrowDate;
 
 //    private boolean deleted;
+
+
+    public Boolean getAllowed() {
+        return allowed;
+    }
+
+    public void setAllowed(Boolean allowed) {
+        this.allowed = allowed;
+    }
 
     public Integer getId() {
         return id;

@@ -1,6 +1,7 @@
 package com.sild.tviewer.controller;
 
 import com.sild.tviewer.model.*;
+import com.sild.tviewer.model.filter.TenderFilter;
 import com.sild.tviewer.service.CompanyService;
 import com.sild.tviewer.service.PlatformService;
 import com.sild.tviewer.service.TenderService;
@@ -52,29 +53,23 @@ public class TenderController {
 
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
-        return filterList(model, "", "", "");
+        return filterList(model, new TenderFilter());
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public ModelAndView filterList(Model model,
-                                   @RequestParam(value = "fnumber") String numberFilter,
-                                   @RequestParam(value = "fmember") String memberFilter,
-                                   @RequestParam(value = "fstate") String stateFilter) {
+                                   @ModelAttribute TenderFilter tenderFilter) {
+        logger.info("apply filter: {}", tenderFilter);
         model.addAttribute("tender", new Tender());
         model.addAttribute("company", new Company());
+        model.addAttribute("tender_filter", new TenderFilter());
         ModelAndView modelAndView = new ModelAndView("tender");
-        List<Tender> tenderList = tenderService.getByFilters(numberFilter, stateFilter, memberFilter);
-        List<Company> companyList = companyService.getAll();
-        List<Platform> platformList = platformService.getAll();
-
-        modelAndView.addObject("tenderList", tenderList);
-        modelAndView.addObject("companyList", companyList);
-        modelAndView.addObject("platformList", platformList);
+        modelAndView.addObject("tenderList", tenderService.get(tenderFilter));
+        modelAndView.addObject("companyList", companyService.getAll());
+        modelAndView.addObject("platformList", platformService.getAll());
         modelAndView.addObject("TenderState", TenderState.values());
         modelAndView.addObject("CurrencyType", CurrencyType.values());
-        modelAndView.addObject("numberFilter", numberFilter);
-        modelAndView.addObject("memberFilter", memberFilter);
-        modelAndView.addObject("stateFilter", stateFilter);
+        modelAndView.addObject("TenderFilter", tenderFilter);
         return modelAndView;
 
     }

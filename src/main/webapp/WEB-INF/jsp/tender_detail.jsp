@@ -9,6 +9,9 @@
 
 <head>
     <jsp:include page="common/head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender_detail.css">
+
+
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/tender_detail.js"></script>
@@ -41,7 +44,7 @@
     <tr class="tender-info">
         <td class="tender_number">${tender.number}</td>
         <td class="tender_owner"><a
-                href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail">${tender.owner.name}</a>
+                href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail" target="_blank">${tender.owner.name} </a>
         </td>
         <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                        target="_blank">${tender.platform.name}</a></td>
@@ -76,49 +79,14 @@
 <h2>Участники</h2>
 <button id="show_update_member_form" class="btn btn-success">Добавить участника</button>
 
-<form:form method="POST" class="update_member_form" modelAttribute="member"
-           action="${pageContext.request.contextPath}/member/update" cssStyle="display: none">
-    <table class="table table-sm">
-        <tr>
-            <td>Компания <a class="add_company_fast" style="cursor: pointer;color: #337ab7;" herf="#">добавить</a></td>
-            <td>
-                <form:select path="company">
-                    <form:option value="" label="Select ..."/>
-                    <form:options items="${companyList}" itemLabel="name" itemValue="id"/>
-                </form:select>
-            </td>
-        </tr>
-        <tr>
-            <td>Предложение</td>
-            <td><form:input path="offer"/></td>
-        </tr>
-        <tr>
-            <td>Победитель</td>
-            <td><form:checkbox path="winner"/></td>
-        </tr>
-        <tr>
-            <td>Комменатирй</td>
-            <td><form:input path="comment"/></td>
-        </tr>
-        <tr>
-            <td>Подал</td>
-            <td><form:input class="datepicker" path="submitDate"/></td>
-        </tr>
-        <tr>
-            <td>Отозвал</td>
-            <td><form:input class="datepicker" path="withdrowDate"/></td>
-        </tr>
-    </table>
-    <form:hidden path="id"/>
-    <form:hidden path="tender" value="${tender.id}"/>
-</form:form>
-
+<jsp:include page="form/member.jsp"/>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
         <th>Название</th>
-        <th>Предложение</th>
+        <th>Допущен</th>
+        <th id="offer-order">Предложение</th>
         <th>Победитель</th>
         <th>Комментарий</th>
         <th>Подал</th>
@@ -128,10 +96,19 @@
     </thead>
     <tbody>
     <c:forEach var="member" items="${tender.memberSet}">
-
-        <tr class="member-info" data-id="${member.id}"> <!--style="background-color: ${member.company.color}"-->
+        <tr class="member-info
+        <c:if test="${member.winner}">
+                    winner
+                    </c:if>" data-id="${member.id}">
             <td class="member_company"><a
-                    href="${pageContext.request.contextPath}/company/${member.company.id}/detail">${member.company.name}</a>
+                    href="${pageContext.request.contextPath}/company/${member.company.id}/detail" target="_blank">${member.company.name}</a>
+            </td>
+            <td class="member_allowed">
+                <input type="checkbox" disabled
+                        <c:if test="${member.allowed}">
+                            checked
+                        </c:if>
+                        />
             </td>
             <td class="member_offer"><fmt:formatNumber
                     value="${member.offer}"

@@ -2,6 +2,7 @@ package com.sild.tviewer.repository;
 
 import com.sild.tviewer.model.Tender;
 import com.sild.tviewer.model.TenderState;
+import com.sild.tviewer.model.filter.TenderFilter;
 
 import java.util.List;
 
@@ -17,6 +18,6 @@ public interface TenderRepository {
 
     public List<Tender> getAll();
 
-    public List<Tender> getByFilters(String number, TenderState tenderState, String memberName);
+    public List<Tender> get(TenderFilter filter);
 
 }
