@@ -10,3 +10,8 @@
 .control-panel {
     margin-bottom: 10px;
 }
+
+.edit_entity_btn {
+    cursor: pointer;
+    margin-right: 15px;
+}

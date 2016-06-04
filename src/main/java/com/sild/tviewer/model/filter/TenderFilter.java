@@ -14,6 +14,9 @@ public class TenderFilter {
 
     private String owner = "";
 
+    private String direction = ""; //TODO update repo to apply
+
+
     private Boolean liked = false;
 
     @Override

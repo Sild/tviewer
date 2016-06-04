@@ -52,7 +52,7 @@
                 value="${tender.sum}"
                 /></td>
         <td class="tender_currency">${tender.currency}</td>
-        <td class="tender_state">${tender.state}</td>
+        <td class="tender_state">${tender.state.value}</td>
         <td class="tender_direction">${tender.direction}</td>
         <td class="tender_nomenclature">${tender.nomenclature}</td>
         <td class="tender_comment">${tender.comment}</td>
@@ -126,12 +126,11 @@
             <td class="member_withdrowDate"><fmt:formatDate value="${member.withdrowDate}" type="both"
                                                             pattern="dd-MM-yyyy"/></td>
             <td>
-
-                <button class="edit_entity_btn btn btn-warning">Редактировать</button>
+                <span class="glyphicon glyphicon-edit edit_entity_btn"></span>
                 <a href="${pageContext.request.contextPath}/member/${member.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить участника <c:out
                            value="${member.company.name}"/>?')) return false;">
-                    <button class="btn btn-danger">Удалить</button>
+                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
                 </a>
             </td>
         </tr>

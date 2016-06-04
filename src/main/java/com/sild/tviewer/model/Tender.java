@@ -56,10 +56,12 @@ public class Tender {
 
     private boolean liked;
 
+    //TODO add add_time field
+
     private boolean deleted;
 
     @OneToMany(mappedBy = "tender", orphanRemoval = true)
-    @OrderBy("offer ASC")
+    @OrderBy("allowed DESC, offer ASC")
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Set<Member> memberSet = new HashSet<>();
 

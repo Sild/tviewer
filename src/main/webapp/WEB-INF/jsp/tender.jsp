@@ -36,6 +36,8 @@
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
+        <th>Начало</th>
+        <th>Окончание</th>
         <th>Номер</th>
         <th>Площадка</th>
         <th>Участники</th>
@@ -46,8 +48,6 @@
         <th>Номенклатура</th>
         <th>Комментарии</th>
         <th>Форма торгов</th>
-        <th>Начало</th>
-        <th>Окончание</th>
         <th>Заказчик</th>
         <th>Избранное</th>
         <th>Действия</th>
@@ -57,12 +57,16 @@
     <tbody>
     <c:forEach var="tender" items="${tenderList}">
         <tr class="tender-info" data-id="${tender.id}">
+            <td class="tender_start_date"><fmt:formatDate value="${tender.startDate}" type="both"
+                                                          pattern="dd-MM-yyyy"/></td>
+            <td class="tender_end_date"><fmt:formatDate value="${tender.endDate}" type="both"
+                                                        pattern="dd-MM-yyyy"/></td>
             <td class="tender_number">${tender.number}</td>
             <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                            target="_blank">${tender.platform.name}</a></td>
 
             <td class="tender_member_count"><a
-                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail" target="_blank">посмотреть ${fn:length(tender.memberSet)}</a>
+                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail" target="_blank">${fn:length(tender.memberSet)}</a>
             </td>
 
             <td class="tender_sum"><fmt:formatNumber
@@ -74,10 +78,7 @@
             <td class="tender_nomenclature">${tender.nomenclature}</td>
             <td class="tender_comment">${tender.comment}</td>
             <td class="tender_trade_form">${tender.tradeForm}</td>
-            <td class="tender_start_date"><fmt:formatDate value="${tender.startDate}" type="both"
-                                                          pattern="dd-MM-yyyy"/></td>
-            <td class="tender_end_date"><fmt:formatDate value="${tender.endDate}" type="both"
-                                                        pattern="dd-MM-yyyy"/></td>
+
             <td class="tender_owner"><a href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
                                         target="_blank">${tender.owner.name}</a></td>
             <td class="tender_liked">
@@ -90,12 +91,13 @@
 
 
             <td>
-                <button class="edit_tender_btn btn btn-warning">Редактировать</button>
+                <span class="glyphicon glyphicon-edit edit_tender_btn"></span>
+                <%--<button class="edit_tender_btn btn btn-warning">Редактировать</button>--%>
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить тендер ${tender.number}?')) return false;">
-                    <button class="btn btn-danger">Удалить</button>
+                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
                 </a>
-
+<!--TODO replace Редактировать&Удалить to bootstrap icons -->
             </td>
         </tr>
     </c:forEach>

@@ -6,6 +6,8 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/platform.css">
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/platform.js"></script>
     <title>platform</title>
 </head>
@@ -22,7 +24,7 @@
     <tr>
         <th>Название</th>
         <th>Сайт</th>
-        <th>Размещено Тендеров</th>
+        <%--<th>Размещено Тендеров</th>--%>
         <th>Действия</th>
     </tr>
     </thead>
@@ -31,13 +33,13 @@
         <tr data-id="${platform.id}">
             <td class="platform_name">${platform.name}</td>
             <td class="platform_site"><a href="${platform.site}" target="_blank">${platform.site}</a></td>
-            <td class="platform_tenders">${fn:length(platform.tenderSet)}</td>
+            <%--<td class="platform_tenders">${fn:length(platform.tenderSet)}</td>--%>
             <td>
-                <button class="edit_platform_btn btn btn-warning">Редактировать</button>
+                <span class="glyphicon glyphicon-edit edit_platform_btn"></span>
                 <a href="${pageContext.request.contextPath}/platform/${platform.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить платформу <c:out
                            value="${platform.name}"/>?')) return false;">
-                    <button class="btn btn-danger">Удалить</button>
+                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
                 </a>
             </td>
         </tr>

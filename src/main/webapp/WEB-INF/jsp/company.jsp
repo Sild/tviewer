@@ -56,11 +56,11 @@
                 <div class="company_color" style="background-color: ${company.color}; width: 30px;">&nbsp;</div>
             </td>
             <td>
-                <button class="edit_entity_btn btn btn-warning">Редактировать</button>
+                <span class="glyphicon glyphicon-edit edit_entity_btn"></span>
                 <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
                    onclick="if(!confirm('Вы действительно ходите удалить компанию <c:out
                            value="${company.name}"/>?')) return false;">
-                    <button class="btn btn-danger">Удалить</button>
+                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
                 </a>
 
 

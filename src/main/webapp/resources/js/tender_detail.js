@@ -9,7 +9,6 @@ $(function () {
     setUpDatepicker($(".datepicker"));
     setUpHandlers();
     $('table').tablesorter();
-    $('#offer-order').trigger('click');
 
 
     function setUpSelectAutocomplete() {

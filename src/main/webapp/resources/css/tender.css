@@ -40,3 +40,8 @@
 #filter-form > .input-group {
     display: inline-flex;
 }
+
+.edit_tender_btn {
+    cursor: pointer;
+    margin-right: 15px;
+}
