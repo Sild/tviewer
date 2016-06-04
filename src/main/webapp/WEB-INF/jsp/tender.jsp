@@ -95,9 +95,8 @@
                 <%--<button class="edit_tender_btn btn btn-warning">Редактировать</button>--%>
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить тендер ${tender.number}?')) return false;">
-                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </a>
-<!--TODO replace Редактировать&Удалить to bootstrap icons -->
             </td>
         </tr>
     </c:forEach>

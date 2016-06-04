@@ -60,7 +60,7 @@
                 <a href="${pageContext.request.contextPath}/company/${company.id}/delete"
                    onclick="if(!confirm('Вы действительно ходите удалить компанию <c:out
                            value="${company.name}"/>?')) return false;">
-                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </a>
 
 

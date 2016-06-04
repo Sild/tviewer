@@ -58,7 +58,7 @@ public class TenderRepositoryImpl implements TenderRepository {
                     .append("AND t.number like :number ")
                     .append("AND t.owner.name like :ownerName ")
                     .append((filter.getLiked()?"AND t.liked = true ":""))
-                    .append("ORDER BY t.number");
+                    .append("ORDER BY t.addTime DESC");
             return getCurrentSession().createQuery(hql.toString())
                     .setString("ownerName", "%" + filter.getOwner() + "%")
                     .setString("number", "%" + filter.getNumber() + "%")
@@ -75,7 +75,7 @@ public class TenderRepositoryImpl implements TenderRepository {
                     .append("AND m.tender.owner.name like :ownerName ")
                     .append((filter.getLiked()?"AND m.tender.liked = true ":""))
                     .append("AND (m.tender.deleted <> 1) ")
-                    .append("ORDER BY m.tender.number");
+                    .append("ORDER BY m.tender.addTime DESC");
             return getCurrentSession().createQuery(hql.toString())
                     .setString("memberName", "%" + filter.getMember() + "%")
                     .setString("ownerName", "%" + filter.getOwner() + "%")

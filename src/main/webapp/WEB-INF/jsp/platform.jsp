@@ -39,7 +39,7 @@
                 <a href="${pageContext.request.contextPath}/platform/${platform.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить платформу <c:out
                            value="${platform.name}"/>?')) return false;">
-                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </a>
             </td>
         </tr>

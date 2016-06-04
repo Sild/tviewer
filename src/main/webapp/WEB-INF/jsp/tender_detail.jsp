@@ -130,7 +130,7 @@
                 <a href="${pageContext.request.contextPath}/member/${member.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить участника <c:out
                            value="${member.company.name}"/>?')) return false;">
-                    <span class="glyphicon glyphicon-remove edit_tender_btn"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </a>
             </td>
         </tr>

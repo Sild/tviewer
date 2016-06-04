@@ -57,6 +57,19 @@ public class Tender {
     private boolean liked;
 
     //TODO add add_time field
+    private Date addTime;
+    @PrePersist
+    private void onCreate() {
+        addTime = new Date();
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
     private boolean deleted;
 
