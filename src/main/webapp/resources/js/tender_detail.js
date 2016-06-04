@@ -18,7 +18,7 @@ $(function () {
     function setUpDialog($node, title) {
         $node.dialog({
             title: title,
-            height: 450,
+            height: 750,
             width: 520,
             autoOpen: false,
             close: function () {
@@ -58,7 +58,7 @@ $(function () {
             ],
             position: {
                 my: "center",
-                at: "center",
+                at: "top",
                 of: window
             }
         });

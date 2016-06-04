@@ -12,7 +12,7 @@ $(function () {
         $(stringSelector).dialog({
             title: "Добавление Площадки",
             height: 750,
-            width: 400,
+            width: 520,
             autoOpen: false,
             close: function () {
                 var edit_div = $(stringSelector);
