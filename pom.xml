@@ -10,10 +10,23 @@
         <hibernate.version>5.1.0.Final</hibernate.version>
         <mysql.connector.version>5.1.21</mysql.connector.version>
         <spring.version>4.2.5.RELEASE</spring.version>
+        <spring.security.version>4.0.3.RELEASE</spring.security.version>
         <jackson.version>2.7.3</jackson.version>
     </properties>
 
     <dependencies>
+        <!--spring security -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security</groupId>-->
+            <!--<artifactId>spring-security-web</artifactId>-->
+            <!--<version>${spring.security.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security</groupId>-->
+            <!--<artifactId>spring-security-config</artifactId>-->
+            <!--<version>${spring.security.version}</version>-->
+        <!--</dependency>-->
+
         <!-- logs -->
         <dependency>
             <groupId>org.slf4j</groupId>

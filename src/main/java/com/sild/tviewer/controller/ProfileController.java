@@ -10,14 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.lang.invoke.MethodHandles;
 
 @Controller
-public class RootController {
+public class ProfileController {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/profile"}, method = RequestMethod.GET)
     public ModelAndView showIndex() {
-        logger.debug("root request");
-        return new ModelAndView("root");
+        logger.debug("home request");
+        return new ModelAndView("profile");
     }
 
 }
