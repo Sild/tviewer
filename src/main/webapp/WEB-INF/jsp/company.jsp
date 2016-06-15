@@ -29,9 +29,11 @@
     </form>
 
 </div>
-
 <jsp:include page="form/company.jsp"/>
 
+<c:if test="${maxPage gt 1}">
+    <jsp:include page="common/paginator.jsp"/>
+</c:if>
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>

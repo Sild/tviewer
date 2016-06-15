@@ -1,5 +1,6 @@
 package com.sild.tviewer.controller;
 
+import com.sild.tviewer.Util;
 import com.sild.tviewer.model.Company;
 import com.sild.tviewer.service.impl.CompanyServiceImpl;
 import org.slf4j.Logger;
@@ -25,16 +26,23 @@ public class ProviderController {
     private CompanyServiceImpl companyService;
 
     @RequestMapping(value = "")
-    public ModelAndView list(Model model) {
-        return filterList(model, "");
+    public ModelAndView list(
+            Model model,
+            @RequestParam(required = false, value = "page") Integer page
+    ) {
+        return filterList(model, "", page);
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public ModelAndView filterList(Model model, @RequestParam(value = "name") String nameFilter) {
+    public ModelAndView filterList(
+            Model model,
+            @RequestParam(value = "name") String nameFilter,
+            @RequestParam(required = false, value = "page") Integer page
+    ) {
         model.addAttribute("company", new Company());
         ModelAndView modelAndView = new ModelAndView("company");
         List<Company> companyList = companyService.getProvidersByName(nameFilter);
-        modelAndView.addObject("companyList", companyList);
+        Util.addPaginator(modelAndView, companyList, "companyList", page);
         modelAndView.addObject("module", "provider");
         modelAndView.addObject("nameFilter", nameFilter);
         return modelAndView;

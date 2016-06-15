@@ -1,5 +1,6 @@
 package com.sild.tviewer.controller;
 
+import com.sild.tviewer.Util;
 import com.sild.tviewer.model.*;
 import com.sild.tviewer.model.filter.TenderFilter;
 import com.sild.tviewer.service.CompanyService;
@@ -52,19 +53,25 @@ public class TenderController {
     }
 
     @RequestMapping(value = "")
-    public ModelAndView list(Model model) {
-        return filterList(model, new TenderFilter());
+    public ModelAndView list(
+            Model model,
+            @RequestParam(required = false, value = "page") Integer page
+    ) {
+        return filterList(model, new TenderFilter(), page);
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public ModelAndView filterList(Model model,
-                                   @ModelAttribute TenderFilter tenderFilter) {
+    public ModelAndView filterList(
+            Model model,
+            @ModelAttribute TenderFilter tenderFilter,
+            @RequestParam(required = false, value = "page") Integer page
+    ) {
         logger.info("apply filter: {}", tenderFilter);
         model.addAttribute("tender", new Tender());
         model.addAttribute("company", new Company());
         model.addAttribute("tender_filter", new TenderFilter());
         ModelAndView modelAndView = new ModelAndView("tender");
-        modelAndView.addObject("tenderList", tenderService.get(tenderFilter));
+        Util.addPaginator(modelAndView, tenderService.get(tenderFilter), "tenderList", page);
         modelAndView.addObject("companyList", companyService.getAll());
         modelAndView.addObject("platformList", platformService.getAll());
         modelAndView.addObject("TenderState", TenderState.values());
