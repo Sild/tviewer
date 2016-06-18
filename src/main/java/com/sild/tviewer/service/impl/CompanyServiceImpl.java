@@ -8,11 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class CompanyServiceImpl implements CompanyService {
+@Service("companyService.gwt")
+public class CompanyServiceImpl  implements CompanyService {
+
 
     @Autowired
     private CompanyRepository repository;
+
+    public String test() {
+        return "testvalue";
+    }
 
     public void createOrUpdate(Company company) {
         if (null == company.getId() || company.getId().equals("")) {
@@ -45,8 +50,6 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> getCustomersByName(String name) {
         return repository.getCustomersByName(name);
     }
-
-
 
 
 }

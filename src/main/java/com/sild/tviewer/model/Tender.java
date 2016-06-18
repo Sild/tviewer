@@ -1,11 +1,13 @@
 package com.sild.tviewer.model;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +16,7 @@ import java.util.Set;
 @Table(name = "Tenders")
 @SQLDelete(sql = "UPDATE Tenders SET deleted = '1' WHERE id = ?")
 @Where(clause = "deleted <> '1'")
-public class Tender {
+public class Tender implements IsSerializable {
 
     @Id
     @GeneratedValue
@@ -76,7 +78,7 @@ public class Tender {
     @OneToMany(mappedBy = "tender", orphanRemoval = true)
     @OrderBy("allowed DESC, offer ASC")
     @LazyCollection(LazyCollectionOption.EXTRA)
-    private Set<Member> memberSet = new HashSet<>();
+    private Set<Member> memberSet = new HashSet<Member>();
 
     public CurrencyType getCurrency() {
         return currency;

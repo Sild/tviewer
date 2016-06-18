@@ -20,6 +20,10 @@ import java.util.List;
 public class CompanyController {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    @RequestMapping(value = "/gwt", method = { RequestMethod.GET, RequestMethod.POST })
+    public String gwtCompany() {
+        return "GwtCompany";
+    }
 
     @Autowired
     private CompanyServiceImpl companyService;

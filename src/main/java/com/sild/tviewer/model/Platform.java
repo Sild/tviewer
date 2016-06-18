@@ -28,7 +28,7 @@ public class Platform {
     @OneToMany(mappedBy = "platform", orphanRemoval = true)
     @Where(clause = "deleted <> '1'")
     @LazyCollection(LazyCollectionOption.EXTRA)
-    private Set<Tender> tenderSet = new HashSet<>();
+    private Set<Tender> tenderSet = new HashSet<Tender>();
 
 
     public Set<Tender> getTenderSet() {

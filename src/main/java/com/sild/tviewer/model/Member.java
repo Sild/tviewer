@@ -1,15 +1,17 @@
 package com.sild.tviewer.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Members")
 //@SQLDelete(sql = "UPDATE Members SET deleted = '1' WHERE id = ?")
 //@Where(clause = "deleted <> '1'")
-public class Member {
+public class Member implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
@@ -38,6 +40,8 @@ public class Member {
 
 //    private boolean deleted;
 
+    public Member() {
+    }
 
     public Boolean getAllowed() {
         return allowed;

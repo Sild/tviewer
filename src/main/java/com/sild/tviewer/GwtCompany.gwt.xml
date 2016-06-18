@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='gwtcompany'>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name='com.sild.tviewer.model'/>
+    <inherits name='com.sild.tviewer.service'/>
+    <inherits name='com.sild.tviewer.repository'/>
+    <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+    <entry-point class='com.sild.tviewer.client.GwtCompany'/>
+    <source path='client'/>
+</module>
