@@ -7,7 +7,6 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -60,6 +59,12 @@ public class Tender implements IsSerializable {
 
     //TODO add add_time field
     private Date addTime;
+    private boolean deleted;
+    @OneToMany(mappedBy = "tender", orphanRemoval = true)
+    @OrderBy("allowed DESC, offer ASC")
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    private Set<Member> memberSet = new HashSet<Member>();
+
     @PrePersist
     private void onCreate() {
         addTime = new Date();
@@ -72,13 +77,6 @@ public class Tender implements IsSerializable {
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
     }
-
-    private boolean deleted;
-
-    @OneToMany(mappedBy = "tender", orphanRemoval = true)
-    @OrderBy("allowed DESC, offer ASC")
-    @LazyCollection(LazyCollectionOption.EXTRA)
-    private Set<Member> memberSet = new HashSet<Member>();
 
     public CurrencyType getCurrency() {
         return currency;

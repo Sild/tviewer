@@ -30,7 +30,7 @@ $(function () {
                 {
                     text: "Сохранить",
                     click: function () {
-                        if(title == "Добавление Тендера") {
+                        if (title == "Добавление Тендера") {
                             $node.submit();
                         } else {
                             var $popup = $(this);

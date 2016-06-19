@@ -33,7 +33,7 @@
         <tr data-id="${platform.id}">
             <td class="platform_name">${platform.name}</td>
             <td class="platform_site"><a href="${platform.site}" target="_blank">${platform.site}</a></td>
-            <%--<td class="platform_tenders">${fn:length(platform.tenderSet)}</td>--%>
+                <%--<td class="platform_tenders">${fn:length(platform.tenderSet)}</td>--%>
             <td>
                 <span class="glyphicon glyphicon-edit edit_platform_btn"></span>
                 <a href="${pageContext.request.contextPath}/platform/${platform.id}/delete"

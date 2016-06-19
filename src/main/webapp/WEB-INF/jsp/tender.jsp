@@ -68,7 +68,8 @@
                                            target="_blank">${tender.platform.name}</a></td>
 
             <td class="tender_member_count"><a
-                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail" target="_blank">${fn:length(tender.memberSet)}</a>
+                    href="${pageContext.request.contextPath}/tender/${tender.id}/detail"
+                    target="_blank">${fn:length(tender.memberSet)}</a>
             </td>
 
             <td class="tender_sum"><fmt:formatNumber
@@ -94,7 +95,7 @@
 
             <td>
                 <span class="glyphicon glyphicon-edit edit_tender_btn"></span>
-                <%--<button class="edit_tender_btn btn btn-warning">Редактировать</button>--%>
+                    <%--<button class="edit_tender_btn btn btn-warning">Редактировать</button>--%>
                 <a href="${pageContext.request.contextPath}/tender/${tender.id}/delete"
                    onclick="if(!confirm('Вы действительно хотите удалить тендер ${tender.number}?')) return false;">
                     <span class="glyphicon glyphicon-remove"></span>

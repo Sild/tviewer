@@ -44,7 +44,8 @@
     <tr class="tender-info">
         <td class="tender_number">${tender.number}</td>
         <td class="tender_owner"><a
-                href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail" target="_blank">${tender.owner.name} </a>
+                href="${pageContext.request.contextPath}/company/${tender.owner.id}/detail"
+                target="_blank">${tender.owner.name} </a>
         </td>
         <td class="tender_platform"><a href="${pageContext.request.contextPath}/platform/${tender.platform.id}"
                                        target="_blank">${tender.platform.name}</a></td>
@@ -101,7 +102,8 @@
                     winner
                     </c:if>" data-id="${member.id}">
             <td class="member_company"><a
-                    href="${pageContext.request.contextPath}/company/${member.company.id}/detail" target="_blank">${member.company.name}</a>
+                    href="${pageContext.request.contextPath}/company/${member.company.id}/detail"
+                    target="_blank">${member.company.name}</a>
             </td>
             <td class="member_allowed">
                 <input type="checkbox" disabled

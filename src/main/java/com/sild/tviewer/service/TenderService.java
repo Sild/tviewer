@@ -4,7 +4,6 @@ import com.sild.tviewer.model.Tender;
 import com.sild.tviewer.model.filter.TenderFilter;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Dmitry Korchagin.

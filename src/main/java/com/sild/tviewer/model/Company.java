@@ -1,7 +1,6 @@
 package com.sild.tviewer.model;
 
 
-import com.google.gwt.user.client.rpc.IsSerializable;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.SQLDelete;

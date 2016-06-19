@@ -1,10 +1,10 @@
 package com.sild.tviewer.init;
 
-import com.sild.tviewer.service.impl.CompanyServiceImpl;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
@@ -32,10 +32,6 @@ public class Initializer implements WebApplicationInitializer {
                 container.addServlet("dispatcher", new DispatcherServlet(rootContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
-//
-//        ServletRegistration.Dynamic companyRPC = container.addServlet("companyRPC", new CompanyServiceImpl());
-//        companyRPC.setLoadOnStartup(1);
-//        companyRPC.addMapping("*.gwt");
 
     }
 

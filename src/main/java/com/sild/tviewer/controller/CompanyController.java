@@ -19,14 +19,13 @@ import java.util.List;
 @RequestMapping(value = "/company")
 public class CompanyController {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    @Autowired
+    private CompanyServiceImpl companyService;
 
-    @RequestMapping(value = "/gwt", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/gwt", method = {RequestMethod.GET, RequestMethod.POST})
     public String gwtCompany() {
         return "GwtCompany";
     }
-
-    @Autowired
-    private CompanyServiceImpl companyService;
 
     @RequestMapping(value = "")
     public ModelAndView list(
@@ -42,7 +41,7 @@ public class CompanyController {
             @RequestParam(value = "name") String nameFilter,
             @RequestParam(value = "page", required = false) Integer page
     ) {
-        
+
         model.addAttribute("company", new Company());
         ModelAndView modelAndView = new ModelAndView("company");
         List<Company> companyList = companyService.getByName(nameFilter);
@@ -55,13 +54,15 @@ public class CompanyController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestHeader(value = "referer", required = false) final String referer,
-                      @ModelAttribute Company company) {
+                         @ModelAttribute Company company) {
         companyService.createOrUpdate(company);
         return "redirect:" + referer;
     }
 
     @RequestMapping(value = "/update/ajax", method = RequestMethod.POST)
-    public @ResponseBody Company updateAjax(@ModelAttribute Company company) {
+    public
+    @ResponseBody
+    Company updateAjax(@ModelAttribute Company company) {
         companyService.createOrUpdate(company);
         return company;
     }

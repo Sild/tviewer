@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("companyService.gwt")
-public class CompanyServiceImpl  implements CompanyService {
+public class CompanyServiceImpl implements CompanyService {
 
 
     @Autowired

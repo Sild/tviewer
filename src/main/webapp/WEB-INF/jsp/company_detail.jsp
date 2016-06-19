@@ -120,7 +120,7 @@
                                 />
 
                         (<fmt:formatNumber pattern="##.##"
-                            value="${tenderMember.offer / member.tender.sum * 100}"
+                                           value="${tenderMember.offer / member.tender.sum * 100}"
                             />%)
                     </c:if>
                 </c:forEach>
@@ -128,8 +128,8 @@
             </td>
             <td class="member_offer"><fmt:formatNumber
                     value="${member.offer}"
-                    /> (<fmt:formatNumber  pattern="##.##"
-                    value="${member.offer / member.tender.sum * 100}"
+                    /> (<fmt:formatNumber pattern="##.##"
+                                          value="${member.offer / member.tender.sum * 100}"
                     />%)
             </td>
             <td class="member_winner">

@@ -1,8 +1,6 @@
 package com.sild.tviewer.model;
 
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;

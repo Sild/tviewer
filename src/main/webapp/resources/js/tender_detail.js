@@ -29,7 +29,7 @@ $(function () {
                 {
                     text: "Сохранить",
                     click: function () {
-                        if(title == "Добавление Участника") {
+                        if (title == "Добавление Участника") {
                             $node.submit();
                         } else {
                             var $popup = $(this);

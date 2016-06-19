@@ -2,7 +2,6 @@ package com.sild.tviewer.repository;
 
 import com.sild.tviewer.model.Company;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface CompanyRepository {

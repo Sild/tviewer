@@ -102,6 +102,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.enable_lazy_load_no_trans", "true");
+        properties.put("hibernate.connection.CharSet", "UTF-8");
+        properties.put("hibernate.connection.characterEncoding", "UTF-8");
+        properties.put("hibernate.connection.useUnicode", "true");
         return properties;
     }
 

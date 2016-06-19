@@ -1,7 +1,6 @@
 package com.sild.tviewer.repository;
 
 import com.sild.tviewer.model.Tender;
-import com.sild.tviewer.model.TenderState;
 import com.sild.tviewer.model.filter.TenderFilter;
 
 import java.util.List;

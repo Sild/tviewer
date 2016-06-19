@@ -18,6 +18,12 @@ public class TenderFilter {
 
 
     private Boolean liked = false;
+    private TenderState state;
+
+    public TenderFilter() {
+        number = "";
+
+    }
 
     @Override
     public String toString() {
@@ -28,13 +34,6 @@ public class TenderFilter {
                 ", liked=" + liked +
                 ", state=" + state +
                 '}';
-    }
-
-    private TenderState state;
-
-    public TenderFilter() {
-        number = "";
-
     }
 
     public Boolean getLiked() {

@@ -16,7 +16,9 @@
             <td><form:input path="number" required="required"/></td>
         </tr>
         <tr>
-            <td><form:label path="owner">Заказчик</form:label> <a class="add_company_fast" style="cursor: pointer;color: #337ab7;" href="#">добавить</a></td>
+            <td><form:label path="owner">Заказчик</form:label> <a class="add_company_fast"
+                                                                  style="cursor: pointer;color: #337ab7;" href="#">добавить</a>
+            </td>
             <td>
                 <form:select path="owner">
                     <form:option value="" label="Select ..."/>

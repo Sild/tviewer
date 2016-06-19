@@ -29,5 +29,4 @@ public interface CompanyService extends RemoteService {
     public List<Company> getCustomersByName(String name);
 
 
-
 }

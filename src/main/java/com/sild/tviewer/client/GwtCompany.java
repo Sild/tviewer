@@ -6,14 +6,13 @@ package com.sild.tviewer.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.*;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.sild.tviewer.model.Company;
 import com.sild.tviewer.service.CompanyService;
 import com.sild.tviewer.service.CompanyServiceAsync;
-
-import java.util.List;
 
 public class GwtCompany implements EntryPoint {
     /**
@@ -61,13 +60,9 @@ public class GwtCompany implements EntryPoint {
         final Button closeButton = new Button("Close");
         // We can set the id of a widget by accessing its Element
         closeButton.getElement().setId("closeButton");
-        final Label textToServerLabel = new Label();
         final HTML serverResponseLabel = new HTML();
         VerticalPanel dialogVPanel = new VerticalPanel();
         dialogVPanel.addStyleName("dialogVPanel");
-        dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
-        dialogVPanel.add(textToServerLabel);
-        dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
         dialogVPanel.add(serverResponseLabel);
         dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
         dialogVPanel.add(closeButton);
