@@ -26,13 +26,6 @@
             <version>1.0.13</version>
         </dependency>
 
-
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.5.0</version>
-        </dependency>
         <!-- DB related dependencies -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -49,12 +42,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-
 
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -66,6 +53,7 @@
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
         </dependency>
+
         <!-- SPRING -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -87,12 +75,14 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <!-- CGLIB is required to process @Configuration classes -->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>2.2.2</version>
         </dependency>
+
         <!-- Servlet API and JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -106,25 +96,7 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- Test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test-mvc</artifactId>
-            <version>1.0.0.M1</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -147,6 +119,9 @@
                     <webApp>
                         <contextPath>/tviewer</contextPath>
                     </webApp>
+                    <httpConnector>
+                        <port>8888</port>
+                    </httpConnector>
                 </configuration>
             </plugin>
             <plugin>

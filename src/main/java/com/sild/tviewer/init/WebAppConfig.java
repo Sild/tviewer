@@ -36,7 +36,9 @@ import java.util.Properties;
 @ComponentScan("com.sild.tviewer")
 @EnableWebMvc
 @EnableTransactionManagement
-@PropertySource("classpath:application.properties")
+@PropertySource(value = {"classpath:application.properties",
+        "classpath:dev.application.properties"},
+        ignoreResourceNotFound = true)
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
