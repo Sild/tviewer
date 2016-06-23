@@ -8,7 +8,7 @@
 <html>
 
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../common/head.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender_detail.css">
 
 
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<jsp:include page="common/menu.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 
 <h2>Тендер</h2>
 <table class="table table-striped table-bordered table-sm">
@@ -79,7 +79,7 @@
 <h2>Участники</h2>
 <button id="show_update_member_form" class="btn btn-success">Добавить участника</button>
 
-<jsp:include page="form/member.jsp"/>
+<jsp:include page="../form/member.jsp"/>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
@@ -138,6 +138,6 @@
     </c:forEach>
     </tbody>
 </table>
-<jsp:include page="form/company.jsp"/>
+<jsp:include page="../form/company.jsp"/>
 </body>
 </html>

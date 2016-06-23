@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../common/head.jsp"/>
     <%@include file="/WEB-INF/html/lib_include/hightchart.html" %>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company_detail.js"></script>
     <title>company</title>
@@ -18,7 +18,7 @@
 
 <body>
 
-<jsp:include page="common/menu.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 
 <h2>${company.name}</h2>
 <input type="hidden" name="winCount" value="${winCount}"/>

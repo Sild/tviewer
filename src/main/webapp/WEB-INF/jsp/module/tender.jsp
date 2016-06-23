@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../common/head.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tender.css">
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/resources/js/select_autocomplete.js"></script>
@@ -19,20 +19,22 @@
 </head>
 
 <body>
-<jsp:include page="common/menu.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 
 <div class="control-panel">
     <input type="button" id="show_update_tender_form" class="btn btn-success" value="Добавить тендер"/>
 
 
-    <jsp:include page="form/tender_filter.jsp"/>
+    <jsp:include page="../form/tender_filter.jsp"/>
 
 
 </div>
 
-<jsp:include page="form/tender.jsp"/>
+<jsp:include page="../form/tender.jsp"/>
 
-
+<c:if test="${maxPage gt 1}">
+    <jsp:include page="../common/paginator.jsp"/>
+</c:if>
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">
     <tr>
@@ -102,6 +104,6 @@
     </c:forEach>
     </tbody>
 </table>
-<jsp:include page="form/company.jsp"/>
+<jsp:include page="../form/company.jsp"/>
 </body>
 </html>

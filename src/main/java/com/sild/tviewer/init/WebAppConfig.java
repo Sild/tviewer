@@ -4,6 +4,7 @@ import com.sild.tviewer.converter.CompanyConverter;
 import com.sild.tviewer.converter.PlatformConverter;
 import com.sild.tviewer.converter.StringTrimConverter;
 import com.sild.tviewer.converter.TenderConverter;
+import com.sild.tviewer.interceptor.BaseInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
@@ -34,7 +36,9 @@ import java.util.Properties;
 @ComponentScan("com.sild.tviewer")
 @EnableWebMvc
 @EnableTransactionManagement
-@PropertySource("classpath:application.properties")
+@PropertySource(value = {"classpath:application.properties",
+        "classpath:dev.application.properties"},
+        ignoreResourceNotFound = true)
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
@@ -117,6 +121,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new BaseInterceptor()).addPathPatterns("/*");
     }
 
 }

@@ -1,3 +1,4 @@
 target
 .idea
 tviewer.iml
+src/main/resources/dev.application.properties
