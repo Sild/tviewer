@@ -1,6 +1,6 @@
 package com.sild.tviewer.model.filter;
 
-import com.sild.tviewer.model.TenderState;
+import com.sild.tviewer.model.Tender;
 
 /**
  * @author Dmitry Korchagin.
@@ -30,7 +30,7 @@ public class TenderFilter {
                 '}';
     }
 
-    private TenderState state;
+    private Tender.TenderState state;
 
     public TenderFilter() {
         number = "";
@@ -69,11 +69,11 @@ public class TenderFilter {
         this.owner = owner;
     }
 
-    public TenderState getState() {
+    public Tender.TenderState getState() {
         return state;
     }
 
-    public void setState(TenderState state) {
+    public void setState(Tender.TenderState state) {
         this.state = state;
     }
 }

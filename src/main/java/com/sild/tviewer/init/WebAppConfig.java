@@ -5,12 +5,11 @@ import com.sild.tviewer.converter.PlatformConverter;
 import com.sild.tviewer.converter.StringTrimConverter;
 import com.sild.tviewer.converter.TenderConverter;
 import com.sild.tviewer.interceptor.BaseInterceptor;
+import com.sild.tviewer.service.UserService;
+import com.sild.tviewer.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -121,6 +120,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;
+    }
+
+    @Bean
+    public UserService getUserDetailsService(){
+        return new UserServiceImpl();
     }
 
     @Override

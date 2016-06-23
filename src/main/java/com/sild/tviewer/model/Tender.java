@@ -224,4 +224,22 @@ public class Tender {
             return this.value;
         }
     }
+
+    /**
+     * @author Dmitry Korchagin.
+     */
+    public static enum TenderState {
+        OPEN("открыт"),
+        CANCEL("отменен"),
+        CLOSE("закрыт");
+        private String value;
+
+        private TenderState(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
+    }
 }

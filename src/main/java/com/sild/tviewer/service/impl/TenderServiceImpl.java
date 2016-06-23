@@ -1,7 +1,6 @@
 package com.sild.tviewer.service.impl;
 
 import com.sild.tviewer.model.Tender;
-import com.sild.tviewer.model.TenderState;
 import com.sild.tviewer.model.filter.TenderFilter;
 import com.sild.tviewer.repository.TenderRepository;
 import com.sild.tviewer.service.TenderService;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class TenderServiceImpl implements TenderService {

@@ -9,7 +9,7 @@ import java.util.List;
  * @author Dmitry Korchagin.
  */
 public class Util {
-    final static int PAGE_SIZE = 10;
+    final static int PAGE_SIZE = 15;
 
     public  static <E> void addPaginator(ModelAndView modelAndView, List<E> list, String modelName, Integer page) {
         PagedListHolder<E> pagedListHolder = new PagedListHolder<>(list);

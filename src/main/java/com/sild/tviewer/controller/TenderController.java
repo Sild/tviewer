@@ -74,7 +74,7 @@ public class TenderController {
         Util.addPaginator(modelAndView, tenderService.get(tenderFilter), "tenderList", page);
         modelAndView.addObject("companyList", companyService.getAll());
         modelAndView.addObject("platformList", platformService.getAll());
-        modelAndView.addObject("TenderState", TenderState.values());
+        modelAndView.addObject("TenderState", Tender.TenderState.values());
         modelAndView.addObject("CurrencyType", Tender.CurrencyType.values());
         modelAndView.addObject("TenderFilter", tenderFilter);
         return modelAndView;
