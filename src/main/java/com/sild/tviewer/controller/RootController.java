@@ -17,7 +17,7 @@ public class RootController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showIndex() {
         logger.debug("root request");
-        return new ModelAndView("root");
+        return new ModelAndView("module/root");
     }
 
 }

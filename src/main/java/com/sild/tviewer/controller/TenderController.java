@@ -70,12 +70,12 @@ public class TenderController {
         model.addAttribute("tender", new Tender());
         model.addAttribute("company", new Company());
         model.addAttribute("tender_filter", new TenderFilter());
-        ModelAndView modelAndView = new ModelAndView("tender");
+        ModelAndView modelAndView = new ModelAndView("module/tender");
         Util.addPaginator(modelAndView, tenderService.get(tenderFilter), "tenderList", page);
         modelAndView.addObject("companyList", companyService.getAll());
         modelAndView.addObject("platformList", platformService.getAll());
         modelAndView.addObject("TenderState", TenderState.values());
-        modelAndView.addObject("CurrencyType", CurrencyType.values());
+        modelAndView.addObject("CurrencyType", Tender.CurrencyType.values());
         modelAndView.addObject("TenderFilter", tenderFilter);
         return modelAndView;
 
@@ -92,7 +92,7 @@ public class TenderController {
     public ModelAndView tenderDetail(Model model, @PathVariable Integer id) {
         model.addAttribute("member", new Member());
         model.addAttribute("company", new Company());
-        ModelAndView modelAndView = new ModelAndView("tender_detail");
+        ModelAndView modelAndView = new ModelAndView("module/tender_detail");
         Tender tender = tenderService.get(id);
         List<Company> companyList = companyService.getAll();
 

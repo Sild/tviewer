@@ -40,7 +40,7 @@ public class ProviderController {
             @RequestParam(required = false, value = "page") Integer page
     ) {
         model.addAttribute("company", new Company());
-        ModelAndView modelAndView = new ModelAndView("company");
+        ModelAndView modelAndView = new ModelAndView("module/company");
         List<Company> companyList = companyService.getProvidersByName(nameFilter);
         Util.addPaginator(modelAndView, companyList, "companyList", page);
         modelAndView.addObject("module", "provider");

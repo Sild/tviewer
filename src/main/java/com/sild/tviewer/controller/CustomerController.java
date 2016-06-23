@@ -37,7 +37,7 @@ public class CustomerController {
             @RequestParam(required = false, value = "name") Integer page
     ) {
         model.addAttribute("company", new Company());
-        ModelAndView modelAndView = new ModelAndView("company");
+        ModelAndView modelAndView = new ModelAndView("module/company");
         List<Company> companyList = companyService.getCustomersByName(nameFilter);
         Util.addPaginator(modelAndView, companyList, "companyList", page);
         modelAndView.addObject("module", "customer");

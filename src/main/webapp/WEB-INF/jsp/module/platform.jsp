@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../common/head.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/platform.css">
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/platform.js"></script>
@@ -13,11 +13,11 @@
 </head>
 
 <body>
-<jsp:include page="common/menu.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 
 <button id="show_update_platform_form" class="btn btn-success">Добавить площадку</button>
 
-<jsp:include page="form/platform.jsp"/>
+<jsp:include page="../form/platform.jsp"/>
 
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">

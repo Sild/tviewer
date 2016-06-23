@@ -40,7 +40,7 @@ public class CompanyController {
     ) {
         
         model.addAttribute("company", new Company());
-        ModelAndView modelAndView = new ModelAndView("company");
+        ModelAndView modelAndView = new ModelAndView("module/company");
         List<Company> companyList = companyService.getByName(nameFilter);
         Util.addPaginator(modelAndView, companyList, "companyList", page);
         modelAndView.addObject("module", "company");
@@ -71,7 +71,7 @@ public class CompanyController {
 
     @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("company_detail");
+        ModelAndView modelAndView = new ModelAndView("module/company_detail");
         Company company = companyService.get(id);
         int winCount = 0;
         for (Member member : company.getMemberSet()) {

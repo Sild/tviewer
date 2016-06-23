@@ -5,14 +5,14 @@
 
 <html>
 <head>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../common/head.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/company.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/company.js"></script>
     <title>${module}</title>
 </head>
 
 <body>
-<jsp:include page="common/menu.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 
 <div class="control-panel">
     <input type="button" id="show_add_entity_form" class="btn btn-success" value="Добавить компанию"/>
@@ -29,10 +29,10 @@
     </form>
 
 </div>
-<jsp:include page="form/company.jsp"/>
+<jsp:include page="../form/company.jsp"/>
 
 <c:if test="${maxPage gt 1}">
-    <jsp:include page="common/paginator.jsp"/>
+    <jsp:include page="../common/paginator.jsp"/>
 </c:if>
 <table class="table table-striped table-bordered table-sm tablesorter">
     <thead class="thead-inverse">

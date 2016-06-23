@@ -33,7 +33,7 @@ public class PlatformController {
     @RequestMapping(value = "")
     public ModelAndView list(Model model) {
         model.addAttribute("platform", new Platform());
-        ModelAndView modelAndView = new ModelAndView("platform");
+        ModelAndView modelAndView = new ModelAndView("module/platform");
         List<Platform> entityList = platformService.getAll();
         modelAndView.addObject("platformList", entityList);
         return modelAndView;
@@ -42,7 +42,7 @@ public class PlatformController {
     @RequestMapping(value = "/filters/id/{id}")
     public ModelAndView single(Model model, @PathVariable Integer id) {
         model.addAttribute("platform", new Platform());
-        ModelAndView modelAndView = new ModelAndView("platform");
+        ModelAndView modelAndView = new ModelAndView("module/platform");
         List<Platform> entityList = new ArrayList<>();
         entityList.add(platformService.get(id));
         modelAndView.addObject("platformList", entityList);
