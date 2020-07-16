@@ -1,0 +1,47 @@
+{% load static %}
+<html>
+<head>
+    <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/jquery-2.2.3.js' %}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.26.0/js/jquery.tablesorter.js"></script>
+    {% for js in js_list %}
+        <script type="text/javascript" src="{% static js %}"></script>
+    {% endfor %}
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/autocomplete.css' %}">
+    {% for css in css_list %}
+        <link rel="stylesheet" type="text/css" href="{% static css %}">
+    {% endfor %}
+    <title>{{ title }}</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color:black" href="{% url 'webapp:profile_show' %}">TViewer</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="customer"><a href="{% url 'webapp:customer_list' %}">Заказчики</a></li>
+            <li class="provider"><a href="{% url 'webapp:provider_list' %}">Поставщики</a></li>
+            <li class="company"><a href="{% url 'webapp:company_list' %}">Все компании</a></li>
+            <li class="tender"><a href="{% url 'webapp:tender_list' %}">Тендеры</a></li>
+            <li class="platform"><a href="{% url 'webapp:platform_list' %}">Платформы</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="navbar-right">
+            <a class="navbar-brand" style="color:#5fa4f1" href="{% url 'webapp:logout' %}">logout <span class="glyphicon glyphicon-log-out"></span></a>
+        </div>
+        {% endif %}
+
+    </div>
+</nav>
+{% block 'module' %}
+{% endblock %}
+</body>
+</html>

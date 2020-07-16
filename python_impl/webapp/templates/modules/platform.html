@@ -1,0 +1,51 @@
+{% extends 'wrapper.html' %}
+
+{% block 'module' %}
+<button id="show_update_platform_form" class="btn btn-success">Добавить площадку</button>
+
+<div>
+    <table class="table table-striped table-bordered table-sm tablesorter">
+        <thead class="thead-inverse">
+        <tr>
+            <th>id</th>
+            <th>Название</th>
+            <th>Сайт</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for platform in object_list %}
+        <tr data-id="{{ platform.id }}">
+            <td class="platform_id">{{ platform.id }}</td>
+            <td class="platform_name">{{ platform.name }}</td>
+            <td class="platform_site"><a href="{{ platform.site }}" target="_blank">{{ platform.site }}</a></td>
+            <td>
+                <span class="glyphicon glyphicon-edit edit_platform_btn"></span>
+                <a href="{% url 'webapp:platform_delete' platform.id %}"
+                   onclick="if(!confirm('Вы действительно хотите удалить платформу {{ platform.name }}?')) return false;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<form method="POST" class="update_platform_form"
+      action="{% url 'webapp:platform_update_or_create' %}" style="display: none">
+    {% csrf_token %}
+    <table class="table table-sm">
+        {% for field in form %}
+            {% if field.name == "id" %}
+                {{ field }}
+            {% else %}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}

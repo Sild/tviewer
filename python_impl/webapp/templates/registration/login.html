@@ -1,0 +1,26 @@
+{% extends "wrapper.html" %}
+
+{% block 'module' %}
+
+<div align="center">
+    <form method="post" action="{% url 'webapp:login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <input type="submit" class="btn" value="Вход" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        {% if form.errors %}
+        <p>Неправильная пара логин/пароль.</p>
+        {% endif %}
+    </form>
+</div>
+
+{% endblock %}

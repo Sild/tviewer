@@ -1,0 +1,5 @@
+.idea
+db.sqlite3
+tviewer_py.iml
+__pycache__
+webapp/migrations/00*.py
